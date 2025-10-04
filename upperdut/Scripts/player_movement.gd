@@ -7,11 +7,7 @@ extends CharacterBody2D
 var currentSpeed: float
 var currentAccel: float
 
-enum PLAYER_TYPE {
-	P1,
-	P2
-}
-
+enum PLAYER_TYPE {P1,P2}
 
 func _ready() -> void:
 	currentSpeed = defaultSpeed
