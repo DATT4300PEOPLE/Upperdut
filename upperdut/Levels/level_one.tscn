@@ -10,11 +10,13 @@ size = Vector2(20, 147)
 
 [node name="Player 1" parent="." instance=ExtResource("1_2b52f")]
 position = Vector2(613, 351)
+collision_layer = 2
 defaultSpeed = 500
 jump_power = -500.0
 
 [node name="Player 2" parent="." instance=ExtResource("1_2b52f")]
 position = Vector2(867, 343)
+collision_layer = 2
 defaultSpeed = 500
 jump_power = -500.0
 PLAYER = 1
