@@ -72,12 +72,11 @@ func get_fight_input(direction: int):
 		print(player_hitbox.monitorable)
 	
 func _on_animation_finished():
-	if (player_sprite.animation == "Punch"):
-		doing_action = false
-		boxing_glove.position.x = 4
-		boxing_glove.visible = false
-		player_hitbox.monitorable = false
-		print(player_hitbox.monitorable)
+	doing_action = false
+	boxing_glove.position.x = 4
+	boxing_glove.visible = false
+	player_hitbox.monitorable = false
+	
 
 func take_damage(amount: int) -> void:
 	print("AHHHHHHH: ", amount)
