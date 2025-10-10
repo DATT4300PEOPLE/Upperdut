@@ -1,10 +1,98 @@
-[gd_scene load_steps=4 format=3 uid="uid://pbpojmiw1dxs"]
+[gd_scene load_steps=17 format=3 uid="uid://pbpojmiw1dxs"]
 
 [ext_resource type="Script" uid="uid://djtt1f44btbo5" path="res://Scripts/player_movement.gd" id="1_u8qro"]
-[ext_resource type="Texture2D" uid="uid://trmydyyynbb5" path="res://icon.svg" id="2_hpxqs"]
+[ext_resource type="Texture2D" uid="uid://dvibeku42hf2u" path="res://Sprites/player1-sprites.png" id="2_u8qro"]
+[ext_resource type="Script" uid="uid://d4my5pau2jf14" path="res://Scripts/player_hitbox.gd" id="3_hpxqs"]
+[ext_resource type="Script" uid="uid://bglmrry6c10ov" path="res://Scripts/player_hurtbox.gd" id="4_5dvho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as2do"]
 size = Vector2(128, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8qro"]
+atlas = ExtResource("2_u8qro")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8egcn"]
+atlas = ExtResource("2_u8qro")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28uho"]
+atlas = ExtResource("2_u8qro")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_meyja"]
+atlas = ExtResource("2_u8qro")
+region = Rect2(0, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpxqs"]
+atlas = ExtResource("2_u8qro")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dvho"]
+atlas = ExtResource("2_u8qro")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h67ud"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8qro")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8egcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28uho")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_meyja")
+}],
+"loop": false,
+"name": &"Punch",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpxqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dvho")
+}],
+"loop": false,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8egcn"]
+size = Vector2(108, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njv57"]
+atlas = ExtResource("2_u8qro")
+region = Rect2(0, 1024, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i5wo5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njv57")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dvho"]
+size = Vector2(126, 67.5)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_u8qro")
@@ -13,5 +101,35 @@ script = ExtResource("1_u8qro")
 position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_as2do")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_hpxqs")
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -2)
+scale = Vector2(0.490234, 0.490234)
+sprite_frames = SubResource("SpriteFrames_h67ud")
+animation = &"Punch"
+frame_progress = 1.0
+
+[node name="player_hurtbox" type="Area2D" parent="."]
+script = ExtResource("4_5dvho")
+metadata/_custom_type_script = "uid://bglmrry6c10ov"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hurtbox"]
+position = Vector2(-1, 16)
+shape = SubResource("RectangleShape2D_8egcn")
+
+[node name="BoxingGlove" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(4.00001, 20)
+rotation = -1.5708
+scale = Vector2(0.320001, 0.320001)
+sprite_frames = SubResource("SpriteFrames_i5wo5")
+
+[node name="player_hitbox" type="Area2D" parent="BoxingGlove"]
+position = Vector2(4.99559e-06, -114.286)
+rotation = 1.5708
+scale = Vector2(3.57143, 3.57143)
+monitorable = false
+script = ExtResource("3_hpxqs")
+metadata/_custom_type_script = "uid://d4my5pau2jf14"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoxingGlove/player_hitbox"]
+shape = SubResource("RectangleShape2D_5dvho")
