@@ -11,7 +11,7 @@ func _init() -> void:
 func _ready() -> void: 
 	area_entered.connect(Callable(self,"_on_area_entered"))
 	
-func _on_area_entered(hitbox: player_hitbox) -> void:
+func _on_area_entered(hitbox: player_hitbox) -> void: # ADD KNOCKBACK EFFECT TO PUNCH
 	if hitbox == null:
 		return
 	if owner.has_method("take_damage"):

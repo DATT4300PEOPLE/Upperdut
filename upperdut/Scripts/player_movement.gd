@@ -1,13 +1,14 @@
 extends CharacterBody2D
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
-@onready var player_hitbox: player_hitbox = $BoxingGlove/player_hitbox
+@onready var player_hitbox: player_hitbox = $PlayerSprite/BoxingGlove/player_hitbox
 
 # MAKE FIST OBJECT MONITORABLE AND MOVE FORWARD UPON PUNCHING
-@onready var boxing_glove: AnimatedSprite2D = $BoxingGlove
+@onready var boxing_glove: AnimatedSprite2D = $PlayerSprite/BoxingGlove
 @export var defaultSpeed = 670
 @export var jump_power: float # HAS TO BE NEGATIVE (FORGOT) ALSO ADJUSTABLE BY GLOBAL
 @export var sprite_character: CharacterBody2D
 @export var PLAYER: PLAYER_TYPE
+var dir_facing = 1
 var currentSpeed: float
 var currentAccel: float
 var doing_action = false
@@ -37,6 +38,7 @@ func get_input():
 		jumpKey = "P2Jump"
 	if direction:
 		if direction != 0:
+			dir_facing = direction
 			if direction < 0:
 				player_sprite.scale.x = -0.49 # DON'T HARDCODE THIS IN, FIX LATER
 			else:
@@ -65,7 +67,7 @@ func get_fight_input(direction: int):
 		player_sprite.play("Punch")
 		doing_action = true
 		boxing_glove.visible = true
-		boxing_glove.position.x = 87 * direction
+		boxing_glove.position.x = 173.386
 		player_hitbox.monitorable = true
 		print(player_hitbox.monitorable)
 	

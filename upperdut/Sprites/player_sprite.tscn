@@ -73,9 +73,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8egcn"]
-size = Vector2(108, 90)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_njv57"]
 atlas = ExtResource("2_u8qro")
 region = Rect2(0, 1024, 256, 256)
@@ -92,7 +89,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dvho"]
-size = Vector2(126, 67.5)
+size = Vector2(172.374, 67.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8egcn"]
+size = Vector2(108, 90)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_u8qro")
@@ -108,22 +108,14 @@ sprite_frames = SubResource("SpriteFrames_h67ud")
 animation = &"Punch"
 frame_progress = 1.0
 
-[node name="player_hurtbox" type="Area2D" parent="."]
-script = ExtResource("4_5dvho")
-metadata/_custom_type_script = "uid://bglmrry6c10ov"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hurtbox"]
-position = Vector2(-1, 16)
-shape = SubResource("RectangleShape2D_8egcn")
-
-[node name="BoxingGlove" type="AnimatedSprite2D" parent="."]
+[node name="BoxingGlove" type="AnimatedSprite2D" parent="PlayerSprite"]
 visible = false
-position = Vector2(4.00001, 20)
+position = Vector2(173.386, 44.8765)
 rotation = -1.5708
-scale = Vector2(0.320001, 0.320001)
+scale = Vector2(0.652751, 0.652751)
 sprite_frames = SubResource("SpriteFrames_i5wo5")
 
-[node name="player_hitbox" type="Area2D" parent="BoxingGlove"]
+[node name="player_hitbox" type="Area2D" parent="PlayerSprite/BoxingGlove"]
 position = Vector2(4.99559e-06, -114.286)
 rotation = 1.5708
 scale = Vector2(3.57143, 3.57143)
@@ -131,5 +123,15 @@ monitorable = false
 script = ExtResource("3_hpxqs")
 metadata/_custom_type_script = "uid://d4my5pau2jf14"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoxingGlove/player_hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSprite/BoxingGlove/player_hitbox"]
+position = Vector2(-18.3123, 0)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_5dvho")
+
+[node name="player_hurtbox" type="Area2D" parent="."]
+script = ExtResource("4_5dvho")
+metadata/_custom_type_script = "uid://bglmrry6c10ov"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hurtbox"]
+position = Vector2(-1, 16)
+shape = SubResource("RectangleShape2D_8egcn")
