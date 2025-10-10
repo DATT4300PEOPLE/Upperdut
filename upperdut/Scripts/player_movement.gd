@@ -39,12 +39,13 @@ func get_input():
 	if direction:
 		if direction != 0:
 			dir_facing = direction
-			if direction < 0:
-				player_sprite.scale.x = -0.49 # DON'T HARDCODE THIS IN, FIX LATER
-			else:
-				player_sprite.scale.x = 0.49 # DON'T HARDCODE THIS IN, FIX LATER
-			player_sprite.play("Walk")
-		velocity.x = direction * currentSpeed
+			if !doing_action:
+				if direction < 0:
+					player_sprite.scale.x = -0.49 # DON'T HARDCODE THIS IN, FIX LATER
+				else:
+					player_sprite.scale.x = 0.49 # DON'T HARDCODE THIS IN, FIX LATER
+				player_sprite.play("Walk")
+			velocity.x = direction * currentSpeed
 	else:
 		velocity.x = 0
 	get_fight_input(direction)
@@ -72,10 +73,11 @@ func get_fight_input(direction: int):
 		print(player_hitbox.monitorable)
 	
 func _on_animation_finished():
-	doing_action = false
-	boxing_glove.position.x = 4
-	boxing_glove.visible = false
-	player_hitbox.monitorable = false
+	if player_sprite.animation == "Punch":
+		doing_action = false
+		boxing_glove.position.x = 4
+		boxing_glove.visible = false
+		player_hitbox.monitorable = false
 	
 
 func take_damage(amount: int) -> void:
