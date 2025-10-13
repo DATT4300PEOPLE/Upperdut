@@ -1,0 +1,104 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://1neqgdj4rt6b"]
+
+[ext_resource type="Texture2D" uid="uid://dvibeku42hf2u" path="res://Sprites/player1-sprites.png" id="1_d611u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fkj8"]
+atlas = ExtResource("1_d611u")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8qro"]
+atlas = ExtResource("1_d611u")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8egcn"]
+atlas = ExtResource("1_d611u")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28uho"]
+atlas = ExtResource("1_d611u")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_meyja"]
+atlas = ExtResource("1_d611u")
+region = Rect2(0, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d611u"]
+atlas = ExtResource("1_d611u")
+region = Rect2(512, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m224"]
+atlas = ExtResource("1_d611u")
+region = Rect2(256, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpxqs"]
+atlas = ExtResource("1_d611u")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dvho"]
+atlas = ExtResource("1_d611u")
+region = Rect2(256, 0, 256, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fkj8")
+}],
+"loop": true,
+"name": &"Block",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8qro")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8egcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28uho")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_meyja")
+}],
+"loop": false,
+"name": &"Punch",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d611u")
+}],
+"loop": false,
+"name": &"PunchDown",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_8m224")
+}],
+"loop": false,
+"name": &"PunchUp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpxqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dvho")
+}],
+"loop": false,
+"name": &"Walk",
+"speed": 5.0
+}]

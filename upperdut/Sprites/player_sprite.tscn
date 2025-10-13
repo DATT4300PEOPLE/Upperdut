@@ -1,98 +1,19 @@
-[gd_scene load_steps=17 format=3 uid="uid://pbpojmiw1dxs"]
+[gd_scene load_steps=9 format=3 uid="uid://pbpojmiw1dxs"]
 
 [ext_resource type="Script" uid="uid://djtt1f44btbo5" path="res://Scripts/player_movement.gd" id="1_u8qro"]
-[ext_resource type="Texture2D" uid="uid://dvibeku42hf2u" path="res://Sprites/player1-sprites.png" id="2_u8qro"]
+[ext_resource type="SpriteFrames" uid="uid://1neqgdj4rt6b" path="res://Sprites/p1Frames.tres" id="2_8egcn"]
+[ext_resource type="SpriteFrames" uid="uid://cs4i8b5npgplf" path="res://Sprites/p2GloveFrame.tres" id="3_8egcn"]
 [ext_resource type="Script" uid="uid://d4my5pau2jf14" path="res://Scripts/player_hitbox.gd" id="3_hpxqs"]
 [ext_resource type="Script" uid="uid://bglmrry6c10ov" path="res://Scripts/player_hurtbox.gd" id="4_5dvho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as2do"]
 size = Vector2(128, 127)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u8qro"]
-atlas = ExtResource("2_u8qro")
-region = Rect2(0, 512, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8egcn"]
-atlas = ExtResource("2_u8qro")
-region = Rect2(256, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_28uho"]
-atlas = ExtResource("2_u8qro")
-region = Rect2(0, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_meyja"]
-atlas = ExtResource("2_u8qro")
-region = Rect2(0, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hpxqs"]
-atlas = ExtResource("2_u8qro")
-region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5dvho"]
-atlas = ExtResource("2_u8qro")
-region = Rect2(256, 0, 256, 256)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_h67ud"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u8qro")
-}],
-"loop": false,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8egcn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_28uho")
-}],
-"loop": false,
-"name": &"Jump",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_meyja")
-}],
-"loop": false,
-"name": &"Punch",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hpxqs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5dvho")
-}],
-"loop": false,
-"name": &"Walk",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_njv57"]
-atlas = ExtResource("2_u8qro")
-region = Rect2(0, 1024, 256, 256)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_i5wo5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_njv57")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dvho"]
-size = Vector2(172.374, 67.5)
+size = Vector2(172.375, 67.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8egcn"]
-size = Vector2(108, 90)
+size = Vector2(137, 92)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_u8qro")
@@ -104,28 +25,27 @@ shape = SubResource("RectangleShape2D_as2do")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -2)
 scale = Vector2(0.490234, 0.490234)
-sprite_frames = SubResource("SpriteFrames_h67ud")
+sprite_frames = ExtResource("2_8egcn")
 animation = &"Punch"
-frame_progress = 1.0
 
 [node name="BoxingGlove" type="AnimatedSprite2D" parent="PlayerSprite"]
 visible = false
 position = Vector2(173.386, 44.8765)
 rotation = -1.5708
 scale = Vector2(0.652751, 0.652751)
-sprite_frames = SubResource("SpriteFrames_i5wo5")
+sprite_frames = ExtResource("3_8egcn")
 
 [node name="player_hitbox" type="Area2D" parent="PlayerSprite/BoxingGlove"]
 position = Vector2(4.99559e-06, -114.286)
 rotation = 1.5708
 scale = Vector2(3.57143, 3.57143)
+monitoring = false
 monitorable = false
 script = ExtResource("3_hpxqs")
 metadata/_custom_type_script = "uid://d4my5pau2jf14"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSprite/BoxingGlove/player_hitbox"]
-position = Vector2(-18.3123, 0)
-scale = Vector2(1, 1)
+position = Vector2(-18.312, 0)
 shape = SubResource("RectangleShape2D_5dvho")
 
 [node name="player_hurtbox" type="Area2D" parent="."]
@@ -133,5 +53,5 @@ script = ExtResource("4_5dvho")
 metadata/_custom_type_script = "uid://bglmrry6c10ov"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hurtbox"]
-position = Vector2(-1, 16)
+position = Vector2(1.5, 15)
 shape = SubResource("RectangleShape2D_8egcn")

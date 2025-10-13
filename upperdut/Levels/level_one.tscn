@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm8nsbc1ub008"]
+[gd_scene load_steps=8 format=3 uid="uid://cm8nsbc1ub008"]
 
 [ext_resource type="PackedScene" uid="uid://pbpojmiw1dxs" path="res://Sprites/player_sprite.tscn" id="1_2b52f"]
 [ext_resource type="Texture2D" uid="uid://trmydyyynbb5" path="res://icon.svg" id="1_wi846"]
+[ext_resource type="SpriteFrames" uid="uid://1neqgdj4rt6b" path="res://Sprites/p1Frames.tres" id="2_pvy0h"]
+[ext_resource type="SpriteFrames" uid="uid://b3tmfb474mqlf" path="res://Sprites/p2Frames.tres" id="3_om7uc"]
+[ext_resource type="SpriteFrames" uid="uid://ctpuankqgbsbe" path="res://Sprites/p1GloveFrame.tres" id="3_ugpc4"]
+[ext_resource type="SpriteFrames" uid="uid://cs4i8b5npgplf" path="res://Sprites/p2GloveFrame.tres" id="5_ya8ts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18c4h"]
-size = Vector2(20, 119)
+size = Vector2(125.278, 119)
 
 [node name="level_one" type="Node2D"]
 
@@ -13,20 +17,38 @@ position = Vector2(613, 351)
 collision_layer = 2
 defaultSpeed = 500
 jump_power = -500.0
+anim_sheet = ExtResource("2_pvy0h")
+glove_sprite = ExtResource("3_ugpc4")
+knockback_velocity = Vector2(3000, -2000)
 
 [node name="Player 2" parent="." instance=ExtResource("1_2b52f")]
-position = Vector2(867, 343)
+position = Vector2(875, 360)
 collision_layer = 2
 defaultSpeed = 500
 jump_power = -500.0
 PLAYER = 1
+anim_sheet = ExtResource("3_om7uc")
+glove_sprite = ExtResource("5_ya8ts")
+knockback_velocity = Vector2(3000, -2000)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(572, 509.5)
 scale = Vector2(62.16, 1)
 shape = SubResource("RectangleShape2D_18c4h")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Ground/CollisionShape2D"]
+texture = ExtResource("1_wi846")
+
+[node name="Roof" type="StaticBody2D" parent="."]
+position = Vector2(49.0001, 160)
+scale = Vector2(0.08, 0.16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Roof"]
+position = Vector2(737.499, 512.501)
+scale = Vector2(62.16, 1)
+shape = SubResource("RectangleShape2D_18c4h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Roof/CollisionShape2D"]
 texture = ExtResource("1_wi846")
