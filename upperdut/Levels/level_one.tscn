@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cm8nsbc1ub008"]
+[gd_scene load_steps=9 format=3 uid="uid://cm8nsbc1ub008"]
 
 [ext_resource type="PackedScene" uid="uid://pbpojmiw1dxs" path="res://Sprites/player_sprite.tscn" id="1_2b52f"]
 [ext_resource type="Texture2D" uid="uid://trmydyyynbb5" path="res://icon.svg" id="1_wi846"]
@@ -9,6 +9,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18c4h"]
 size = Vector2(125.278, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugpc4"]
+size = Vector2(80, 233.5)
 
 [node name="level_one" type="Node2D"]
 
@@ -52,3 +55,20 @@ shape = SubResource("RectangleShape2D_18c4h")
 
 [node name="Sprite2D" type="Sprite2D" parent="Roof/CollisionShape2D"]
 texture = ExtResource("1_wi846")
+
+[node name="Ladder" type="Area2D" parent="."]
+visibility_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder"]
+position = Vector2(483, 321.75)
+shape = SubResource("RectangleShape2D_ugpc4")
+
+[node name="LadderIcon" type="Sprite2D" parent="Ladder"]
+position = Vector2(482.5, 326)
+scale = Vector2(0.601562, 1.83594)
+texture = ExtResource("1_wi846")
+
+[connection signal="area_entered" from="Ladder" to="Player 1" method="_on_ladder_area_entered"]
+[connection signal="area_exited" from="Ladder" to="Player 1" method="_on_ladder_area_exited"]
+[connection signal="body_entered" from="Ladder" to="Player 1" method="_on_ladder_body_entered"]
+[connection signal="body_exited" from="Ladder" to="Player 1" method="_on_ladder_body_exited"]

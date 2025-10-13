@@ -14,6 +14,7 @@ extends CharacterBody2D
 var knockback_timer = 0.0
 var knockback_duration = 0.3 # seconds
 var is_knocked_back = false
+var on_ladder = false
 
 var move_dir = 0
 var direction
@@ -34,8 +35,14 @@ func _ready() -> void:
 	boxing_glove.sprite_frames = glove_sprite
 
 func _physics_process(delta: float) -> void:
-	if !is_on_floor():
+	if !is_on_floor() and !on_ladder:
 		velocity.y += get_gravity().y * delta
+	
+	if on_ladder:
+		if Input.is_action_pressed("P1Jump") || Input.is_action_pressed("P2Jump"):
+			velocity.y = -defaultSpeed*delta*10
+		else:
+			velocity.y = 0
 	
 	if is_knocked_back:
 		velocity = velocity.lerp(Vector2.ZERO, delta * 5) #Makes descent smoother, before player would stop on a dime
@@ -142,3 +149,11 @@ func take_damage(amount: int, attacker_pos: Vector2) -> void:
 	var knock_dir = sign(global_position.x - attacker_pos.x)
 
 	velocity = Vector2(knockback_velocity.x * knock_dir, knockback_velocity.y)
+
+func _on_ladder_body_entered(body: Node2D) -> void:
+	if "Player1" in body.name:
+		on_ladder = true
+
+func _on_ladder_body_exited(body: Node2D) -> void:
+	if "Player1" in body.name:
+		on_ladder = false
