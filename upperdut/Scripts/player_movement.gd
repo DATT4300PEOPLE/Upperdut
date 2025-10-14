@@ -7,13 +7,19 @@ extends CharacterBody2D
 @onready var boxing_glove: AnimatedSprite2D = $PlayerSprite/BoxingGlove
 @export var defaultSpeed = 670
 @export var jump_power: float # HAS TO BE NEGATIVE (FORGOT) ALSO ADJUSTABLE BY GLOBAL
+@export var player_damage = 4
 @export var PLAYER: PLAYER_TYPE
 @export var anim_sheet: SpriteFrames
 @export var glove_sprite: SpriteFrames
-@export var knockback_velocity: Vector2
+@export var base_knockback_velocity: Vector2
+@export var max_action_duration: int
+
 var knockback_timer = 0.0
 var knockback_duration = 0.3 # seconds
 var is_knocked_back = false
+var punch_multiplier = 1
+var action_timer = 0
+
 
 var move_dir = 0
 var direction
@@ -22,6 +28,7 @@ var punchDir: String
 var currentSpeed: float
 var currentAccel: float
 var doing_action = false
+var punching = false
 var gloveX = 55
 var gloveY = 44
 var gloveRot = -90
@@ -32,6 +39,7 @@ func _ready() -> void:
 	player_sprite.animation_finished.connect(_on_animation_finished)
 	player_sprite.sprite_frames = anim_sheet
 	boxing_glove.sprite_frames = glove_sprite
+	player_hitbox.knockback_velocity = base_knockback_velocity
 
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
@@ -49,6 +57,11 @@ func _physics_process(delta: float) -> void:
 		player_sprite.play("Idle")
 		move_dir = 0
 	
+	if punching:
+		if action_timer < max_action_duration:
+			action_timer += delta
+		else:
+			action_timer = max_action_duration
 	get_input()
 	punch_anim_dir()
 	
@@ -97,7 +110,17 @@ func get_fight_input(direction: int):
 		punchBtn = "P1Punch"
 	else:
 		punchBtn = "P2Punch"
-	if Input.is_action_just_pressed(punchBtn):
+		#await get_tree().process_frame
+	if Input.is_action_pressed(punchBtn):
+		player_hitbox.damage = player_damage # ALSO DON"T HARDCODE THIS IN<
+		player_hitbox.knockback_velocity = base_knockback_velocity
+		punching = true
+		punch_multiplier = action_timer / 0.5
+		if (punch_multiplier < 1):
+			punch_multiplier = 1
+
+		print(punch_multiplier)
+	if Input.is_action_just_released(punchBtn):
 		player_sprite.play(punchDir)
 		doing_action = true
 		boxing_glove.visible = true
@@ -107,7 +130,13 @@ func get_fight_input(direction: int):
 		player_hitbox.monitorable = true
 		player_hitbox.monitoring = true
 		print(punchDir)
-		await get_tree().process_frame
+		punching = false
+		action_timer = 0
+		player_hitbox.damage *= punch_multiplier
+		player_hitbox.knockback_velocity.x *= punch_multiplier
+		player_hitbox.knockback_velocity.y *= punch_multiplier
+		
+
 
 func punch_anim_dir():
 	if move_dir <= 2:
@@ -134,11 +163,13 @@ func _on_animation_finished():
 	
 
 					
-func take_damage(amount: int, attacker_pos: Vector2) -> void:
-	print("AHHHHHHH: ", amount)
+func take_damage(amount: float, attacker_pos: Vector2, knockback_velocity: Vector2) -> void:
+	print("AHHHHHHH: ", amount )
+	print("Multiplier: ", punch_multiplier)
 	is_knocked_back = true
 	knockback_timer = knockback_duration
 
 	var knock_dir = sign(global_position.x - attacker_pos.x)
 
 	velocity = Vector2(knockback_velocity.x * knock_dir, knockback_velocity.y)
+	PlayerData.apply_damage(amount, PLAYER)

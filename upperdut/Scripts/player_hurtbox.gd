@@ -18,4 +18,4 @@ func _on_area_entered(hitbox: player_hitbox) -> void: # ADD KNOCKBACK EFFECT TO 
 		return
 	if owner.has_method("take_damage") and hitbox.player_ID != self.player_ID:
 		var attacker_global_pos = hitbox.global_position
-		owner.take_damage(hitbox.damage, attacker_global_pos)
+		owner.take_damage(hitbox.damage, attacker_global_pos, hitbox.knockback_velocity)

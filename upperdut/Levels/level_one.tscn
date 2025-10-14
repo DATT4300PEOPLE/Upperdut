@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cm8nsbc1ub008"]
+[gd_scene load_steps=9 format=3 uid="uid://cm8nsbc1ub008"]
 
 [ext_resource type="PackedScene" uid="uid://pbpojmiw1dxs" path="res://Sprites/player_sprite.tscn" id="1_2b52f"]
 [ext_resource type="Texture2D" uid="uid://trmydyyynbb5" path="res://icon.svg" id="1_wi846"]
@@ -6,6 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://b3tmfb474mqlf" path="res://Sprites/p2Frames.tres" id="3_om7uc"]
 [ext_resource type="SpriteFrames" uid="uid://ctpuankqgbsbe" path="res://Sprites/p1GloveFrame.tres" id="3_ugpc4"]
 [ext_resource type="SpriteFrames" uid="uid://cs4i8b5npgplf" path="res://Sprites/p2GloveFrame.tres" id="5_ya8ts"]
+[ext_resource type="PackedScene" uid="uid://c524qt4qdwxi5" path="res://Scenes/player_data_ui.tscn" id="7_ya8ts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18c4h"]
 size = Vector2(125.278, 119)
@@ -19,7 +20,8 @@ defaultSpeed = 500
 jump_power = -500.0
 anim_sheet = ExtResource("2_pvy0h")
 glove_sprite = ExtResource("3_ugpc4")
-knockback_velocity = Vector2(3000, -2000)
+base_knockback_velocity = Vector2(1000, -500)
+max_action_duration = 3
 
 [node name="Player 2" parent="." instance=ExtResource("1_2b52f")]
 position = Vector2(875, 360)
@@ -29,7 +31,8 @@ jump_power = -500.0
 PLAYER = 1
 anim_sheet = ExtResource("3_om7uc")
 glove_sprite = ExtResource("5_ya8ts")
-knockback_velocity = Vector2(3000, -2000)
+base_knockback_velocity = Vector2(5000, -3000)
+max_action_duration = 3
 
 [node name="Ground" type="StaticBody2D" parent="."]
 
@@ -52,3 +55,5 @@ shape = SubResource("RectangleShape2D_18c4h")
 
 [node name="Sprite2D" type="Sprite2D" parent="Roof/CollisionShape2D"]
 texture = ExtResource("1_wi846")
+
+[node name="PlayerDataUI" parent="." instance=ExtResource("7_ya8ts")]

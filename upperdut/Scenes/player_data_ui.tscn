@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://c524qt4qdwxi5"]
+
+[ext_resource type="Script" uid="uid://bsyt5ryga3da8" path="res://Scripts/player_data_ui.gd" id="1_cubqy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_whaqe"]
+font_size = 40
+
+[node name="PlayerDataUI" type="Node2D"]
+script = ExtResource("1_cubqy")
+
+[node name="P1Label" type="Label" parent="."]
+offset_top = 592.0
+offset_right = 57.0
+offset_bottom = 647.0
+text = "1%"
+label_settings = SubResource("LabelSettings_whaqe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P2Label" type="Label" parent="."]
+offset_left = 1090.0
+offset_top = 592.0
+offset_right = 1147.0
+offset_bottom = 647.0
+text = "1%"
+label_settings = SubResource("LabelSettings_whaqe")
+horizontal_alignment = 1
+vertical_alignment = 1
