@@ -1,6 +1,10 @@
-[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://b3tmfb474mqlf"]
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://b3tmfb474mqlf"]
 
 [ext_resource type="Texture2D" uid="uid://bf7ubjo40nsbk" path="res://Sprites/player2-sprites.png" id="1_o7f67"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4yb1"]
+atlas = ExtResource("1_o7f67")
+region = Rect2(256, 512, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cph7v"]
 atlas = ExtResource("1_o7f67")
@@ -36,7 +40,10 @@ region = Rect2(256, 0, 256, 256)
 
 [resource]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4yb1")
+}],
 "loop": true,
 "name": &"Block",
 "speed": 5.0

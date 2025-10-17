@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cm8nsbc1ub008"]
+[gd_scene load_steps=10 format=3 uid="uid://cm8nsbc1ub008"]
 
 [ext_resource type="PackedScene" uid="uid://pbpojmiw1dxs" path="res://Sprites/player_sprite.tscn" id="1_2b52f"]
 [ext_resource type="Texture2D" uid="uid://trmydyyynbb5" path="res://icon.svg" id="1_wi846"]
@@ -10,6 +10,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18c4h"]
 size = Vector2(125.278, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ya8ts"]
+size = Vector2(124.231, 1649.02)
 
 [node name="level_one" type="Node2D"]
 
@@ -24,14 +27,14 @@ base_knockback_velocity = Vector2(1000, -500)
 max_action_duration = 3
 
 [node name="Player 2" parent="." instance=ExtResource("1_2b52f")]
-position = Vector2(875, 360)
+position = Vector2(877, 362)
 collision_layer = 2
 defaultSpeed = 500
 jump_power = -500.0
 PLAYER = 1
 anim_sheet = ExtResource("3_om7uc")
 glove_sprite = ExtResource("5_ya8ts")
-base_knockback_velocity = Vector2(5000, -3000)
+base_knockback_velocity = Vector2(1000, -500)
 max_action_duration = 3
 
 [node name="Ground" type="StaticBody2D" parent="."]
@@ -57,3 +60,19 @@ shape = SubResource("RectangleShape2D_18c4h")
 texture = ExtResource("1_wi846")
 
 [node name="PlayerDataUI" parent="." instance=ExtResource("7_ya8ts")]
+
+[node name="ScreenRight" type="Area2D" parent="."]
+position = Vector2(1256, 441)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenRight"]
+position = Vector2(-1.00024, -822.49)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_ya8ts")
+
+[node name="ScreenLeft" type="Area2D" parent="."]
+position = Vector2(-113, 441)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenLeft"]
+position = Vector2(-1.00024, -822.49)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_ya8ts")

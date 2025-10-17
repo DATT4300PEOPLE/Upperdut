@@ -44,7 +44,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += get_gravity().y * delta
-	
 	if is_knocked_back:
 		velocity = velocity.lerp(Vector2.ZERO, delta * 5) #Makes descent smoother, before player would stop on a dime
 		move_and_slide()
@@ -67,7 +66,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-
+# Player uses their mobility by moving around, getting hit increases their mobility
 func get_input():
 	if PLAYER == 0:
 		player_hitbox.player_ID = "P1"
@@ -89,27 +88,29 @@ func get_input():
 					player_sprite.scale.x = 0.49 # DON'T HARDCODE THIS IN, FIX LATER
 					move_dir = 2 # Moving right
 				player_sprite.play("Walk")
-			velocity.x = direction * currentSpeed
+			velocity.x = direction * (currentSpeed + PlayerData.apply_movement(PLAYER, 1))
 	else:
 		velocity.x = 0
 	get_fight_input(direction)
 	if Input.is_action_just_pressed(jumpKey) and is_on_floor():
-		print("JUMPIGN")
 		move_dir = 3 # Moving up (jumping)
 		player_sprite.play("Jump")
-		velocity.y = jump_power
+		velocity.y = jump_power - PlayerData.apply_movement(PLAYER, 2)
+		print("Y VELOCITY: ", velocity.y)
 	if Input.is_action_just_released(jumpKey) and is_on_floor():
-		print("JUMPIGN")
 		move_dir = 3 # Moving up (jumping)
 		player_sprite.play("Jump")
-		velocity.y = jump_power / 2
+		velocity.y = (jump_power - PlayerData.apply_movement(PLAYER, 2)) / 2 
 
 func get_fight_input(direction: int):
 	var punchBtn
+	var parryBtn
 	if PLAYER == 0:
 		punchBtn = "P1Punch"
+		parryBtn = "P1Parry"
 	else:
 		punchBtn = "P2Punch"
+		parryBtn = "P2Parry"
 		#await get_tree().process_frame
 	if Input.is_action_pressed(punchBtn):
 		player_hitbox.damage = player_damage # ALSO DON"T HARDCODE THIS IN<
@@ -117,9 +118,13 @@ func get_fight_input(direction: int):
 		punching = true
 		punch_multiplier = action_timer / 0.5
 		if (punch_multiplier < 1):
-			punch_multiplier = 1
-
+			punch_multiplier = 1	
 		print(punch_multiplier)
+	if Input.is_action_just_pressed(parryBtn):
+		player_sprite.play("Block")
+		doing_action = true
+	if Input.is_action_just_released(parryBtn):
+		doing_action = false
 	if Input.is_action_just_released(punchBtn):
 		player_sprite.play(punchDir)
 		doing_action = true
@@ -133,8 +138,12 @@ func get_fight_input(direction: int):
 		punching = false
 		action_timer = 0
 		player_hitbox.damage *= punch_multiplier
-		player_hitbox.knockback_velocity.x *= punch_multiplier
-		player_hitbox.knockback_velocity.y *= punch_multiplier
+		if (PLAYER == 0):
+			player_hitbox.knockback_velocity.x *= punch_multiplier + PlayerData.P2_Damage / 50
+			player_hitbox.knockback_velocity.y *= punch_multiplier + PlayerData.P2_Damage / 50
+		if (PLAYER == 1):
+			player_hitbox.knockback_velocity.x *= punch_multiplier + PlayerData.P1_Damage / 50
+			player_hitbox.knockback_velocity.y *= punch_multiplier + PlayerData.P1_Damage / 50
 		
 
 
@@ -164,7 +173,7 @@ func _on_animation_finished():
 
 					
 func take_damage(amount: float, attacker_pos: Vector2, knockback_velocity: Vector2) -> void:
-	print("AHHHHHHH: ", amount )
+	print("AHHHHHHH: ", knockback_velocity )
 	print("Multiplier: ", punch_multiplier)
 	is_knocked_back = true
 	knockback_timer = knockback_duration

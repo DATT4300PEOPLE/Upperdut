@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://e4y2lxokeuet"]
+
+[ext_resource type="Script" uid="uid://dpt24ebiwbnr6" path="res://borders.gd" id="1_nnbri"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuip0"]
+size = Vector2(124.231, 1649.02)
+
+[node name="Borders" type="Node2D"]
+script = ExtResource("1_nnbri")
+
+[node name="ScreenRight" type="Area2D" parent="."]
+position = Vector2(1256, 748)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenRight"]
+position = Vector2(-1.00024, -822.49)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_tuip0")
+
+[node name="ScreenLeft" type="Area2D" parent="."]
+position = Vector2(-113, 748)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenLeft"]
+position = Vector2(-1.00024, -822.49)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_tuip0")
