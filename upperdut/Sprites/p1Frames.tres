@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://1neqgdj4rt6b"]
+[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://1neqgdj4rt6b"]
 
 [ext_resource type="Texture2D" uid="uid://dvibeku42hf2u" path="res://Sprites/player1-sprites.png" id="1_d611u"]
 
@@ -30,13 +30,21 @@ region = Rect2(512, 768, 256, 256)
 atlas = ExtResource("1_d611u")
 region = Rect2(256, 768, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hpxqs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1hq2"]
 atlas = ExtResource("1_d611u")
-region = Rect2(0, 0, 256, 256)
+region = Rect2(768, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5dvho"]
 atlas = ExtResource("1_d611u")
 region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqafd"]
+atlas = ExtResource("1_d611u")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpxqs"]
+atlas = ExtResource("1_d611u")
+region = Rect2(0, 0, 256, 256)
 
 [resource]
 animations = [{
@@ -93,12 +101,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hpxqs")
+"texture": SubResource("AtlasTexture_u1hq2")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5dvho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqafd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpxqs")
 }],
 "loop": false,
 "name": &"Walk",
-"speed": 5.0
+"speed": 10.0
 }]

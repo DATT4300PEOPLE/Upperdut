@@ -23,10 +23,10 @@ position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_as2do")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -2)
+position = Vector2(-1, -2)
 scale = Vector2(0.490234, 0.490234)
 sprite_frames = ExtResource("2_8egcn")
-animation = &"Punch"
+animation = &"Walk"
 
 [node name="BoxingGlove" type="AnimatedSprite2D" parent="PlayerSprite"]
 visible = false
