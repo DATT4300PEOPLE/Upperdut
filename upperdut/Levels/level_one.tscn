@@ -27,7 +27,7 @@ base_knockback_velocity = Vector2(1000, -500)
 max_action_duration = 3
 
 [node name="Player 2" parent="." instance=ExtResource("1_2b52f")]
-position = Vector2(877, 362)
+position = Vector2(848, 361)
 collision_layer = 2
 defaultSpeed = 500
 jump_power = -500.0
@@ -66,7 +66,6 @@ position = Vector2(1256, 441)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenRight"]
 position = Vector2(-1.00024, -822.49)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ya8ts")
 
 [node name="ScreenLeft" type="Area2D" parent="."]
@@ -74,5 +73,4 @@ position = Vector2(-113, 441)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenLeft"]
 position = Vector2(-1.00024, -822.49)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ya8ts")
