@@ -1,10 +1,14 @@
-[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://1neqgdj4rt6b"]
+[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://1neqgdj4rt6b"]
 
 [ext_resource type="Texture2D" uid="uid://dvibeku42hf2u" path="res://Sprites/player1-sprites.png" id="1_d611u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1fkj8"]
 atlas = ExtResource("1_d611u")
 region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1337p"]
+atlas = ExtResource("1_d611u")
+region = Rect2(768, 256, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u8qro"]
 atlas = ExtResource("1_d611u")
@@ -54,6 +58,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Block",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1337p")
+}],
+"loop": true,
+"name": &"Hurt",
 "speed": 5.0
 }, {
 "frames": [{
