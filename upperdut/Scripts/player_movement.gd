@@ -151,9 +151,9 @@ func take_damage(amount: int, attacker_pos: Vector2) -> void:
 	velocity = Vector2(knockback_velocity.x * knock_dir, knockback_velocity.y)
 
 func _on_ladder_body_entered(body: Node2D) -> void:
-	if "Player1" in body.name:
+	if "P1" in body.name:
 		on_ladder = true
 
 func _on_ladder_body_exited(body: Node2D) -> void:
-	if "Player1" in body.name:
+	if "P1" in body.name:
 		on_ladder = false
