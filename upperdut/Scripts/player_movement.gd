@@ -19,7 +19,8 @@ var knockback_duration = 0.3 # seconds
 var is_knocked_back = false
 var punch_multiplier = 1
 var action_timer = 0
-var on_ladder = false
+var p1_on_ladder = false
+var p2_on_ladder = false
 
 
 var move_dir = 0
@@ -43,14 +44,21 @@ func _ready() -> void:
 	player_hitbox.knockback_velocity = base_knockback_velocity
 
 func _physics_process(delta: float) -> void:
-	if !is_on_floor() and !on_ladder:
+	if !is_on_floor() and !p1_on_ladder || !p2_on_ladder:
 		velocity.y += get_gravity().y * delta
 	
-	if on_ladder:
-		if Input.is_action_pressed("P1Jump") || Input.is_action_pressed("P2Jump"):
+	if p1_on_ladder:
+		if (Input.is_action_pressed("P1Jump") && PLAYER == 0):
 			velocity.y = -defaultSpeed*delta*50
 		else:
 			velocity.y = 0
+	
+	if p2_on_ladder:
+		if (Input.is_action_pressed("P2Jump") && PLAYER != 0):
+			velocity.y = -defaultSpeed*delta*50
+		else:
+			velocity.y = 0
+	
 	if is_knocked_back:
 		velocity = velocity.lerp(Vector2.ZERO, delta * 5) #Makes descent smoother, before player would stop on a dime
 		move_and_slide()
@@ -190,11 +198,18 @@ func take_damage(amount: float, attacker_pos: Vector2, knockback_velocity: Vecto
 	velocity = Vector2(knockback_velocity.x * knock_dir, knockback_velocity.y)
 	PlayerData.apply_damage(amount, PLAYER)
 
-func _on_ladde_area_entered(area: Area2D) -> void:
-	if "player_collider" in area.name:
-		print("Test 2")
-		on_ladder = true
+func _on_ladde_area_enteredp1(area: Area2D) -> void:
+	if "player_collider1" in area.name:
+		p1_on_ladder = true
 
-func _on_ladde_area_exited(area: Area2D) -> void:
+func _on_ladde_area_exitedp1(area: Area2D) -> void:
+	if "player_collider1" in area.name:
+		p1_on_ladder = false
+
+func _on_ladde_area_enteredp2(area: Area2D) -> void:
 	if "player_collider" in area.name:
-		on_ladder = false
+		p2_on_ladder = true
+
+func _on_ladde_area_exitedp2(area: Area2D) -> void:
+	if "player_collider" in area.name:
+		p2_on_ladder = false

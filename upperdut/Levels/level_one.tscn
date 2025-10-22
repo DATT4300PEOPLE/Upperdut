@@ -18,7 +18,7 @@ size = Vector2(125.278, 119)
 size = Vector2(124.231, 1649.02)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whtlt"]
-size = Vector2(57, 471)
+size = Vector2(57, 208.5)
 
 [node name="level_one" type="Node2D"]
 
@@ -84,7 +84,7 @@ shape = SubResource("RectangleShape2D_ya8ts")
 [node name="Ladde" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ladde"]
-position = Vector2(469, 163)
+position = Vector2(470, 339.25)
 shape = SubResource("RectangleShape2D_whtlt")
 debug_color = Color(0.84424186, 0.0010430897, 0.9147864, 0.41960785)
 
@@ -103,7 +103,7 @@ position = Vector2(1101, 394)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_kmyb2")
 
-[connection signal="area_entered" from="Ladde" to="Player 1" method="_on_ladde_area_entered"]
-[connection signal="area_entered" from="Ladde" to="Player 2" method="_on_ladde_area_entered"]
-[connection signal="area_exited" from="Ladde" to="Player 1" method="_on_ladde_area_exited"]
-[connection signal="area_exited" from="Ladde" to="Player 2" method="_on_ladde_area_exited"]
+[connection signal="area_entered" from="Ladde" to="Player 1" method="_on_ladde_area_enteredp1"]
+[connection signal="area_entered" from="Ladde" to="Player 2" method="_on_ladde_area_enteredp2"]
+[connection signal="area_exited" from="Ladde" to="Player 1" method="_on_ladde_area_exitedp1"]
+[connection signal="area_exited" from="Ladde" to="Player 2" method="_on_ladde_area_exitedp2"]
