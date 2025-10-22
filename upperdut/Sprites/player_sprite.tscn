@@ -59,8 +59,8 @@ metadata/_custom_type_script = "uid://bglmrry6c10ov"
 position = Vector2(1.5, 15)
 shape = SubResource("RectangleShape2D_8egcn")
 
-[node name="player_collider1" type="Area2D" parent="."]
+[node name="player_collider" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_collider1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_collider"]
 position = Vector2(-1.5, 16)
 shape = SubResource("RectangleShape2D_28uho")

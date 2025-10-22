@@ -203,11 +203,11 @@ func take_damage(amount: float, attacker_pos: Vector2, knockback_velocity: Vecto
 	PlayerData.apply_damage(amount, PLAYER)
 
 func _on_ladde_area_enteredp1(area: Area2D) -> void:
-	if "player_collider1" in area.name:
+	if "player_collider" in area.name:
 		p1_on_ladder = true
 
 func _on_ladde_area_exitedp1(area: Area2D) -> void:
-	if "player_collider1" in area.name:
+	if "player_collider" in area.name:
 		p1_on_ladder = false
 
 func _on_ladde_area_enteredp2(area: Area2D) -> void:
