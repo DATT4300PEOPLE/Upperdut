@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cm8nsbc1ub008"]
+[gd_scene load_steps=11 format=3 uid="uid://cm8nsbc1ub008"]
 
 [ext_resource type="PackedScene" uid="uid://pbpojmiw1dxs" path="res://Sprites/player_sprite.tscn" id="1_2b52f"]
 [ext_resource type="Texture2D" uid="uid://trmydyyynbb5" path="res://icon.svg" id="1_wi846"]
@@ -7,9 +7,6 @@
 [ext_resource type="SpriteFrames" uid="uid://ctpuankqgbsbe" path="res://Sprites/p1GloveFrame.tres" id="3_ugpc4"]
 [ext_resource type="SpriteFrames" uid="uid://cs4i8b5npgplf" path="res://Sprites/p2GloveFrame.tres" id="5_ya8ts"]
 [ext_resource type="PackedScene" uid="uid://c524qt4qdwxi5" path="res://Scenes/player_data_ui.tscn" id="7_ya8ts"]
-[ext_resource type="Texture2D" uid="uid://da2fwupkc8lby" path="res://Assets/punching_bag_3_2_1.png" id="8_whtlt"]
-[ext_resource type="Texture2D" uid="uid://d38j6yobk3seg" path="res://Assets/Sprite Sheets/handwraps_1.png" id="9_2848f"]
-[ext_resource type="Texture2D" uid="uid://c6i3g5owl8wae" path="res://Assets/smelling_salts_1.png" id="10_kmyb2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18c4h"]
 size = Vector2(125.278, 119)
@@ -26,7 +23,7 @@ size = Vector2(57, 471)
 position = Vector2(613, 351)
 collision_layer = 2
 defaultSpeed = 500
-jump_power = -650.0
+jump_power = -500.0
 anim_sheet = ExtResource("2_pvy0h")
 glove_sprite = ExtResource("3_ugpc4")
 base_knockback_velocity = Vector2(1000, -500)
@@ -87,21 +84,6 @@ shape = SubResource("RectangleShape2D_ya8ts")
 position = Vector2(469, 163)
 shape = SubResource("RectangleShape2D_whtlt")
 debug_color = Color(0.84424186, 0.0010430897, 0.9147864, 0.41960785)
-
-[node name="PunchingBag321" type="Sprite2D" parent="."]
-position = Vector2(1027.25, 362.56815)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_whtlt")
-
-[node name="Handwraps1" type="Sprite2D" parent="."]
-position = Vector2(960, 303)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("9_2848f")
-
-[node name="SmellingSalts1" type="Sprite2D" parent="."]
-position = Vector2(1101, 394)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_kmyb2")
 
 [connection signal="area_entered" from="Ladde" to="Player 1" method="_on_ladde_area_entered"]
 [connection signal="body_entered" from="Ladde" to="Player 1" method="_on_ladde_body_entered"]

@@ -182,3 +182,9 @@ func take_damage(amount: float, attacker_pos: Vector2, knockback_velocity: Vecto
 
 	velocity = Vector2(knockback_velocity.x * knock_dir, knockback_velocity.y)
 	PlayerData.apply_damage(amount, PLAYER)
+
+
+
+func _on_ladde_area_entered(area: Area2D) -> void:
+	print("HELLLOOO")
+	print(area.get_parent().name)
