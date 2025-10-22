@@ -50,12 +50,16 @@ func _physics_process(delta: float) -> void:
 	if p1_on_ladder:
 		if (Input.is_action_pressed("P1Jump") && PLAYER == 0):
 			velocity.y = -defaultSpeed*delta*50
+		elif (Input.is_action_pressed("P1Down") && PLAYER == 0):
+			velocity.y = defaultSpeed*delta*50
 		else:
 			velocity.y = 0
 	
 	if p2_on_ladder:
 		if (Input.is_action_pressed("P2Jump") && PLAYER != 0):
 			velocity.y = -defaultSpeed*delta*50
+		elif (Input.is_action_pressed("P2Down") && PLAYER != 0):
+			velocity.y = defaultSpeed*delta*50
 		else:
 			velocity.y = 0
 	
