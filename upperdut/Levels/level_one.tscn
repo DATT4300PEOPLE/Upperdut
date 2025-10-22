@@ -21,6 +21,7 @@ size = Vector2(124.231, 1649.02)
 size = Vector2(57, 208.5)
 
 [node name="level_one" type="Node2D"]
+position = Vector2(0, 75)
 
 [node name="Player 1" parent="." instance=ExtResource("1_2b52f")]
 position = Vector2(613, 351)
