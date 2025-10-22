@@ -116,16 +116,6 @@ func get_fight_input(direction: int):
 		player_hitbox.damage = player_damage # ALSO DON"T HARDCODE THIS IN<
 		player_hitbox.knockback_velocity = base_knockback_velocity
 		punching = true
-		punch_multiplier = action_timer / 0.5
-		if (punch_multiplier < 1):
-			punch_multiplier = 1	
-		print(punch_multiplier)
-	if Input.is_action_just_pressed(parryBtn):
-		player_sprite.play("Block")
-		doing_action = true
-	if Input.is_action_just_released(parryBtn):
-		doing_action = false
-	if Input.is_action_just_released(punchBtn):
 		player_sprite.play(punchDir)
 		doing_action = true
 		boxing_glove.visible = true
@@ -144,6 +134,16 @@ func get_fight_input(direction: int):
 		if (PLAYER == 1):
 			player_hitbox.knockback_velocity.x *= punch_multiplier + PlayerData.P1_Damage / 50
 			player_hitbox.knockback_velocity.y *= punch_multiplier + PlayerData.P1_Damage / 50
+		punch_multiplier = action_timer / 0.4
+		if (punch_multiplier < 1):
+			punch_multiplier = 1	
+		print(punch_multiplier)
+	if Input.is_action_just_pressed(parryBtn):
+		player_sprite.play("Block")
+		doing_action = true
+	if Input.is_action_just_released(parryBtn):
+		doing_action = false
+
 		
 
 

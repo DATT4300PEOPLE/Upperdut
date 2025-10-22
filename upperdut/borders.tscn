@@ -13,7 +13,6 @@ position = Vector2(1256, 748)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenRight"]
 position = Vector2(-1.00024, -822.49)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_tuip0")
 
 [node name="ScreenLeft" type="Area2D" parent="."]
@@ -21,5 +20,4 @@ position = Vector2(-113, 748)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenLeft"]
 position = Vector2(-1.00024, -822.49)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_tuip0")

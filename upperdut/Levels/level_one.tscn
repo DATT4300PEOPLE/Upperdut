@@ -24,7 +24,7 @@ jump_power = -500.0
 anim_sheet = ExtResource("2_pvy0h")
 glove_sprite = ExtResource("3_ugpc4")
 base_knockback_velocity = Vector2(1000, -500)
-max_action_duration = 3
+max_action_duration = 2
 
 [node name="Player 2" parent="." instance=ExtResource("1_2b52f")]
 position = Vector2(848, 361)
