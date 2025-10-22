@@ -21,7 +21,8 @@ var punch_multiplier = 1
 var action_timer = 0
 var p1_on_ladder = false
 var p2_on_ladder = false
-
+var near_switch = false
+var switch_hit = false
 
 var move_dir = 0
 var direction
@@ -82,7 +83,7 @@ func _physics_process(delta: float) -> void:
 			action_timer = max_action_duration
 	get_input()
 	punch_anim_dir()
-	
+	hit_switch()
 	move_and_slide()
 	
 # Player uses their mobility by moving around, getting hit increases their mobility
@@ -217,3 +218,16 @@ func _on_ladde_area_enteredp2(area: Area2D) -> void:
 func _on_ladde_area_exitedp2(area: Area2D) -> void:
 	if "player_collider" in area.name:
 		p2_on_ladder = false
+
+func _on_switch_area_entered(area: Area2D) -> void:
+	if "player_collider" in area.name:
+		near_switch = true
+
+func _on_switch_area_exited(area: Area2D) -> void:
+	if "player_collider" in area.name:
+		near_switch = false
+
+func hit_switch() -> void:
+	if near_switch == true && Input.is_action_pressed("P1Punch") || Input.is_action_pressed("P2Punch"):
+		print("Sick")
+		switch_hit == true
