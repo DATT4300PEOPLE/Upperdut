@@ -1,0 +1,181 @@
+[gd_scene load_steps=21 format=3 uid="uid://cm8nsbc1ub008"]
+
+[ext_resource type="PackedScene" uid="uid://pbpojmiw1dxs" path="res://Sprites/player_sprite.tscn" id="1_2b52f"]
+[ext_resource type="Texture2D" uid="uid://trmydyyynbb5" path="res://icon.svg" id="1_wi846"]
+[ext_resource type="Texture2D" uid="uid://chmv0c8ondtyu" path="res://Assets/level_design_1.png" id="1_y30io"]
+[ext_resource type="SpriteFrames" uid="uid://1neqgdj4rt6b" path="res://Sprites/p1Frames.tres" id="2_pvy0h"]
+[ext_resource type="SpriteFrames" uid="uid://b3tmfb474mqlf" path="res://Sprites/p2Frames.tres" id="3_om7uc"]
+[ext_resource type="SpriteFrames" uid="uid://ctpuankqgbsbe" path="res://Sprites/p1GloveFrame.tres" id="3_ugpc4"]
+[ext_resource type="SpriteFrames" uid="uid://cs4i8b5npgplf" path="res://Sprites/p2GloveFrame.tres" id="5_ya8ts"]
+[ext_resource type="PackedScene" uid="uid://c524qt4qdwxi5" path="res://Scenes/player_data_ui.tscn" id="7_ya8ts"]
+[ext_resource type="Texture2D" uid="uid://da2fwupkc8lby" path="res://Assets/punching_bag_3_2_1.png" id="8_whtlt"]
+[ext_resource type="Texture2D" uid="uid://d38j6yobk3seg" path="res://Assets/Sprite Sheets/handwraps_1.png" id="9_2848f"]
+[ext_resource type="Texture2D" uid="uid://c6i3g5owl8wae" path="res://Assets/smelling_salts_1.png" id="10_kmyb2"]
+[ext_resource type="Script" uid="uid://8oaapkj8pvks" path="res://Levels/camera_height.gd" id="12_lhaxc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18c4h"]
+size = Vector2(18.661518, 150.99997)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhaxc"]
+size = Vector2(103.362305, 162.50005)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y30io"]
+size = Vector2(27.952047, 137.50006)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2py18"]
+size = Vector2(81.44307, 181.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5fkoe"]
+size = Vector2(28.957542, 162.50006)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ya8ts"]
+size = Vector2(124.231, 1649.02)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whtlt"]
+size = Vector2(57, 208.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmyb2"]
+size = Vector2(134, 123)
+
+[node name="level_one" type="Node2D"]
+
+[node name="LevelDesign1" type="Sprite2D" parent="."]
+position = Vector2(577, -2242)
+scale = Vector2(0.601, 0.601)
+texture = ExtResource("1_y30io")
+
+[node name="Player 1" parent="." instance=ExtResource("1_2b52f")]
+position = Vector2(613, 351)
+collision_layer = 2
+defaultSpeed = 500
+jump_power = -650.0
+anim_sheet = ExtResource("2_pvy0h")
+glove_sprite = ExtResource("3_ugpc4")
+base_knockback_velocity = Vector2(1000, -500)
+max_action_duration = 2
+max_parry_window = 0.5
+parry_knockback = Vector2(1000, -250)
+
+[node name="Player 2" parent="." instance=ExtResource("1_2b52f")]
+position = Vector2(848, 361)
+collision_layer = 2
+defaultSpeed = 500
+jump_power = -650.0
+PLAYER = 1
+anim_sheet = ExtResource("3_om7uc")
+glove_sprite = ExtResource("5_ya8ts")
+base_knockback_velocity = Vector2(1000, -500)
+max_action_duration = 2
+max_parry_window = 0.5
+parry_knockback = Vector2(1000, -250)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(582, 662.5)
+scale = Vector2(62.16, 1)
+shape = SubResource("RectangleShape2D_18c4h")
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(49.000095, 361)
+scale = Vector2(0.08, 0.16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(4687.499, -493.75)
+scale = Vector2(62.159996, 1)
+shape = SubResource("RectangleShape2D_lhaxc")
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(49.000095, 159)
+scale = Vector2(0.08, 0.16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2(11318.75, 1487.5)
+scale = Vector2(62.159996, 1)
+shape = SubResource("RectangleShape2D_y30io")
+
+[node name="Platform4" type="StaticBody2D" parent="."]
+position = Vector2(-821, -55)
+scale = Vector2(0.08, 0.16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4"]
+position = Vector2(12793.75, 296.875)
+scale = Vector2(62.159996, 1)
+shape = SubResource("RectangleShape2D_2py18")
+
+[node name="Platform3" type="StaticBody2D" parent="."]
+position = Vector2(49.000095, 359)
+scale = Vector2(0.08, 0.16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
+position = Vector2(9887.499, 537.5)
+scale = Vector2(62.159996, 1)
+shape = SubResource("RectangleShape2D_5fkoe")
+
+[node name="PlayerDataUI" parent="." instance=ExtResource("7_ya8ts")]
+
+[node name="ScreenRight" type="Area2D" parent="."]
+position = Vector2(1256, 441)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenRight"]
+position = Vector2(-1.00024, -822.49)
+shape = SubResource("RectangleShape2D_ya8ts")
+
+[node name="ScreenLeft" type="Area2D" parent="."]
+position = Vector2(-113, 441)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenLeft"]
+position = Vector2(-1.00024, -822.49)
+shape = SubResource("RectangleShape2D_ya8ts")
+
+[node name="Ladde" type="Area2D" parent="."]
+position = Vector2(-753, -11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladde"]
+position = Vector2(470, 339.25)
+shape = SubResource("RectangleShape2D_whtlt")
+debug_color = Color(0.84424186, 0.0010430897, 0.9147864, 0.41960785)
+
+[node name="Switch" type="Area2D" parent="."]
+position = Vector2(205, -73)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Switch"]
+position = Vector2(-2, -21.5)
+shape = SubResource("RectangleShape2D_kmyb2")
+
+[node name="Temp" type="Sprite2D" parent="Switch"]
+position = Vector2(-2, -18)
+texture = ExtResource("1_wi846")
+
+[node name="Handwraps1" type="Sprite2D" parent="."]
+position = Vector2(960, 303)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_2848f")
+
+[node name="SmellingSalts1" type="Sprite2D" parent="."]
+position = Vector2(1101, 394)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_kmyb2")
+
+[node name="PunchingBag321" type="Sprite2D" parent="."]
+position = Vector2(290, 479)
+scale = Vector2(0.601, 0.601)
+texture = ExtResource("8_whtlt")
+
+[node name="CameraHeight" type="Sprite2D" parent="."]
+position = Vector2(571, 326)
+script = ExtResource("12_lhaxc")
+
+[node name="Camera2D" type="Camera2D" parent="CameraHeight"]
+position = Vector2(10, -59)
+
+[node name="TopScreen" type="Sprite2D" parent="CameraHeight"]
+position = Vector2(6, -374)
+
+[connection signal="area_entered" from="Ladde" to="Player 1" method="_on_ladde_area_entered"]
+[connection signal="area_entered" from="Ladde" to="Player 2" method="_on_ladde_area_entered"]
+[connection signal="area_exited" from="Ladde" to="Player 1" method="_on_ladde_area_exited"]
+[connection signal="area_exited" from="Ladde" to="Player 2" method="_on_ladde_area_exited"]
+[connection signal="area_entered" from="Switch" to="Player 1" method="_on_switch_area_entered"]
+[connection signal="area_entered" from="Switch" to="Player 2" method="_on_switch_area_entered"]
+[connection signal="area_exited" from="Switch" to="Player 1" method="_on_switch_area_exited"]

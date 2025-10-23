@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bglmrry6c10ov" path="res://Scripts/player_hurtbox.gd" id="4_5dvho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as2do"]
-size = Vector2(128, 127)
+size = Vector2(128, 91)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dvho"]
 size = Vector2(172.375, 67.5)
@@ -22,7 +22,7 @@ size = Vector2(125, 92)
 script = ExtResource("1_u8qro")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -0.5)
+position = Vector2(-1, 17.5)
 shape = SubResource("RectangleShape2D_as2do")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]

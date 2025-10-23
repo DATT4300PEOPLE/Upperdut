@@ -22,7 +22,6 @@ offset_left = 857.0
 offset_top = 44.0
 offset_right = 897.0
 offset_bottom = 84.0
-fill_mode = 1
 texture_progress = ExtResource("4_4lx2v")
 
 [node name="MeterP1" type="TextureProgressBar" parent="."]

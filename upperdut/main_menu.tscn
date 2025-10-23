@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://dk6rccahfpqgx"]
+
+[ext_resource type="Texture2D" uid="uid://duglwccba6cqx" path="res://Assets/Sprite Sheets/titlescreen-upperdut.png" id="1_nlkkf"]
+[ext_resource type="Texture2D" uid="uid://dfus80rdhvi30" path="res://Assets/PLAY.png" id="2_qe12f"]
+[ext_resource type="Texture2D" uid="uid://bsk0mkojl15to" path="res://Assets/PLAYHOVER.png" id="3_8qtwp"]
+[ext_resource type="Script" uid="uid://cpan2gsaddwrj" path="res://play.gd" id="4_dy7ct"]
+[ext_resource type="Texture2D" uid="uid://dle1ujyyltv3q" path="res://Assets/EXIT.png" id="5_0o4t1"]
+[ext_resource type="Texture2D" uid="uid://cbeoqkipln01y" path="res://Assets/EXITHOVER.png" id="6_0k4wn"]
+
+[node name="Main Menu" type="Node2D"]
+
+[node name="TitlescreenUpperdut" type="Sprite2D" parent="."]
+position = Vector2(587, 279)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("1_nlkkf")
+
+[node name="Play" type="TextureButton" parent="."]
+offset_left = 505.99997
+offset_top = 455.0
+offset_right = 850.0
+offset_bottom = 567.0
+scale = Vector2(0.601, 0.601)
+texture_normal = ExtResource("2_qe12f")
+texture_pressed = ExtResource("3_8qtwp")
+texture_hover = ExtResource("3_8qtwp")
+script = ExtResource("4_dy7ct")
+
+[node name="Exit" type="TextureButton" parent="."]
+offset_left = 554.0
+offset_top = 544.0
+offset_right = 651.0
+offset_bottom = 584.0
+texture_normal = ExtResource("5_0o4t1")
+texture_pressed = ExtResource("6_0k4wn")
+texture_hover = ExtResource("6_0k4wn")

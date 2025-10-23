@@ -1,7 +1,7 @@
 extends Node
 
-@export var P1_Damage: int
-@export var P2_Damage: int
+@export var P1_Damage: float
+@export var P2_Damage: float
 
 func _ready() -> void:
 	P1_Damage = 0
@@ -17,11 +17,11 @@ func apply_damage(damage: int, player: int):
 
 func apply_movement(player: float, damage_deduction: int = 0) -> int:
 	if (player == 0):
-		if P1_Damage > 0:
-			P1_Damage -= damage_deduction
+		#if P1_Damage > 0:
+			#P1_Damage -= damage_deduction
 		return P1_Damage * 1.5
 	if (player == 1):
-		if P2_Damage > 0:
-			P2_Damage -= damage_deduction
+		#if P2_Damage > 0:
+			#P2_Damage -= damage_deduction
 		return P2_Damage * 1.5
 	return 0

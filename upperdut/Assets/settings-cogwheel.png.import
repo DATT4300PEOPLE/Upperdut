@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7d8gotx3w5o5"
-path="res://.godot/imported/level_design.png-a90ee4adf35104375eae8b2f701b7712.ctex"
+uid="uid://dx05vojko723n"
+path="res://.godot/imported/settings-cogwheel.png-2af7d50870de94830093d8f5095f2b40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/level_design.png"
-dest_files=["res://.godot/imported/level_design.png-a90ee4adf35104375eae8b2f701b7712.ctex"]
+source_file="res://Assets/settings-cogwheel.png"
+dest_files=["res://.godot/imported/settings-cogwheel.png-2af7d50870de94830093d8f5095f2b40.ctex"]
 
 [params]
 

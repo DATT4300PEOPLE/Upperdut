@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Upperdut"
-run/main_scene="uid://cm8nsbc1ub008"
+run/main_scene="uid://co7k5u8b8e7ml"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,7 @@ PlayerData="*res://Scripts/player_data.gd"
 [global_group]
 
 players=""
+ladder_areas=""
 
 [input]
 

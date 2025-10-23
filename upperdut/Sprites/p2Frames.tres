@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=15 format=3 uid="uid://b3tmfb474mqlf"]
+[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://b3tmfb474mqlf"]
 
 [ext_resource type="Texture2D" uid="uid://bf7ubjo40nsbk" path="res://Sprites/player2-sprites.png" id="1_o7f67"]
 
@@ -25,6 +25,10 @@ region = Rect2(256, 256, 256, 256)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ya8ts"]
 atlas = ExtResource("1_o7f67")
 region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2tvp"]
+atlas = ExtResource("1_o7f67")
+region = Rect2(512, 512, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_om7uc"]
 atlas = ExtResource("1_o7f67")
@@ -98,6 +102,14 @@ animations = [{
 "loop": false,
 "name": &"Jump",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2tvp")
+}],
+"loop": true,
+"name": &"PrePunch",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
