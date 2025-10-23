@@ -1,0 +1,105 @@
+[gd_scene load_steps=14 format=3 uid="uid://cm8nsbc1ub008"]
+
+[ext_resource type="PackedScene" uid="uid://pbpojmiw1dxs" path="res://Sprites/player_sprite.tscn" id="1_2b52f"]
+[ext_resource type="Texture2D" uid="uid://trmydyyynbb5" path="res://icon.svg" id="1_wi846"]
+[ext_resource type="Texture2D" uid="uid://cw83rgqr4k7mr" path="res://Assets/level_design.png" id="1_y30io"]
+[ext_resource type="SpriteFrames" uid="uid://1neqgdj4rt6b" path="res://Sprites/p1Frames.tres" id="2_pvy0h"]
+[ext_resource type="SpriteFrames" uid="uid://b3tmfb474mqlf" path="res://Sprites/p2Frames.tres" id="3_om7uc"]
+[ext_resource type="SpriteFrames" uid="uid://ctpuankqgbsbe" path="res://Sprites/p1GloveFrame.tres" id="3_ugpc4"]
+[ext_resource type="SpriteFrames" uid="uid://cs4i8b5npgplf" path="res://Sprites/p2GloveFrame.tres" id="5_ya8ts"]
+[ext_resource type="PackedScene" uid="uid://c524qt4qdwxi5" path="res://Scenes/player_data_ui.tscn" id="7_ya8ts"]
+[ext_resource type="Texture2D" uid="uid://da2fwupkc8lby" path="res://Assets/punching_bag_3_2_1.png" id="8_whtlt"]
+[ext_resource type="Texture2D" uid="uid://d38j6yobk3seg" path="res://Assets/Sprite Sheets/handwraps_1.png" id="9_2848f"]
+[ext_resource type="Texture2D" uid="uid://c6i3g5owl8wae" path="res://Assets/smelling_salts_1.png" id="10_kmyb2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18c4h"]
+size = Vector2(125.278, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ya8ts"]
+size = Vector2(124.231, 1649.02)
+
+[node name="level_one" type="Node2D"]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(2, -73)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(572, 509.5)
+scale = Vector2(62.16, 1)
+shape = SubResource("RectangleShape2D_18c4h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground/CollisionShape2D"]
+texture = ExtResource("1_wi846")
+
+[node name="LevelDesign" type="Sprite2D" parent="."]
+position = Vector2(579, -2439)
+scale = Vector2(0.601, 0.601)
+texture = ExtResource("1_y30io")
+
+[node name="Player 1" parent="." instance=ExtResource("1_2b52f")]
+position = Vector2(613, 238)
+collision_layer = 2
+defaultSpeed = 500
+jump_power = -650.0
+anim_sheet = ExtResource("2_pvy0h")
+glove_sprite = ExtResource("3_ugpc4")
+base_knockback_velocity = Vector2(1000, -500)
+max_action_duration = 2
+max_parry_window = 0.5
+parry_knockback = Vector2(1000, -1000)
+
+[node name="Player 2" parent="." instance=ExtResource("1_2b52f")]
+position = Vector2(848, 248)
+collision_layer = 2
+defaultSpeed = 500
+jump_power = -500.0
+PLAYER = 1
+anim_sheet = ExtResource("3_om7uc")
+glove_sprite = ExtResource("5_ya8ts")
+base_knockback_velocity = Vector2(1000, -500)
+max_action_duration = 2
+max_parry_window = 0.5
+parry_knockback = Vector2(4000, -200)
+
+[node name="Roof" type="StaticBody2D" parent="."]
+position = Vector2(52.999996, 64)
+scale = Vector2(0.08, 0.16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Roof"]
+position = Vector2(737.499, 512.501)
+scale = Vector2(62.16, 1)
+shape = SubResource("RectangleShape2D_18c4h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Roof/CollisionShape2D"]
+texture = ExtResource("1_wi846")
+
+[node name="PlayerDataUI" parent="." instance=ExtResource("7_ya8ts")]
+
+[node name="ScreenRight" type="Area2D" parent="."]
+position = Vector2(1256, 441)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenRight"]
+position = Vector2(-1.00024, -822.49)
+shape = SubResource("RectangleShape2D_ya8ts")
+
+[node name="ScreenLeft" type="Area2D" parent="."]
+position = Vector2(-113, 441)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenLeft"]
+position = Vector2(-1.00024, -822.49)
+shape = SubResource("RectangleShape2D_ya8ts")
+
+[node name="PunchingBag321" type="Sprite2D" parent="."]
+position = Vector2(1027.25, 362.56815)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_whtlt")
+
+[node name="Handwraps1" type="Sprite2D" parent="."]
+position = Vector2(960, 303)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_2848f")
+
+[node name="SmellingSalts1" type="Sprite2D" parent="."]
+position = Vector2(963, 372)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_kmyb2")
