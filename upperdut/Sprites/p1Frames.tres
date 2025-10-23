@@ -1,10 +1,26 @@
+<<<<<<< HEAD
 [gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://1neqgdj4rt6b"]
+=======
+[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://1neqgdj4rt6b"]
+>>>>>>> 224791473630b297a90c2ff7f72a6fb0ecdd89df
 
 [ext_resource type="Texture2D" uid="uid://dvibeku42hf2u" path="res://Sprites/player1-sprites.png" id="1_d611u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1fkj8"]
 atlas = ExtResource("1_d611u")
 region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37kwd"]
+atlas = ExtResource("1_d611u")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7yj5"]
+atlas = ExtResource("1_d611u")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v18o1"]
+atlas = ExtResource("1_d611u")
+region = Rect2(1536, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4xxo8"]
 atlas = ExtResource("1_d611u")
@@ -66,6 +82,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"Block",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37kwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7yj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v18o1")
+}],
+"loop": true,
+"name": &"Climb",
 "speed": 5.0
 }, {
 "frames": [{
