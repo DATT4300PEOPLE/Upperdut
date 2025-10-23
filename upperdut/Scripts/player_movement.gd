@@ -2,9 +2,6 @@ extends CharacterBody2D
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
 @onready var player_hitbox: player_hitbox = $PlayerSprite/BoxingGlove/player_hitbox
 @onready var player_hurtbox: player_hurtbox = $player_hurtbox
-@onready var p2: CharacterBody2D = $"../Player 2"
-@onready var p1: CharacterBody2D = $"."
-
 
 # MAKE FIST OBJECT monitoring AND MOVE FORWARD UPON PUNCHING
 @onready var boxing_glove: AnimatedSprite2D = $PlayerSprite/BoxingGlove
@@ -16,18 +13,16 @@ extends CharacterBody2D
 @export var glove_sprite: SpriteFrames
 @export var base_knockback_velocity: Vector2
 @export var max_action_duration: int
-@export var max_parry_window: float
-@export var parry_knockback: Vector2
-@export var parry_successful: bool
 
 var knockback_timer = 0.0
 var knockback_duration = 0.3 # seconds
 var is_knocked_back = false
 var punch_multiplier = 1
 var action_timer = 0
-
-var parry_timer = 0
-var isParrying = false
+var p1_on_ladder = false
+var p2_on_ladder = false
+var near_switch = false
+var switch_hit = false
 
 var move_dir = 0
 var direction
@@ -50,23 +45,31 @@ func _ready() -> void:
 	player_hitbox.knockback_velocity = base_knockback_velocity
 
 func _physics_process(delta: float) -> void:
-	if !is_on_floor():
+	if !is_on_floor() and !p1_on_ladder || !p2_on_ladder:
 		velocity.y += get_gravity().y * delta
+	
+	if p1_on_ladder:
+		if (Input.is_action_pressed("P1Jump") && PLAYER == 0):
+			velocity.y = -defaultSpeed*delta*50
+		elif (Input.is_action_pressed("P1Down") && PLAYER == 0):
+			velocity.y = defaultSpeed*delta*50
+		else:
+			velocity.y = 0
+	
+	if p2_on_ladder:
+		if (Input.is_action_pressed("P2Jump") && PLAYER != 0):
+			velocity.y = -defaultSpeed*delta*50
+		elif (Input.is_action_pressed("P2Down") && PLAYER != 0):
+			velocity.y = defaultSpeed*delta*50
+		else:
+			velocity.y = 0
+	
 	if is_knocked_back:
 		velocity = velocity.lerp(Vector2.ZERO, delta * 5) #Makes descent smoother, before player would stop on a dime
 		move_and_slide()
 		knockback_timer -= delta
 		if knockback_timer <= 0.0 or velocity.length() < 10:
 			is_knocked_back = false
-			velocity = Vector2.ZERO
-		return
-		
-	if parry_successful:
-		velocity = velocity.lerp(Vector2.ZERO, delta * 5) #Makes descent smoother, before player would stop on a dime
-		move_and_slide()
-		knockback_timer -= delta
-		if knockback_timer <= 0.0 or velocity.length() < 10:
-			parry_successful = false
 			velocity = Vector2.ZERO
 		return
 	if velocity.x == 0 and is_on_floor() and !doing_action:
@@ -78,15 +81,9 @@ func _physics_process(delta: float) -> void:
 			action_timer += delta
 		else:
 			action_timer = max_action_duration
-	if isParrying && parry_timer < max_parry_window:
-		parry_timer += 1 * delta
-	else:
-		parry_timer = 0
-		
-		isParrying = false
 	get_input()
 	punch_anim_dir()
-	
+	hit_switch()
 	move_and_slide()
 	
 # Player uses their mobility by moving around, getting hit increases their mobility
@@ -163,11 +160,8 @@ func get_fight_input(direction: int):
 		print(punch_multiplier)
 	if Input.is_action_just_pressed(parryBtn):
 		player_sprite.play("Block")
-		isParrying = true
 		doing_action = true
 	if Input.is_action_just_released(parryBtn):
-		isParrying = false
-		parry_timer = 0
 		doing_action = false
 
 		
@@ -205,18 +199,35 @@ func take_damage(amount: float, attacker_pos: Vector2, knockback_velocity: Vecto
 	knockback_timer = knockback_duration
 
 	var knock_dir = sign(global_position.x - attacker_pos.x)
-	
-	if isParrying:
-		if PLAYER == 0:
-			p2.parry_successful = true
-			p2.knockback_timer = knockback_duration
-			p2.velocity = Vector2((knockback_velocity.x + parry_knockback.x  ) * -knock_dir , knockback_velocity.y + parry_knockback.y)
-			print("DIRECTION: " ,p2.velocity)
-		else:
-			p1.parry_successful = true
-			p2.knockback_timer = knockback_duration
-			p1.velocity = Vector2((knockback_velocity.x + parry_knockback.x) * -knock_dir, knockback_velocity.y + parry_knockback.y)
-	velocity = Vector2(knockback_velocity.x * knock_dir, knockback_velocity.y)
-	
 
+	velocity = Vector2(knockback_velocity.x * knock_dir, knockback_velocity.y)
 	PlayerData.apply_damage(amount, PLAYER)
+
+func _on_ladde_area_enteredp1(area: Area2D) -> void:
+	if "player_collider" in area.name:
+		p1_on_ladder = true
+
+func _on_ladde_area_exitedp1(area: Area2D) -> void:
+	if "player_collider" in area.name:
+		p1_on_ladder = false
+
+func _on_ladde_area_enteredp2(area: Area2D) -> void:
+	if "player_collider" in area.name:
+		p2_on_ladder = true
+
+func _on_ladde_area_exitedp2(area: Area2D) -> void:
+	if "player_collider" in area.name:
+		p2_on_ladder = false
+
+func _on_switch_area_entered(area: Area2D) -> void:
+	if "player_collider" in area.name:
+		near_switch = true
+
+func _on_switch_area_exited(area: Area2D) -> void:
+	if "player_collider" in area.name:
+		near_switch = false
+
+func hit_switch() -> void:
+	if near_switch == true && Input.is_action_pressed("P1Punch") || Input.is_action_pressed("P2Punch"):
+		print("Sick")
+		switch_hit == true
