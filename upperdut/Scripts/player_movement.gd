@@ -2,6 +2,8 @@ extends CharacterBody2D
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
 @onready var player_hitbox: player_hitbox = $PlayerSprite/BoxingGlove/player_hitbox
 @onready var player_hurtbox: player_hurtbox = $player_hurtbox
+@onready var p2: CharacterBody2D = $"../Player 2"
+@onready var p1: CharacterBody2D = $"."
 
 # MAKE FIST OBJECT monitoring AND MOVE FORWARD UPON PUNCHING
 @onready var boxing_glove: AnimatedSprite2D = $PlayerSprite/BoxingGlove
@@ -13,12 +15,17 @@ extends CharacterBody2D
 @export var glove_sprite: SpriteFrames
 @export var base_knockback_velocity: Vector2
 @export var max_action_duration: int
+@export var max_parry_window: float
+@export var parry_knockback: Vector2
+@export var parry_successful: bool
 
 var knockback_timer = 0.0
 var knockback_duration = 0.3 # seconds
 var is_knocked_back = false
 var punch_multiplier = 1
 var action_timer = 0
+var parry_timer = 0
+var isParrying = false
 var p1_on_ladder = false
 var p2_on_ladder = false
 var near_switch = false
@@ -45,48 +52,65 @@ func _ready() -> void:
 	player_hitbox.knockback_velocity = base_knockback_velocity
 
 func _physics_process(delta: float) -> void:
-	if !is_on_floor() and !p1_on_ladder || !p2_on_ladder:
+	if !is_on_floor():
 		velocity.y += get_gravity().y * delta
-	
-	if p1_on_ladder:
-		if (Input.is_action_pressed("P1Jump") && PLAYER == 0):
-			velocity.y = -defaultSpeed*delta*50
-		elif (Input.is_action_pressed("P1Down") && PLAYER == 0):
-			velocity.y = defaultSpeed*delta*50
+
+	if p1_on_ladder and PLAYER == 0:
+		if (Input.is_action_pressed("P1Jump") and PLAYER == 0):
+			velocity.y = -defaultSpeed * delta * 50
+		elif (Input.is_action_pressed("P1Descend") and PLAYER == 0):
+			velocity.y = defaultSpeed * delta * 50
 		else:
 			velocity.y = 0
-	
-	if p2_on_ladder:
-		if (Input.is_action_pressed("P2Jump") && PLAYER != 0):
-			velocity.y = -defaultSpeed*delta*50
-		elif (Input.is_action_pressed("P2Down") && PLAYER != 0):
-			velocity.y = defaultSpeed*delta*50
+
+	if p2_on_ladder and PLAYER == 1:
+		if (Input.is_action_pressed("P2Jump") and PLAYER == 1):
+			velocity.y = -defaultSpeed * delta * 50
+		elif (Input.is_action_pressed("P2Descend") and PLAYER == 1):
+			velocity.y = defaultSpeed * delta * 50
 		else:
 			velocity.y = 0
-	
+
 	if is_knocked_back:
-		velocity = velocity.lerp(Vector2.ZERO, delta * 5) #Makes descent smoother, before player would stop on a dime
+		velocity = velocity.lerp(Vector2.ZERO, delta * 5)
 		move_and_slide()
 		knockback_timer -= delta
 		if knockback_timer <= 0.0 or velocity.length() < 10:
 			is_knocked_back = false
 			velocity = Vector2.ZERO
 		return
+
+	if parry_successful:
+		velocity = velocity.lerp(Vector2.ZERO, delta * 5)
+		move_and_slide()
+		knockback_timer -= delta
+		if knockback_timer <= 0.0 or velocity.length() < 10:
+			parry_successful = false
+			velocity = Vector2.ZERO
+		return
+
 	if velocity.x == 0 and is_on_floor() and !doing_action:
 		player_sprite.play("Idle")
 		move_dir = 0
-	
+
 	if punching:
 		if action_timer < max_action_duration:
 			action_timer += delta
 		else:
 			action_timer = max_action_duration
+
+	if isParrying && parry_timer < max_parry_window:
+		parry_timer += 1 * delta
+		if parry_timer >= max_parry_window:
+			parry_timer = 0
+			doing_action = false
+			isParrying = false
+
 	get_input()
 	punch_anim_dir()
 	hit_switch()
 	move_and_slide()
-	
-# Player uses their mobility by moving around, getting hit increases their mobility
+
 func get_input():
 	if PLAYER == 0:
 		player_hitbox.player_ID = "P1"
@@ -98,27 +122,31 @@ func get_input():
 		player_hurtbox.player_ID = "P2"
 		direction = Input.get_axis("P2Left", "P2Right")
 		jumpKey = "P2Jump"
+
 	if direction:
 		if direction != 0:
 			if !doing_action:
 				if direction < 0:
-					move_dir = 1 # Moving left
-					player_sprite.scale.x = -0.49 # DON'T HARDCODE THIS IN, FIX LATER
+					move_dir = 1
+					player_sprite.scale.x = -0.49
 				else:
-					player_sprite.scale.x = 0.49 # DON'T HARDCODE THIS IN, FIX LATER
-					move_dir = 2 # Moving right
+					player_sprite.scale.x = 0.49
+					move_dir = 2
 				player_sprite.play("Walk")
 			velocity.x = direction * (currentSpeed + PlayerData.apply_movement(PLAYER, 1))
 	else:
 		velocity.x = 0
+
 	get_fight_input(direction)
+
 	if Input.is_action_just_pressed(jumpKey) and is_on_floor():
-		move_dir = 3 # Moving up (jumping)
+		move_dir = 3
 		player_sprite.play("Jump")
 		velocity.y = jump_power - PlayerData.apply_movement(PLAYER, 2)
 		print("Y VELOCITY: ", velocity.y)
+
 	if Input.is_action_just_released(jumpKey) and is_on_floor():
-		move_dir = 3 # Moving up (jumping)
+		move_dir = 3
 		player_sprite.play("Jump")
 		velocity.y = (jump_power - PlayerData.apply_movement(PLAYER, 2)) / 2 
 
@@ -131,9 +159,9 @@ func get_fight_input(direction: int):
 	else:
 		punchBtn = "P2Punch"
 		parryBtn = "P2Parry"
-		#await get_tree().process_frame
+
 	if Input.is_action_pressed(punchBtn):
-		player_hitbox.damage = player_damage # ALSO DON"T HARDCODE THIS IN<
+		player_hitbox.damage = player_damage
 		player_hitbox.knockback_velocity = base_knockback_velocity
 		punching = true
 		player_sprite.play(punchDir)
@@ -141,7 +169,7 @@ func get_fight_input(direction: int):
 		boxing_glove.visible = true
 		boxing_glove.position.x = gloveX
 		boxing_glove.position.y = gloveY
-		boxing_glove.rotation_degrees= gloveRot
+		boxing_glove.rotation_degrees = gloveRot
 		player_hitbox.monitorable = true
 		player_hitbox.monitoring = true
 		print(punchDir)
@@ -158,14 +186,16 @@ func get_fight_input(direction: int):
 		if (punch_multiplier < 1):
 			punch_multiplier = 1	
 		print(punch_multiplier)
+
 	if Input.is_action_just_pressed(parryBtn):
 		player_sprite.play("Block")
+		isParrying = true
 		doing_action = true
+
 	if Input.is_action_just_released(parryBtn):
+		isParrying = false
+		parry_timer = 0
 		doing_action = false
-
-		
-
 
 func punch_anim_dir():
 	if move_dir <= 2:
@@ -180,7 +210,7 @@ func punch_anim_dir():
 		gloveRot = -180
 	if move_dir == 4:
 		punchDir = "PunchDown"
-		
+
 func _on_animation_finished():
 	if player_sprite.animation == punchDir:
 		doing_action = false
@@ -189,36 +219,43 @@ func _on_animation_finished():
 		player_hitbox.monitorable = false
 		player_hitbox.monitoring = false
 		player_sprite.play("Idle")
-	
 
-					
 func take_damage(amount: float, attacker_pos: Vector2, knockback_velocity: Vector2) -> void:
-	print("AHHHHHHH: ", knockback_velocity )
+	print("AHHHHHHH: ", knockback_velocity)
 	print("Multiplier: ", punch_multiplier)
 	is_knocked_back = true
 	knockback_timer = knockback_duration
 
 	var knock_dir = sign(global_position.x - attacker_pos.x)
 
+	if isParrying:
+		if PLAYER == 0:
+			p2.parry_successful = true
+			p2.knockback_timer = knockback_duration
+			p2.velocity = Vector2((knockback_velocity.x + parry_knockback.x) * -knock_dir, knockback_velocity.y + parry_knockback.y)
+			print("DIRECTION: ", p2.velocity)
+		else:
+			p1.parry_successful = true
+			p2.knockback_timer = knockback_duration
+			p1.velocity = Vector2((knockback_velocity.x + parry_knockback.x) * -knock_dir, knockback_velocity.y + parry_knockback.y)
+
 	velocity = Vector2(knockback_velocity.x * knock_dir, knockback_velocity.y)
 	PlayerData.apply_damage(amount, PLAYER)
 
-func _on_ladde_area_enteredp1(area: Area2D) -> void:
+func _on_ladde_area_entered(area: Area2D) -> void:
 	if "player_collider" in area.name:
-		p1_on_ladder = true
+		if PLAYER == 0:
+			p1_on_ladder = true
+		else:
+			p2_on_ladder = true
+		print("LADDER STUFF: ", p1_on_ladder ,", " , p2_on_ladder)
 
-func _on_ladde_area_exitedp1(area: Area2D) -> void:
-	if "player_collider" in area.name:
-		p1_on_ladder = false
-
-func _on_ladde_area_enteredp2(area: Area2D) -> void:
-	if "player_collider" in area.name:
-		p2_on_ladder = true
-
-func _on_ladde_area_exitedp2(area: Area2D) -> void:
-	if "player_collider" in area.name:
-		p2_on_ladder = false
-
+func _on_ladde_area_exited(area: Area2D) -> void:
+		if "player_collider" in area.name:
+			if PLAYER == 0:
+				p1_on_ladder = false
+			else:
+				p2_on_ladder = false
 func _on_switch_area_entered(area: Area2D) -> void:
 	if "player_collider" in area.name:
 		near_switch = true

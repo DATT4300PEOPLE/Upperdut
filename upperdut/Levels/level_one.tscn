@@ -35,6 +35,8 @@ anim_sheet = ExtResource("2_pvy0h")
 glove_sprite = ExtResource("3_ugpc4")
 base_knockback_velocity = Vector2(1000, -500)
 max_action_duration = 2
+max_parry_window = 0.5
+parry_knockback = Vector2(1000, -250)
 
 [node name="Player 2" parent="." instance=ExtResource("1_2b52f")]
 position = Vector2(848, 361)
@@ -45,7 +47,9 @@ PLAYER = 1
 anim_sheet = ExtResource("3_om7uc")
 glove_sprite = ExtResource("5_ya8ts")
 base_knockback_velocity = Vector2(1000, -500)
-max_action_duration = 3
+max_action_duration = 2
+max_parry_window = 0.5
+parry_knockback = Vector2(1000, -250)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 
@@ -86,6 +90,7 @@ position = Vector2(-1.00024, -822.49)
 shape = SubResource("RectangleShape2D_ya8ts")
 
 [node name="Ladde" type="Area2D" parent="."]
+position = Vector2(-753, -11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ladde"]
 position = Vector2(470, 339.25)
@@ -118,10 +123,10 @@ position = Vector2(1101, 394)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_kmyb2")
 
-[connection signal="area_entered" from="Ladde" to="Player 1" method="_on_ladde_area_enteredp1"]
-[connection signal="area_entered" from="Ladde" to="Player 2" method="_on_ladde_area_enteredp2"]
-[connection signal="area_exited" from="Ladde" to="Player 1" method="_on_ladde_area_exitedp1"]
-[connection signal="area_exited" from="Ladde" to="Player 2" method="_on_ladde_area_exitedp2"]
+[connection signal="area_entered" from="Ladde" to="Player 1" method="_on_ladde_area_entered"]
+[connection signal="area_entered" from="Ladde" to="Player 2" method="_on_ladde_area_entered"]
+[connection signal="area_exited" from="Ladde" to="Player 1" method="_on_ladde_area_exited"]
+[connection signal="area_exited" from="Ladde" to="Player 2" method="_on_ladde_area_exited"]
 [connection signal="area_entered" from="Switch" to="Player 1" method="_on_switch_area_entered"]
 [connection signal="area_entered" from="Switch" to="Player 2" method="_on_switch_area_entered"]
 [connection signal="area_exited" from="Switch" to="Player 1" method="_on_switch_area_exited"]
