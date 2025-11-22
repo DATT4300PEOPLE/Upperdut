@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://b3tmfb474mqlf"]
-=======
-[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://b3tmfb474mqlf"]
->>>>>>> 224791473630b297a90c2ff7f72a6fb0ecdd89df
+[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://dnyxjr45u5v37"]
 
 [ext_resource type="Texture2D" uid="uid://bf7ubjo40nsbk" path="res://Sprites/player2-sprites.png" id="1_o7f67"]
 
@@ -41,10 +37,6 @@ region = Rect2(256, 256, 256, 256)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ya8ts"]
 atlas = ExtResource("1_o7f67")
 region = Rect2(0, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f2tvp"]
-atlas = ExtResource("1_o7f67")
-region = Rect2(512, 512, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_om7uc"]
 atlas = ExtResource("1_o7f67")

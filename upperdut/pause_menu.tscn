@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://dyrix2rb5qe55"]
+
+[ext_resource type="Script" uid="uid://bxqm8rvrp7fid" path="res://pause_menu.gd" id="1_d3xb4"]
+[ext_resource type="Texture2D" uid="uid://by2pouv71qf5c" path="res://Sprites/pausePLACEHOLDER.png" id="1_hdmo1"]
+[ext_resource type="Texture2D" uid="uid://c5enns7o2ob4u" path="res://Assets/pause-triangle.png" id="2_05uyy"]
+[ext_resource type="Texture2D" uid="uid://bynhpjln4qyt1" path="res://Assets/pause-triangle 1 hover.png" id="3_p81d2"]
+[ext_resource type="Texture2D" uid="uid://dnrypaqpmpr6c" path="res://Assets/pauseOVERLAY.png" id="3_q2yj1"]
+[ext_resource type="Texture2D" uid="uid://btfs713pc3gxp" path="res://Assets/exit2.png" id="4_2nc7s"]
+[ext_resource type="Texture2D" uid="uid://djmjiuo6oxli2" path="res://Assets/exit_hover.png" id="5_d3xb4"]
+[ext_resource type="Texture2D" uid="uid://dx05vojko723n" path="res://Assets/settings-cogwheel.png" id="5_e8sti"]
+[ext_resource type="Texture2D" uid="uid://cwsp57kqfw0bm" path="res://Assets/settings-cogwheel 1  hover.png" id="6_q2yj1"]
+[ext_resource type="Texture2D" uid="uid://cv7e40w6j2y4h" path="res://Assets/pausebtn.png" id="10_g7dbl"]
+[ext_resource type="Texture2D" uid="uid://c2u6cialp1vww" path="res://Assets/pausebtn_onhover.png" id="11_lv42l"]
+
+[node name="Pause Menu" type="Node2D"]
+script = ExtResource("1_d3xb4")
+
+[node name="PausePlaceholder" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(574.96, 326.99997)
+scale = Vector2(0.601, 0.601)
+texture = ExtResource("1_hdmo1")
+
+[node name="PauseOverlay" type="Sprite2D" parent="PausePlaceholder"]
+position = Vector2(-3.2612915, -1.6640015)
+texture = ExtResource("3_q2yj1")
+
+[node name="Play" type="TextureButton" parent="PausePlaceholder"]
+offset_left = -128.11981
+offset_top = -59.900146
+offset_right = -0.11981201
+offset_bottom = 68.09985
+texture_normal = ExtResource("2_05uyy")
+texture_pressed = ExtResource("3_p81d2")
+texture_hover = ExtResource("3_p81d2")
+
+[node name="Settings" type="TextureButton" parent="PausePlaceholder"]
+offset_left = -925.12476
+offset_top = 372.71216
+offset_right = -797.12476
+offset_bottom = 500.71216
+texture_normal = ExtResource("5_e8sti")
+texture_pressed = ExtResource("6_q2yj1")
+texture_hover = ExtResource("6_q2yj1")
+
+[node name="Quit" type="TextureButton" parent="PausePlaceholder"]
+offset_left = -126.45587
+offset_top = 364.3927
+offset_right = 27.544159
+offset_bottom = 513.3927
+texture_normal = ExtResource("4_2nc7s")
+texture_pressed = ExtResource("5_d3xb4")
+texture_hover = ExtResource("5_d3xb4")
+
+[node name="Tutorial" type="TextureButton" parent="PausePlaceholder"]
+offset_left = -956.7388
+offset_top = -544.09314
+offset_right = -916.7388
+offset_bottom = -504.09314
+
+[node name="Pause" type="TextureButton" parent="."]
+offset_left = 566.0
+offset_top = 23.0
+offset_right = 650.0
+offset_bottom = 115.0
+scale = Vector2(0.48099756, 0.48099756)
+texture_normal = ExtResource("10_g7dbl")
+texture_pressed = ExtResource("11_lv42l")
+texture_hover = ExtResource("11_lv42l")

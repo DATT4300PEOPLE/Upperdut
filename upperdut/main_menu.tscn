@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dk6rccahfpqgx"]
+[gd_scene load_steps=8 format=3 uid="uid://dk6rccahfpqgx"]
 
 [ext_resource type="Texture2D" uid="uid://duglwccba6cqx" path="res://Assets/Sprite Sheets/titlescreen-upperdut.png" id="1_nlkkf"]
 [ext_resource type="Texture2D" uid="uid://dfus80rdhvi30" path="res://Assets/PLAY.png" id="2_qe12f"]
 [ext_resource type="Texture2D" uid="uid://bsk0mkojl15to" path="res://Assets/PLAYHOVER.png" id="3_8qtwp"]
 [ext_resource type="Script" uid="uid://cpan2gsaddwrj" path="res://play.gd" id="4_dy7ct"]
-[ext_resource type="Texture2D" uid="uid://dle1ujyyltv3q" path="res://Assets/EXIT.png" id="5_0o4t1"]
+[ext_resource type="Texture2D" uid="uid://mfpwudlv5fil" path="res://Assets/EXIT.png" id="5_0o4t1"]
 [ext_resource type="Texture2D" uid="uid://cbeoqkipln01y" path="res://Assets/EXITHOVER.png" id="6_0k4wn"]
+[ext_resource type="AudioStream" uid="uid://bd2a8wrs11w6n" path="res://goofy-frolic-358481.mp3" id="7_qe12f"]
 
 [node name="Main Menu" type="Node2D"]
 
@@ -33,3 +34,7 @@ offset_bottom = 584.0
 texture_normal = ExtResource("5_0o4t1")
 texture_pressed = ExtResource("6_0k4wn")
 texture_hover = ExtResource("6_0k4wn")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_qe12f")
+autoplay = true
