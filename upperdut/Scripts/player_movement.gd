@@ -6,7 +6,11 @@ extends CharacterBody2D
 @onready var p1: CharacterBody2D = $"."
 
 # MAKE FIST OBJECT monitoring AND MOVE FORWARD UPON PUNCHING
+# Animations
 @onready var boxing_glove: AnimatedSprite2D = $PlayerSprite/BoxingGlove
+@onready var charge_anim: GPUParticles2D = $ParticleCharge/GPUParticles2D
+@onready var charge_indicator: GPUParticles2D = $ParticleChargeReady/GPUParticles2D
+
 @export var defaultSpeed = 670
 @export var jump_power: float # HAS TO BE NEGATIVE (FORGOT) ALSO ADJUSTABLE BY GLOBAL
 @export var player_damage = 4
@@ -166,12 +170,19 @@ func get_fight_input(direction: int):
 		doing_action = true
 		
 		player_sprite.play("PrePunch")
+		
 		punch_multiplier = action_timer / 0.4
 		if (punch_multiplier < 1):
-			punch_multiplier = 1	
+			punch_multiplier = 1
+			charge_anim.emitting = true #Enable charge animation
 		print(punch_multiplier)
+		if (punch_multiplier >= 5): 
+			charge_indicator.emitting = true #disable charge animation
+			charge_anim.emitting = false 
+
 	if Input.is_action_just_released(punchBtn):
 		player_sprite.play(punchDir)
+		charge_anim.emitting = false #disable charge animation
 		boxing_glove.position.x = gloveX
 		boxing_glove.position.y = gloveY
 		boxing_glove.rotation_degrees = gloveRot

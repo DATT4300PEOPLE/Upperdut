@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dod4qe16v6vgn"]
+
+[ext_resource type="Texture2D" uid="uid://dvp1wac6rg7q6" path="res://Assets/indicator-long.png" id="1_a1t4w"]
+
+[sub_resource type="Curve" id="Curve_lfeej"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.26774195, 0.8309493), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kdiw5"]
+curve = SubResource("Curve_lfeej")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lfeej"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 90.0
+emission_ring_inner_radius = 80.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -300.0
+radial_accel_max = -300.0
+scale_curve = SubResource("CurveTexture_kdiw5")
+
+[node name="ParticleCharge" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 50
+texture = ExtResource("1_a1t4w")
+speed_scale = 2.0
+process_material = SubResource("ParticleProcessMaterial_lfeej")

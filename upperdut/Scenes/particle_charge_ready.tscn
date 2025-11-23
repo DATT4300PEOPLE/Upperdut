@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxirgkgcwlt4x"]
+
+[ext_resource type="Texture2D" uid="uid://sb0fyg7m4apf" path="res://Assets/indicator.png" id="1_etvku"]
+
+[sub_resource type="Gradient" id="Gradient_etvku"]
+offsets = PackedFloat32Array(0.4527027, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ame5x"]
+gradient = SubResource("Gradient_etvku")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ufrab"]
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 0)
+spread = 0.0
+initial_velocity_min = -30.0
+initial_velocity_max = -30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 4.0
+color_ramp = SubResource("GradientTexture1D_ame5x")
+
+[node name="ParticleChargeReady" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+rotation = -0.010934724
+scale = Vector2(1.0044175, 1.0860485)
+emitting = false
+amount = 1
+texture = ExtResource("1_etvku")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ufrab")

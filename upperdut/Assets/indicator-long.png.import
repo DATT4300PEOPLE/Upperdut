@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by5q4gty8lsll"
-path="res://.godot/imported/switch-off.png-7d0b27107c1a6f8526c4c1e372f56908.ctex"
+uid="uid://dvp1wac6rg7q6"
+path="res://.godot/imported/indicator-long.png-2b944256bc0d45a4053343e848814742.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/switch-off.png"
-dest_files=["res://.godot/imported/switch-off.png-7d0b27107c1a6f8526c4c1e372f56908.ctex"]
+source_file="res://Assets/indicator-long.png"
+dest_files=["res://.godot/imported/indicator-long.png-2b944256bc0d45a4053343e848814742.ctex"]
 
 [params]
 
