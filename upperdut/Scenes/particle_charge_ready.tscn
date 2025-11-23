@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://sb0fyg7m4apf" path="res://Assets/indicator.png" id="1_etvku"]
 
 [sub_resource type="Gradient" id="Gradient_etvku"]
-offsets = PackedFloat32Array(0.4527027, 1)
+offsets = PackedFloat32Array(0.7605634, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ame5x"]
@@ -30,5 +30,4 @@ amount = 1
 texture = ExtResource("1_etvku")
 lifetime = 0.5
 one_shot = true
-explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ufrab")
