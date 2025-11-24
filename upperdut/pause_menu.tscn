@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dyrix2rb5qe55"]
+[gd_scene load_steps=16 format=3 uid="uid://dyrix2rb5qe55"]
 
 [ext_resource type="Script" uid="uid://bxqm8rvrp7fid" path="res://pause_menu.gd" id="1_d3xb4"]
 [ext_resource type="Texture2D" uid="uid://by2pouv71qf5c" path="res://Sprites/pausePLACEHOLDER.png" id="1_hdmo1"]
@@ -9,7 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://djmjiuo6oxli2" path="res://Assets/exit_hover.png" id="5_d3xb4"]
 [ext_resource type="Texture2D" uid="uid://dx05vojko723n" path="res://Assets/settings-cogwheel.png" id="5_e8sti"]
 [ext_resource type="Texture2D" uid="uid://cwsp57kqfw0bm" path="res://Assets/settings-cogwheel 1  hover.png" id="6_q2yj1"]
+[ext_resource type="Texture2D" uid="uid://c85uyukvyp5t2" path="res://Assets/settings-tutorial 1.png" id="10_1meuf"]
 [ext_resource type="Texture2D" uid="uid://cv7e40w6j2y4h" path="res://Assets/pausebtn.png" id="10_g7dbl"]
+[ext_resource type="Texture2D" uid="uid://eteg2kuvxakk" path="res://Assets/tutorial.png" id="10_ub45p"]
+[ext_resource type="Texture2D" uid="uid://cka6r5otao8iq" path="res://Assets/settings-tutorial 1 hover.png" id="11_0q2ao"]
+[ext_resource type="Texture2D" uid="uid://trmydyyynbb5" path="res://icon.svg" id="11_42xcf"]
 [ext_resource type="Texture2D" uid="uid://c2u6cialp1vww" path="res://Assets/pausebtn_onhover.png" id="11_lv42l"]
 
 [node name="Pause Menu" type="Node2D"]
@@ -53,10 +57,26 @@ texture_pressed = ExtResource("5_d3xb4")
 texture_hover = ExtResource("5_d3xb4")
 
 [node name="Tutorial" type="TextureButton" parent="PausePlaceholder"]
-offset_left = -956.7388
-offset_top = -544.09314
-offset_right = -916.7388
-offset_bottom = -504.09314
+offset_left = 790.4159
+offset_top = 386.02332
+offset_right = 918.4159
+offset_bottom = 525.85693
+texture_normal = ExtResource("10_1meuf")
+texture_hover = ExtResource("11_0q2ao")
+
+[node name="TutorialPic" type="Sprite2D" parent="PausePlaceholder"]
+visible = false
+position = Vector2(47.327488, -5.701644)
+scale = Vector2(1.0001731, 0.9970213)
+texture = ExtResource("10_ub45p")
+
+[node name="TutorialBack" type="TextureButton" parent="PausePlaceholder"]
+visible = false
+offset_left = -480.79868
+offset_top = -530.782
+offset_right = -352.79868
+offset_bottom = -402.78198
+texture_normal = ExtResource("11_42xcf")
 
 [node name="Pause" type="TextureButton" parent="."]
 offset_left = 566.0
