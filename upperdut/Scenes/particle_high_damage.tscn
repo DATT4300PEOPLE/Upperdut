@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b47xrcrk2fyr6"]
+
+[ext_resource type="Texture2D" uid="uid://dpaycjvm5b01f" path="res://Assets/damage-smoke.png" id="1_cp56f"]
+
+[sub_resource type="Gradient" id="Gradient_cp56f"]
+offsets = PackedFloat32Array(0.47297296, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bg7t1"]
+gradient = SubResource("Gradient_cp56f")
+width = 10
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bg7t1"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = -179.99998
+angle_max = 180.00002
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+scale_min = 2.0
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_bg7t1")
+
+[node name="ParticleHighDamage" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 20
+texture = ExtResource("1_cp56f")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_bg7t1")
