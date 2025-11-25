@@ -174,9 +174,10 @@ func get_fight_input(direction: int):
 		punch_multiplier = action_timer / 0.4
 		if (punch_multiplier < 1):
 			punch_multiplier = 1
-			charge_anim.emitting = true #Enable charge animation
 		print(punch_multiplier)
-		if (punch_multiplier >= 5): 
+		if (punch_multiplier >= 1.1 && punch_multiplier < 4.2): 
+			charge_anim.emitting = true #Enable charge animation
+		elif (punch_multiplier >= 5): 
 			charge_indicator.emitting = true #disable charge animation
 			charge_anim.emitting = false 
 

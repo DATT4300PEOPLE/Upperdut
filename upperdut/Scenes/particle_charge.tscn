@@ -29,5 +29,5 @@ scale_curve = SubResource("CurveTexture_kdiw5")
 emitting = false
 amount = 50
 texture = ExtResource("1_a1t4w")
-speed_scale = 2.0
+speed_scale = 3.0
 process_material = SubResource("ParticleProcessMaterial_lfeej")
