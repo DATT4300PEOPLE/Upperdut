@@ -814,7 +814,7 @@ shape = SubResource("RectangleShape2D_p2v6c")
 disabled = true
 
 [node name="Player 1" parent="." instance=ExtResource("1_2b52f")]
-position = Vector2(454, -3416)
+position = Vector2(456, -3416)
 collision_layer = 2
 defaultSpeed = 500
 jump_power = -650.0
@@ -830,7 +830,7 @@ parry_knockback = Vector2(1000, -250)
 scale = Vector2(0.7130171, 0.7130171)
 
 [node name="Player 2" parent="." instance=ExtResource("1_2b52f")]
-position = Vector2(672, -3406)
+position = Vector2(674, -3406)
 collision_layer = 2
 defaultSpeed = 500
 jump_power = -650.0

@@ -13,6 +13,12 @@ func _ready() -> void:
 	P1_Damage = 0
 	P2_Damage = 0
 	
+func _physics_process(delta: float) -> void:
+	if P1_Damage > 150:
+		P1_Damage = 100
+	if P2_Damage >= 150:
+		P2_Damage = 100
+
 func apply_damage(damage: int, player: int):
 	if (player == 0):
 		P1_Damage += damage

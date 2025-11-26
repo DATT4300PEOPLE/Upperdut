@@ -145,13 +145,13 @@ func get_input():
 	if Input.is_action_just_pressed(jumpKey) and is_on_floor():
 		move_dir = 3
 		player_sprite.play("Jump")
-		velocity.y = jump_power - PlayerData.apply_movement(PLAYER, 5, true)
+		velocity.y = jump_power - PlayerData.apply_movement(PLAYER, 15, true)
 		print("Y VELOCITY: ", velocity.y)
 
 	if Input.is_action_just_released(jumpKey) and is_on_floor():
 		move_dir = 3
 		player_sprite.play("Jump")
-		velocity.y = (jump_power - PlayerData.apply_movement(PLAYER, 5, true)) / 2 
+		velocity.y = (jump_power - PlayerData.apply_movement(PLAYER, 15, true)) / 2 
 
 func get_fight_input(direction: int):
 	var punchBtn
