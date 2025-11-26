@@ -878,7 +878,7 @@ visibility_layer = 3
 [node name="Pause Menu" parent="Camera2D/CanvasLayer" instance=ExtResource("23_afeaf")]
 
 [node name="BarrierColDetection" type="Area2D" parent="."]
-position = Vector2(9, -505)
+position = Vector2(9, -530)
 script = ExtResource("25_jbsh1")
 
 [node name="StageBarrier" type="StaticBody2D" parent="BarrierColDetection"]
@@ -893,12 +893,46 @@ one_way_collision = true
 position = Vector2(577.5, 0)
 shape = SubResource("RectangleShape2D_w6h7a")
 
+[node name="BarrierColDetection2" type="Area2D" parent="."]
+position = Vector2(-7, -1336)
+script = ExtResource("25_jbsh1")
+
+[node name="StageBarrier" type="StaticBody2D" parent="BarrierColDetection2"]
+
+[node name="barrier_collider" type="CollisionShape2D" parent="BarrierColDetection2/StageBarrier"]
+position = Vector2(577.5, 0)
+shape = SubResource("RectangleShape2D_l70lb")
+disabled = true
+one_way_collision = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarrierColDetection2"]
+position = Vector2(577.5, 0)
+shape = SubResource("RectangleShape2D_w6h7a")
+
+[node name="BarrierColDetection3" type="Area2D" parent="."]
+position = Vector2(-7, -1822)
+script = ExtResource("25_jbsh1")
+
+[node name="StageBarrier" type="StaticBody2D" parent="BarrierColDetection3"]
+
+[node name="barrier_collider" type="CollisionShape2D" parent="BarrierColDetection3/StageBarrier"]
+position = Vector2(577.5, 0)
+shape = SubResource("RectangleShape2D_l70lb")
+disabled = true
+one_way_collision = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarrierColDetection3"]
+position = Vector2(577.5, 0)
+shape = SubResource("RectangleShape2D_w6h7a")
+
 [connection signal="area_entered" from="Ladde" to="Ladde" method="_on_area_entered"]
 [connection signal="area_exited" from="Ladde" to="Ladde" method="_on_area_exited"]
 [connection signal="area_entered" from="Ladde2" to="Ladde2" method="_on_area_entered"]
 [connection signal="area_exited" from="Ladde2" to="Ladde2" method="_on_area_exited"]
 [connection signal="area_entered" from="Exit" to="Exit" method="_on_area_entered"]
 [connection signal="area_entered" from="BarrierColDetection" to="BarrierColDetection" method="_on_area_entered"]
+[connection signal="area_entered" from="BarrierColDetection2" to="BarrierColDetection2" method="_on_area_entered"]
+[connection signal="area_entered" from="BarrierColDetection3" to="BarrierColDetection3" method="_on_area_entered"]
 
 [editable path="Player 1"]
 [editable path="Player 2"]
