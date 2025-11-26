@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cm8nsbc1ub008"]
+[gd_scene load_steps=58 format=3 uid="uid://cm8nsbc1ub008"]
 
 [ext_resource type="PackedScene" uid="uid://pbpojmiw1dxs" path="res://Sprites/player_sprite.tscn" id="1_2b52f"]
 [ext_resource type="Texture2D" uid="uid://cjp1emfwvsy4x" path="res://Assets/leveldesign_FINAL.png" id="1_2py18"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://dt6bd3cej35xk" path="res://Assets/Level Assets/lvl4-1.png" id="23_3g6m8"]
 [ext_resource type="PackedScene" uid="uid://dyrix2rb5qe55" path="res://pause_menu.tscn" id="23_afeaf"]
 [ext_resource type="Texture2D" uid="uid://ucf4dyy86ic4" path="res://Assets/Level Assets/lvl4-2.png" id="24_afeaf"]
+[ext_resource type="Script" uid="uid://bifff0khtdm5f" path="res://Levels/barrier_col_detection.gd" id="25_jbsh1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18c4h"]
 size = Vector2(18.661518, 61.499985)
@@ -114,6 +115,12 @@ size = Vector2(3.5065966, 58.235596)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hc2ao"]
 size = Vector2(59.5, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l70lb"]
+size = Vector2(1175, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6h7a"]
+size = Vector2(1175, 20)
 
 [node name="level_one" type="Node2D"]
 
@@ -814,7 +821,7 @@ shape = SubResource("RectangleShape2D_p2v6c")
 disabled = true
 
 [node name="Player 1" parent="." instance=ExtResource("1_2b52f")]
-position = Vector2(454, -3416)
+position = Vector2(838, -360)
 collision_layer = 2
 defaultSpeed = 500
 jump_power = -650.0
@@ -830,7 +837,7 @@ parry_knockback = Vector2(1000, -250)
 scale = Vector2(0.7130171, 0.7130171)
 
 [node name="Player 2" parent="." instance=ExtResource("1_2b52f")]
-position = Vector2(672, -3406)
+position = Vector2(1056, -350)
 collision_layer = 2
 defaultSpeed = 500
 jump_power = -650.0
@@ -870,11 +877,28 @@ visibility_layer = 3
 
 [node name="Pause Menu" parent="Camera2D/CanvasLayer" instance=ExtResource("23_afeaf")]
 
+[node name="BarrierColDetection" type="Area2D" parent="."]
+position = Vector2(9, -505)
+script = ExtResource("25_jbsh1")
+
+[node name="StageBarrier" type="StaticBody2D" parent="BarrierColDetection"]
+
+[node name="barrier_collider" type="CollisionShape2D" parent="BarrierColDetection/StageBarrier"]
+position = Vector2(577.5, 0)
+shape = SubResource("RectangleShape2D_l70lb")
+disabled = true
+one_way_collision = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarrierColDetection"]
+position = Vector2(577.5, 0)
+shape = SubResource("RectangleShape2D_w6h7a")
+
 [connection signal="area_entered" from="Ladde" to="Ladde" method="_on_area_entered"]
 [connection signal="area_exited" from="Ladde" to="Ladde" method="_on_area_exited"]
 [connection signal="area_entered" from="Ladde2" to="Ladde2" method="_on_area_entered"]
 [connection signal="area_exited" from="Ladde2" to="Ladde2" method="_on_area_exited"]
 [connection signal="area_entered" from="Exit" to="Exit" method="_on_area_entered"]
+[connection signal="area_entered" from="BarrierColDetection" to="BarrierColDetection" method="_on_area_entered"]
 
 [editable path="Player 1"]
 [editable path="Player 2"]
