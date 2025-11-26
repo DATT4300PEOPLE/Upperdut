@@ -500,6 +500,9 @@ debug_color = Color(0.84424186, 0.0010430897, 0.9147864, 0.41960785)
 [node name="Switch" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(336, 314)
 script = ExtResource("8_l4fe4")
+switch_id = null
+max_duration = null
+button = null
 platform = NodePath("../TOGGLEPLATFORM")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch"]
@@ -514,6 +517,9 @@ texture = ExtResource("14_2py18")
 [node name="Switch2" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(295, 22)
 script = ExtResource("8_l4fe4")
+switch_id = null
+max_duration = null
+button = null
 platform = NodePath("../TOGGLEPLATFORM")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch2"]
@@ -529,8 +535,10 @@ texture = ExtResource("14_2py18")
 position = Vector2(726, -264)
 scale = Vector2(0.64, 0.64)
 script = ExtResource("8_l4fe4")
-platform = NodePath("../TOGGLEPLATFORM2")
+switch_id = null
+max_duration = null
 button = true
+platform = NodePath("../TOGGLEPLATFORM2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch10"]
 position = Vector2(-3.5, -27)
@@ -545,8 +553,10 @@ texture = ExtResource("9_jd0dm")
 position = Vector2(942, -1118)
 scale = Vector2(0.64, 0.64)
 script = ExtResource("8_l4fe4")
-platform = NodePath("../TOGGLEPLATFORM3")
+switch_id = null
+max_duration = null
 button = true
+platform = NodePath("../TOGGLEPLATFORM3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch11"]
 position = Vector2(-3.5, -27)
@@ -561,8 +571,10 @@ texture = ExtResource("9_jd0dm")
 position = Vector2(187, -1990)
 scale = Vector2(0.64, 0.64)
 script = ExtResource("8_l4fe4")
-platform = NodePath("../TOGGLEPLATFORM5")
+switch_id = null
+max_duration = null
 button = true
+platform = NodePath("../TOGGLEPLATFORM5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch12"]
 position = Vector2(-3.5, -27)
@@ -577,8 +589,10 @@ texture = ExtResource("9_jd0dm")
 position = Vector2(626, -3287)
 scale = Vector2(0.64, 0.64)
 script = ExtResource("8_l4fe4")
-platform = NodePath("../TOGGLEPLATFORM7")
+switch_id = null
+max_duration = null
 button = true
+platform = NodePath("../TOGGLEPLATFORM7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch13"]
 position = Vector2(-3.5, -27)
@@ -593,8 +607,10 @@ texture = ExtResource("9_jd0dm")
 position = Vector2(843, -3851)
 scale = Vector2(0.64, 0.64)
 script = ExtResource("8_l4fe4")
-platform = NodePath("../TOGGLEPLATFORM8")
+switch_id = null
+max_duration = null
 button = true
+platform = NodePath("../TOGGLEPLATFORM8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch14"]
 position = Vector2(-3.5, -27)
@@ -608,6 +624,9 @@ texture = ExtResource("9_jd0dm")
 [node name="Switch3" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(276, -1489)
 script = ExtResource("8_l4fe4")
+switch_id = null
+max_duration = null
+button = null
 platform = NodePath("../TOGGLEPLATFORM4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch3"]
@@ -622,6 +641,9 @@ texture = ExtResource("14_2py18")
 [node name="Switch4" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(844, -1886)
 script = ExtResource("8_l4fe4")
+switch_id = null
+max_duration = null
+button = null
 platform = NodePath("../TOGGLEPLATFORM4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch4"]
@@ -636,6 +658,9 @@ texture = ExtResource("14_2py18")
 [node name="Switch5" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(456, -2682)
 script = ExtResource("8_l4fe4")
+switch_id = null
+max_duration = null
+button = null
 platform = NodePath("../TOGGLEPLATFORM6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch5"]
@@ -650,6 +675,9 @@ texture = ExtResource("14_2py18")
 [node name="Switch6" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(46, -3159)
 script = ExtResource("8_l4fe4")
+switch_id = null
+max_duration = null
+button = null
 platform = NodePath("../TOGGLEPLATFORM6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch6"]
@@ -664,6 +692,9 @@ texture = ExtResource("14_2py18")
 [node name="Switch7" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(226, -4029)
 script = ExtResource("8_l4fe4")
+switch_id = null
+max_duration = null
+button = null
 platform = NodePath("../TOGGLEPLATFORM8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch7"]
@@ -678,6 +709,9 @@ texture = ExtResource("14_2py18")
 [node name="Switch8" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(219, -4254)
 script = ExtResource("8_l4fe4")
+switch_id = null
+max_duration = null
+button = null
 platform = NodePath("../TOGGLEPLATFORM8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch8"]

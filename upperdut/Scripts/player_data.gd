@@ -12,6 +12,8 @@ extends Node
 func _ready() -> void:
 	P1_Damage = 0
 	P2_Damage = 0
+	P1_onLadder = false
+	P2_onLadder = false
 	
 func _physics_process(delta: float) -> void:
 	if P1_Damage > 150:

@@ -13,29 +13,37 @@ func _ready() -> void:
 	max_duration = 1.4
 	area_entered.connect(Callable(self,"_on_area_entered"))
 	area_exited.connect(Callable(self,"_on_area_exited"))
-	if (button):
-		button_image = self.get_child(1)
+	button_image = self.get_child(1)
 func _process(delta: float) -> void:
-	if player1_on_switch and Input.is_action_just_pressed("P1Punch") and not switchOn:
+	if player1_on_switch and Input.is_action_just_pressed("P1Punch") and not switchOn and not button:
 		print("works")
 		turn_switch_on()
-	if player2_on_switch and Input.is_action_just_pressed("P2Punch") and not switchOn:
+	if player2_on_switch and Input.is_action_just_pressed("P2Punch") and not switchOn and not button:
 		print("p2 WORKS")
 		turn_switch_on()
+##	if player1_on_switch or player2_on_switch:
+		##toggle_button()
 	if switchOn and onTimer < max_duration:
 		onTimer += 1 * delta
 	if onTimer >= max_duration and not button:
 		switchOn = false
-		onTimer = 0
 		platform.visible = !platform.visible
+		if !button:
+			button_image.texture = load("res://Sprites/switch-off.png")
+			await get_tree().create_timer(0.4).timeout
+			button_image.texture = load("res://Sprites/switch-none.png")
+		onTimer = 0
 		platform.get_child(1).disabled = !platform.get_child(1).disabled
 func turn_switch_on() -> void:
 	switchOn = true
 	if button:
 		button_image.texture = load("res://Assets/button-on.png")
+	else:
+		button_image.texture = load("res://Sprites/switch-on.png")
 	platform.visible = !platform.visible
 	platform.get_child(1).disabled = !platform.get_child(1).disabled
-	
+
+##func toggle_button() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:

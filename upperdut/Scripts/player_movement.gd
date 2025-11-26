@@ -54,8 +54,11 @@ func _ready() -> void:
 	player_sprite.sprite_frames = anim_sheet
 	boxing_glove.sprite_frames = glove_sprite
 	player_hitbox.knockback_velocity = base_knockback_velocity
+	p1_on_ladder = false
+	p2_on_ladder = false
 
 func _physics_process(delta: float) -> void:
+	print(velocity)
 	if !is_on_floor():
 		velocity.y += get_gravity().y * delta
 
@@ -144,12 +147,16 @@ func get_input():
 
 	if Input.is_action_just_pressed(jumpKey) and is_on_floor():
 		move_dir = 3
+		doing_action = false
+		punching = false
 		player_sprite.play("Jump")
 		velocity.y = jump_power - PlayerData.apply_movement(PLAYER, 15, true)
 		print("Y VELOCITY: ", velocity.y)
 
 	if Input.is_action_just_released(jumpKey) and is_on_floor():
 		move_dir = 3
+		doing_action = false
+		punching = false
 		player_sprite.play("Jump")
 		velocity.y = (jump_power - PlayerData.apply_movement(PLAYER, 15, true)) / 2 
 
@@ -253,23 +260,6 @@ func take_damage(amount: float, attacker_pos: Vector2, knockback_velocity: Vecto
 	velocity = Vector2(knockback_velocity.x * knock_dir, knockback_velocity.y)
 	PlayerData.apply_damage(amount, PLAYER)
 
-#func _on_ladde_area_entered(area: Area2D) -> void:
-	#print(area.name)
-	#if "player_collider" in area.name:
-		#if PLAYER == 0:
-			#p1_on_ladder = true
-		#else:
-			#p2_on_ladder = true
-		#print("LADDER STUFF: ", p1_on_ladder ,", " , p2_on_ladder)
-#
-#func _on_ladde_area_exited(area: Area2D) -> void:
-		#if "player_collider" in area.name:
-			#if PLAYER == 0:
-				#p1_on_ladder = false
-			#else:
-				#p2_on_ladder = false
-
-		
 func use_powerup(powerup_type: String) -> void:
 	match powerup_type:
 		"speed":
