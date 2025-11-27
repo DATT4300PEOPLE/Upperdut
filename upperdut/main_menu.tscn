@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cpan2gsaddwrj" path="res://play.gd" id="4_dy7ct"]
 [ext_resource type="Texture2D" uid="uid://mfpwudlv5fil" path="res://Assets/EXIT.png" id="5_0o4t1"]
 [ext_resource type="Texture2D" uid="uid://cbeoqkipln01y" path="res://Assets/EXITHOVER.png" id="6_0k4wn"]
-[ext_resource type="AudioStream" uid="uid://bd2a8wrs11w6n" path="res://goofy-frolic-358481.mp3" id="7_qe12f"]
+[ext_resource type="AudioStream" uid="uid://1qitphwctvir" path="res://Assets/Sound_Effects/jungle-waves-drumampbass-electronic-inspiring-promo-345013.mp3" id="7_qe12f"]
 
 [node name="Main Menu" type="Node2D"]
 

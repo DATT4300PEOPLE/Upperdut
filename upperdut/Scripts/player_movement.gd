@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var player_hurtbox: player_hurtbox = $player_hurtbox
 @onready var p2: CharacterBody2D = $"../Player 2"
 @onready var p1: CharacterBody2D = $"."
+@onready var punch: AudioStreamPlayer = $"../AudioController/Punch"
+@onready var jump: AudioStreamPlayer = $"../AudioController/Jump"
 
 # MAKE FIST OBJECT monitoring AND MOVE FORWARD UPON PUNCHING
 # Animations
@@ -58,7 +60,6 @@ func _ready() -> void:
 	p2_on_ladder = false
 
 func _physics_process(delta: float) -> void:
-	print(velocity)
 	if !is_on_floor():
 		velocity.y += get_gravity().y * delta
 
@@ -150,6 +151,7 @@ func get_input():
 		doing_action = false
 		punching = false
 		player_sprite.play("Jump")
+		jump.play()
 		velocity.y = jump_power - PlayerData.apply_movement(PLAYER, 15, true)
 		print("Y VELOCITY: ", velocity.y)
 
@@ -158,6 +160,7 @@ func get_input():
 		doing_action = false
 		punching = false
 		player_sprite.play("Jump")
+		jump.play()
 		velocity.y = (jump_power - PlayerData.apply_movement(PLAYER, 15, true)) / 2 
 
 func get_fight_input(direction: int):
@@ -175,7 +178,7 @@ func get_fight_input(direction: int):
 		player_hitbox.knockback_velocity = base_knockback_velocity
 		punching = true
 		doing_action = true
-		
+		jump.play()
 		player_sprite.play("PrePunch")
 		
 		punch_multiplier = action_timer / 0.4
@@ -189,6 +192,7 @@ func get_fight_input(direction: int):
 			charge_anim.emitting = false 
 
 	if Input.is_action_just_released(punchBtn):
+		
 		player_sprite.play(punchDir)
 		charge_anim.emitting = false #disable charge animation
 		boxing_glove.position.x = gloveX
@@ -205,7 +209,7 @@ func get_fight_input(direction: int):
 		if (PLAYER == 1):
 			player_hitbox.knockback_velocity.x *= punch_multiplier + PlayerData.P1_Damage / 50
 			player_hitbox.knockback_velocity.y *= punch_multiplier + PlayerData.P1_Damage / 50
-
+	
 	if Input.is_action_just_pressed(parryBtn):
 		player_sprite.play("Block")
 		isParrying = true
@@ -239,26 +243,31 @@ func _on_animation_finished():
 		player_sprite.play("Idle")
 
 func take_damage(amount: float, attacker_pos: Vector2, knockback_velocity: Vector2) -> void:
+	jump.stop()
+	punch.play()
 	print("AHHHHHHH: ", knockback_velocity)
 	print("Multiplier: ", punch_multiplier)
 	is_knocked_back = true
 	knockback_timer = knockback_duration
 
 	var knock_dir = sign(global_position.x - attacker_pos.x)
-
+	var player_damage_pct = PlayerData.P1_Damage if PLAYER == 0 else PlayerData.P2_Damage 
+	if player_damage_pct < 1:
+		player_damage_pct = 1
 	if isParrying:
 		if PLAYER == 0:
 			p2.parry_successful = true
 			p2.knockback_timer = knockback_duration
 			p2.velocity = Vector2((knockback_velocity.x + parry_knockback.x) * -knock_dir, knockback_velocity.y + parry_knockback.y)
 			print("DIRECTION: ", p2.velocity)
-		else:
+		if PLAYER == 1:
 			p1.parry_successful = true
-			p2.knockback_timer = knockback_duration
+			p1.knockback_timer = knockback_duration
 			p1.velocity = Vector2((knockback_velocity.x + parry_knockback.x) * -knock_dir, knockback_velocity.y + parry_knockback.y)
-
+			print("DIRECTION: ", p1.velocity)
 	velocity = Vector2(knockback_velocity.x * knock_dir, knockback_velocity.y)
-	PlayerData.apply_damage(amount, PLAYER)
+	if !isParrying:
+		PlayerData.apply_damage(amount + player_damage_pct/2, PLAYER)
 
 func use_powerup(powerup_type: String) -> void:
 	match powerup_type:

@@ -1,10 +1,49 @@
-[gd_scene load_steps=6 format=3 uid="uid://c524qt4qdwxi5"]
+[gd_scene load_steps=11 format=3 uid="uid://c524qt4qdwxi5"]
 
 [ext_resource type="Script" uid="uid://bsyt5ryga3da8" path="res://Scripts/player_data_ui.gd" id="1_cubqy"]
 [ext_resource type="Texture2D" uid="uid://dw2oy2ny7yavx" path="res://Assets/ORB.png" id="2_whaqe"]
 [ext_resource type="Texture2D" uid="uid://c1iqpv47hsxyl" path="res://Assets/BLOC.png" id="3_ee3u5"]
 [ext_resource type="Texture2D" uid="uid://bnafnmohxwa7l" path="res://Assets/meterlevel.png" id="4_4lx2v"]
 [ext_resource type="Texture2D" uid="uid://cm7dlebhx7bs1" path="res://Assets/redmeter_outline.png" id="5_meu30"]
+[ext_resource type="Texture2D" uid="uid://k4ty54p0860r" path="res://Assets/Sprite Sheets/BLOC_glove.png" id="6_meu30"]
+[ext_resource type="Texture2D" uid="uid://ulj5hln3vtdk" path="res://Assets/Sprite Sheets/ORB_glove.png" id="7_nokfn"]
+
+[sub_resource type="Animation" id="Animation_nokfn"]
+resource_name = "stock_anim"
+length = 1.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.53333336, 0.8333333, 1.0924678, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c44vp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_87o6x"]
+_data = {
+&"RESET": SubResource("Animation_c44vp"),
+&"stock_anim": SubResource("Animation_nokfn")
+}
 
 [node name="PlayerDataUI" type="Node2D"]
 script = ExtResource("1_cubqy")
@@ -39,3 +78,66 @@ texture = ExtResource("5_meu30")
 [node name="RedmeterOutline2" type="Sprite2D" parent="."]
 position = Vector2(965, 52)
 texture = ExtResource("5_meu30")
+
+[node name="P1Stocks" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(15, 15)
+offset_left = 92.99999
+offset_top = 68.0
+offset_right = 348.0
+offset_bottom = 136.0
+scale = Vector2(0.365, 0.365)
+theme_override_constants/h_separation = 15
+columns = 15
+
+[node name="BoxingGlove" type="TextureRect" parent="P1Stocks"]
+layout_mode = 2
+texture = ExtResource("7_nokfn")
+
+[node name="BoxingGlove2" type="TextureRect" parent="P1Stocks"]
+layout_mode = 2
+texture = ExtResource("7_nokfn")
+
+[node name="BoxingGlove3" type="TextureRect" parent="P1Stocks"]
+layout_mode = 2
+texture = ExtResource("7_nokfn")
+
+[node name="P2Stocks" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(15, 15)
+offset_left = 1056.0
+offset_top = 70.00001
+offset_right = 1326.0
+offset_bottom = 144.0
+scale = Vector2(-0.365, 0.365)
+theme_override_constants/h_separation = 15
+columns = 15
+
+[node name="BoxingGlove" type="TextureRect" parent="P2Stocks"]
+show_behind_parent = true
+layout_mode = 2
+texture = ExtResource("6_meu30")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="P2Stocks/BoxingGlove"]
+libraries = {
+&"": SubResource("AnimationLibrary_87o6x")
+}
+
+[node name="BoxingGlove2" type="TextureRect" parent="P2Stocks"]
+layout_mode = 2
+texture = ExtResource("6_meu30")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="P2Stocks/BoxingGlove2"]
+libraries = {
+&"": SubResource("AnimationLibrary_87o6x")
+}
+
+[node name="BoxingGlove3" type="TextureRect" parent="P2Stocks"]
+layout_mode = 2
+texture = ExtResource("6_meu30")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="P2Stocks/BoxingGlove3"]
+libraries = {
+&"": SubResource("AnimationLibrary_87o6x")
+}

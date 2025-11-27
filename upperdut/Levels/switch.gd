@@ -4,6 +4,7 @@ extends Area2D
 @export var switch_id: int
 @export var max_duration: float
 @export var button: bool
+@export var playerSwitch: int
 var player1_on_switch = false
 var player2_on_switch = false
 var button_image: Sprite2D
@@ -15,14 +16,18 @@ func _ready() -> void:
 	area_exited.connect(Callable(self,"_on_area_exited"))
 	button_image = self.get_child(1)
 func _process(delta: float) -> void:
-	if player1_on_switch and Input.is_action_just_pressed("P1Punch") and not switchOn and not button:
+	if player1_on_switch and Input.is_action_just_pressed("P1Punch") and not switchOn and not button and playerSwitch == 0:
 		print("works")
 		turn_switch_on()
-	if player2_on_switch and Input.is_action_just_pressed("P2Punch") and not switchOn and not button:
+	if player2_on_switch and Input.is_action_just_pressed("P2Punch") and not switchOn and not button and playerSwitch == 1:
 		print("p2 WORKS")
 		turn_switch_on()
-##	if player1_on_switch or player2_on_switch:
-		##toggle_button()
+	if (player1_on_switch or player2_on_switch) and button:
+		toggle_button()
+	elif (!player1_on_switch or !player2_on_switch) and button:
+		button_image.texture = load("res://Assets/button-off.png")
+		platform.visible = false
+		platform.get_child(1).disabled = true
 	if switchOn and onTimer < max_duration:
 		onTimer += 1 * delta
 	if onTimer >= max_duration and not button:
@@ -36,16 +41,15 @@ func _process(delta: float) -> void:
 		platform.get_child(1).disabled = !platform.get_child(1).disabled
 func turn_switch_on() -> void:
 	switchOn = true
-	if button:
-		button_image.texture = load("res://Assets/button-on.png")
-	else:
-		button_image.texture = load("res://Sprites/switch-on.png")
+	button_image.texture = load("res://Sprites/switch-on.png")
 	platform.visible = !platform.visible
 	platform.get_child(1).disabled = !platform.get_child(1).disabled
 
-##func toggle_button() -> void:
-
-
+func toggle_button() -> void:
+	switchOn = true
+	button_image.texture = load("res://Assets/button-on.png")
+	platform.visible = true
+	platform.get_child(1).disabled = false
 func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent().name == "Player 1":
 		player1_on_switch = true

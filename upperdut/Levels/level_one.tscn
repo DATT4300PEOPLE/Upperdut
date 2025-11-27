@@ -1,19 +1,23 @@
-[gd_scene load_steps=58 format=3 uid="uid://cm8nsbc1ub008"]
+[gd_scene load_steps=86 format=3 uid="uid://cm8nsbc1ub008"]
 
 [ext_resource type="PackedScene" uid="uid://pbpojmiw1dxs" path="res://Sprites/player_sprite.tscn" id="1_2b52f"]
-[ext_resource type="Texture2D" uid="uid://cjp1emfwvsy4x" path="res://Assets/leveldesign_FINAL.png" id="1_2py18"]
+[ext_resource type="Texture2D" uid="uid://cgfm8fugdugg5" path="res://Assets/Level Assets/Stages/lvl1.png" id="1_nph2v"]
+[ext_resource type="Texture2D" uid="uid://bde0iawy27ia7" path="res://Assets/Level Assets/Stages/lvl2.png" id="2_cp88c"]
 [ext_resource type="SpriteFrames" uid="uid://ulhmabd424jx" path="res://Sprites/p1Frames.tres" id="2_pvy0h"]
 [ext_resource type="SpriteFrames" uid="uid://dnyxjr45u5v37" path="res://Sprites/p2Frames.tres" id="3_om7uc"]
 [ext_resource type="SpriteFrames" uid="uid://ctpuankqgbsbe" path="res://Sprites/p1GloveFrame.tres" id="3_ugpc4"]
+[ext_resource type="Texture2D" uid="uid://cpqcewy73bul7" path="res://Assets/Level Assets/Stages/lvl3.png" id="3_wepyk"]
+[ext_resource type="Texture2D" uid="uid://c1bs7j6gm30qe" path="res://Assets/Level Assets/Stages/lvl4.png" id="4_wepyk"]
+[ext_resource type="Texture2D" uid="uid://dqoutqfp3djc6" path="res://Assets/Level Assets/Stages/stage.png" id="5_y2ssv"]
 [ext_resource type="SpriteFrames" uid="uid://cs4i8b5npgplf" path="res://Sprites/p2GloveFrame.tres" id="5_ya8ts"]
 [ext_resource type="Script" uid="uid://cwntd2y8s8x2v" path="res://Levels/ladde.gd" id="7_t50p6"]
 [ext_resource type="PackedScene" uid="uid://c524qt4qdwxi5" path="res://Scenes/player_data_ui.tscn" id="7_ya8ts"]
 [ext_resource type="Script" uid="uid://dtdsc3dpmmi3n" path="res://Levels/switch.gd" id="8_l4fe4"]
 [ext_resource type="Texture2D" uid="uid://da2fwupkc8lby" path="res://Assets/punching_bag_3_2_1.png" id="8_whtlt"]
 [ext_resource type="Texture2D" uid="uid://rxh82fxwnp6d" path="res://Assets/button-off.png" id="9_jd0dm"]
+[ext_resource type="AudioStream" uid="uid://6iyf8koigv3e" path="res://Assets/Sound_Effects/euphoric-uplift-breakbeat-old-school-breakbeat-274977.mp3" id="11_hc2ao"]
 [ext_resource type="Script" uid="uid://8oaapkj8pvks" path="res://Levels/camera_height.gd" id="12_lhaxc"]
 [ext_resource type="Texture2D" uid="uid://mdvinbdlqciv" path="res://Assets/switch-none.png" id="14_2py18"]
-[ext_resource type="AudioStream" uid="uid://bb4hqp4v2m7sq" path="res://Assets/catch-my-cartoon-old-version-218545.mp3" id="14_t50p6"]
 [ext_resource type="Texture2D" uid="uid://dq6b2qyr5y3ad" path="res://Assets/Level Assets/lvl1-1.png" id="17_ce78g"]
 [ext_resource type="Texture2D" uid="uid://bdtv3d4ailpck" path="res://Assets/Level Assets/lvl1-2.png" id="18_6836m"]
 [ext_resource type="Texture2D" uid="uid://d0ihyntfwpdde" path="res://Assets/Level Assets/lvl2-1.png" id="19_lccb3"]
@@ -25,6 +29,17 @@
 [ext_resource type="PackedScene" uid="uid://dyrix2rb5qe55" path="res://pause_menu.tscn" id="23_afeaf"]
 [ext_resource type="Texture2D" uid="uid://ucf4dyy86ic4" path="res://Assets/Level Assets/lvl4-2.png" id="24_afeaf"]
 [ext_resource type="Script" uid="uid://bifff0khtdm5f" path="res://Levels/barrier_col_detection.gd" id="25_jbsh1"]
+[ext_resource type="Texture2D" uid="uid://k4ty54p0860r" path="res://Assets/Sprite Sheets/BLOC_glove.png" id="30_y2ssv"]
+[ext_resource type="Texture2D" uid="uid://ulj5hln3vtdk" path="res://Assets/Sprite Sheets/ORB_glove.png" id="31_23fag"]
+[ext_resource type="Script" uid="uid://dq0skhqd28sr" path="res://Levels/belt_left.gd" id="32_eibiv"]
+[ext_resource type="Texture2D" uid="uid://c46boxxwdjfmj" path="res://Assets/Sprite Sheets/red side belt.png" id="33_6a7d4"]
+[ext_resource type="Texture2D" uid="uid://crceubug386qq" path="res://Assets/Sprite Sheets/blue side belt.png" id="34_hc2ao"]
+[ext_resource type="Texture2D" uid="uid://bfrr5jbo1n0kq" path="res://Assets/Sprite Sheets/full belt.png" id="34_p2v6c"]
+[ext_resource type="Texture2D" uid="uid://b4ypmg6xneb84" path="res://Assets/Sprite Sheets/referee.png" id="35_hc2ao"]
+[ext_resource type="Texture2D" uid="uid://dkn7mfcsmj8sy" path="res://Assets/Sprite Sheets/glowing.png" id="36_m4hqf"]
+[ext_resource type="Script" uid="uid://c101fcvyx0lym" path="res://Levels/audio_controller.gd" id="37_l70lb"]
+[ext_resource type="AudioStream" uid="uid://ds3lc15frw2am" path="res://Assets/Sound_Effects/punch-416719.mp3" id="38_m4hqf"]
+[ext_resource type="AudioStream" uid="uid://dmi16c60u3nxy" path="res://Assets/Sound_Effects/swing-whoosh-110410.mp3" id="39_n67ls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18c4h"]
 size = Vector2(18.661518, 61.499985)
@@ -48,10 +63,10 @@ size = Vector2(104.16667, 193.75018)
 size = Vector2(30.913776, 181.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6836m"]
-size = Vector2(154.44017, 181.25)
+size = Vector2(156.6522, 181.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lccb3"]
-size = Vector2(31.772846, 146.875)
+size = Vector2(33.281048, 146.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cp88c"]
 size = Vector2(25.13673, 118.75001)
@@ -72,13 +87,13 @@ size = Vector2(65.95883, 199.99902)
 size = Vector2(29.963013, 150)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nph2v"]
-size = Vector2(46.452705, 150)
+size = Vector2(47.659275, 150)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5w1d"]
 size = Vector2(55.703026, 181.24951)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jd0dm"]
-size = Vector2(76.8179, 174.99951)
+size = Vector2(114.62267, 174.99951)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q1nax"]
 size = Vector2(26.343315, 181.25)
@@ -122,6 +137,254 @@ size = Vector2(1175, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6h7a"]
 size = Vector2(1175, 20)
 
+[sub_resource type="Animation" id="Animation_23fag"]
+resource_name = "gloveFloat"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.9, 1.5, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 2), Vector2(0, -2), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xymjv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(314, 245)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eibiv"]
+_data = {
+&"RESET": SubResource("Animation_xymjv"),
+&"gloveFloat": SubResource("Animation_23fag")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4hqf"]
+size = Vector2(139.78375, 106.50659)
+
+[sub_resource type="Animation" id="Animation_q1nax"]
+resource_name = "BeltTogether"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlueSideBelt:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0071187),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1034.9417, 3.3274767), Vector2(53.244507, 3.3274767)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RedSideBelt:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.0156536),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1051.5807, 4.991375), Vector2(-43.26123, 3.3274815)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5, 2.4333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(588, -5014), Vector2(588, -5085)]
+}
+
+[sub_resource type="Animation" id="Animation_hc2ao"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlueSideBelt:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1034.9417, 3.3274767)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RedSideBelt:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1051.5807, 4.991375)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(588, -5014)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w6h7a"]
+_data = {
+&"BeltTogether": SubResource("Animation_q1nax"),
+&"RESET": SubResource("Animation_hc2ao")
+}
+
+[sub_resource type="Animation" id="Animation_l70lb"]
+resource_name = "BeltSlide"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.4666667, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(588, -5083), Vector2(588, -4705)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Glowing:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5.729715),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Glowing:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(6.0028315, 6.1666665, 6.366667, 6.5333333, 6.733333, 6.9, 7.0666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_w6h7a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(588, -5083)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Glowing:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Glowing:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m4hqf"]
+_data = {
+&"BeltSlide": SubResource("Animation_l70lb"),
+&"RESET": SubResource("Animation_w6h7a")
+}
+
+[sub_resource type="Animation" id="Animation_m4hqf"]
+resource_name = "FadeInBlack"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(8.015983, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n67ls"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_knwns"]
+_data = {
+&"FadeInBlack": SubResource("Animation_m4hqf"),
+&"RESET": SubResource("Animation_n67ls")
+}
+
 [node name="level_one" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -145,10 +408,30 @@ offset_right = 7907.0
 offset_bottom = -3902.0
 color = Color(0.5330323, 0.5330385, 0.53303546, 1)
 
-[node name="LeveldesignFinal" type="Sprite2D" parent="."]
-position = Vector2(582, -2149)
+[node name="Lvl1" type="Sprite2D" parent="."]
+position = Vector2(584, 118)
 scale = Vector2(0.601, 0.601)
-texture = ExtResource("1_2py18")
+texture = ExtResource("1_nph2v")
+
+[node name="Lvl2" type="Sprite2D" parent="."]
+position = Vector2(584, -1170)
+scale = Vector2(0.601, 0.601)
+texture = ExtResource("2_cp88c")
+
+[node name="Lvl3" type="Sprite2D" parent="."]
+position = Vector2(584, -2459)
+scale = Vector2(0.601, 0.601)
+texture = ExtResource("3_wepyk")
+
+[node name="Lvl4" type="Sprite2D" parent="."]
+position = Vector2(584, -3745)
+scale = Vector2(0.601, 0.601)
+texture = ExtResource("4_wepyk")
+
+[node name="Stage" type="Sprite2D" parent="."]
+position = Vector2(584, -4721)
+scale = Vector2(0.601, 0.601)
+texture = ExtResource("5_y2ssv")
 
 [node name="Ground" type="StaticBody2D" parent="."]
 
@@ -221,7 +504,7 @@ position = Vector2(260, -313)
 scale = Vector2(0.08, 0.16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform7"]
-position = Vector2(1662.5, -1465.625)
+position = Vector2(1731.25, -1465.625)
 scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_6836m")
 
@@ -230,7 +513,7 @@ position = Vector2(575, -316)
 scale = Vector2(0.08, 0.16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform8"]
-position = Vector2(6037.5, -1453.125)
+position = Vector2(6006.25, -1453.125)
 scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_lccb3")
 
@@ -248,7 +531,7 @@ position = Vector2(338, -3572)
 scale = Vector2(0.08, 0.16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform20"]
-position = Vector2(6087.501, -1432.8125)
+position = Vector2(6075.001, -1481.25)
 scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_lccb3")
 
@@ -257,7 +540,7 @@ position = Vector2(3, -2357)
 scale = Vector2(0.08, 0.16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform31"]
-position = Vector2(6087.501, -1432.8125)
+position = Vector2(6165.6255, -1462.5)
 scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_lccb3")
 
@@ -266,7 +549,7 @@ position = Vector2(-255, -3732)
 scale = Vector2(0.08, 0.16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform21"]
-position = Vector2(6037.5, -1453.125)
+position = Vector2(5925.0005, -1500)
 scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_lccb3")
 
@@ -275,7 +558,7 @@ position = Vector2(-206, -3732)
 scale = Vector2(0.08, 0.16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform22"]
-position = Vector2(6037.5, -1453.125)
+position = Vector2(6050.0005, -1506.25)
 scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_lccb3")
 
@@ -347,7 +630,7 @@ position = Vector2(-48, -1418)
 scale = Vector2(0.08, 0.16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform28"]
-position = Vector2(2818.7495, -3293.75)
+position = Vector2(2893.7502, -3337.5)
 scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_nph2v")
 
@@ -466,8 +749,17 @@ position = Vector2(113, -2599)
 scale = Vector2(0.16000122, 0.16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform19"]
-position = Vector2(3962.5, -3281.25)
-scale = Vector2(62.159996, 1)
+position = Vector2(3987.4697, -3281.25)
+scale = Vector2(62.159992, 1)
+shape = SubResource("RectangleShape2D_jd0dm")
+
+[node name="Platform33" type="StaticBody2D" parent="."]
+position = Vector2(561, -4428)
+scale = Vector2(0.16000122, 0.16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform33"]
+position = Vector2(137.49902, 0)
+scale = Vector2(62.159992, 1)
 shape = SubResource("RectangleShape2D_jd0dm")
 
 [node name="Platform3" type="StaticBody2D" parent="."]
@@ -498,9 +790,10 @@ shape = SubResource("RectangleShape2D_whtlt")
 debug_color = Color(0.84424186, 0.0010430897, 0.9147864, 0.41960785)
 
 [node name="Switch" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
-position = Vector2(336, 314)
+position = Vector2(336, 326)
 script = ExtResource("8_l4fe4")
 platform = NodePath("../TOGGLEPLATFORM")
+playerSwitch = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch"]
 position = Vector2(-3.5, -27)
@@ -512,7 +805,7 @@ scale = Vector2(0.601, 0.601)
 texture = ExtResource("14_2py18")
 
 [node name="Switch2" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
-position = Vector2(295, 22)
+position = Vector2(295, 31)
 script = ExtResource("8_l4fe4")
 platform = NodePath("../TOGGLEPLATFORM")
 
@@ -526,7 +819,7 @@ scale = Vector2(0.601, 0.601)
 texture = ExtResource("14_2py18")
 
 [node name="Switch10" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
-position = Vector2(726, -264)
+position = Vector2(726, -252)
 scale = Vector2(0.64, 0.64)
 script = ExtResource("8_l4fe4")
 platform = NodePath("../TOGGLEPLATFORM2")
@@ -542,7 +835,7 @@ scale = Vector2(0.93906254, 0.93906254)
 texture = ExtResource("9_jd0dm")
 
 [node name="Switch11" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
-position = Vector2(942, -1118)
+position = Vector2(942, -1105)
 scale = Vector2(0.64, 0.64)
 script = ExtResource("8_l4fe4")
 platform = NodePath("../TOGGLEPLATFORM3")
@@ -558,7 +851,7 @@ scale = Vector2(0.93906254, 0.93906254)
 texture = ExtResource("9_jd0dm")
 
 [node name="Switch12" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
-position = Vector2(187, -1990)
+position = Vector2(186, -1985)
 scale = Vector2(0.64, 0.64)
 script = ExtResource("8_l4fe4")
 platform = NodePath("../TOGGLEPLATFORM5")
@@ -593,7 +886,7 @@ texture = ExtResource("9_jd0dm")
 position = Vector2(843, -3851)
 scale = Vector2(0.64, 0.64)
 script = ExtResource("8_l4fe4")
-platform = NodePath("../TOGGLEPLATFORM8")
+platform = NodePath("../TOGGLEPLATFORM7")
 button = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch14"]
@@ -606,7 +899,7 @@ scale = Vector2(0.93906254, 0.93906254)
 texture = ExtResource("9_jd0dm")
 
 [node name="Switch3" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
-position = Vector2(276, -1489)
+position = Vector2(276, -1472)
 script = ExtResource("8_l4fe4")
 platform = NodePath("../TOGGLEPLATFORM4")
 
@@ -620,9 +913,10 @@ scale = Vector2(0.601, 0.601)
 texture = ExtResource("14_2py18")
 
 [node name="Switch4" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
-position = Vector2(844, -1886)
+position = Vector2(844, -1870)
 script = ExtResource("8_l4fe4")
 platform = NodePath("../TOGGLEPLATFORM4")
+playerSwitch = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch4"]
 position = Vector2(-3.5, -27)
@@ -634,9 +928,10 @@ scale = Vector2(0.601, 0.601)
 texture = ExtResource("14_2py18")
 
 [node name="Switch5" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
-position = Vector2(456, -2682)
+position = Vector2(453, -2667)
 script = ExtResource("8_l4fe4")
 platform = NodePath("../TOGGLEPLATFORM6")
+playerSwitch = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch5"]
 position = Vector2(-3.5, -27)
@@ -679,13 +974,14 @@ texture = ExtResource("14_2py18")
 position = Vector2(219, -4254)
 script = ExtResource("8_l4fe4")
 platform = NodePath("../TOGGLEPLATFORM8")
+playerSwitch = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch8"]
 position = Vector2(-3.5, -27)
 shape = SubResource("RectangleShape2D_kmyb2")
 
 [node name="SwitchNone8" type="Sprite2D" parent="Switch8"]
-position = Vector2(-356, -100)
+position = Vector2(-19, 3)
 scale = Vector2(0.601, 0.601)
 texture = ExtResource("14_2py18")
 
@@ -701,7 +997,8 @@ position = Vector2(577, 0)
 position = Vector2(552, 682)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("14_t50p6")
+stream = ExtResource("11_hc2ao")
+volume_db = -9.674
 autoplay = true
 
 [node name="TOGGLEPLATFORM" type="StaticBody2D" parent="."]
@@ -821,7 +1118,7 @@ shape = SubResource("RectangleShape2D_p2v6c")
 disabled = true
 
 [node name="Player 1" parent="." instance=ExtResource("1_2b52f")]
-position = Vector2(417, 566)
+position = Vector2(391, 600)
 collision_layer = 2
 defaultSpeed = 500
 jump_power = -650.0
@@ -837,7 +1134,7 @@ parry_knockback = Vector2(1000, -250)
 scale = Vector2(0.7130171, 0.7130171)
 
 [node name="Player 2" parent="." instance=ExtResource("1_2b52f")]
-position = Vector2(582, 565)
+position = Vector2(659, 597)
 collision_layer = 2
 defaultSpeed = 500
 jump_power = -650.0
@@ -855,6 +1152,12 @@ scale = Vector2(0.7922454, 0.7922454)
 
 [node name="ParticleChargeReady" parent="Player 2" index="5"]
 position = Vector2(-37, -2403)
+
+[node name="EndPos1" type="Sprite2D" parent="."]
+position = Vector2(54, -4493)
+
+[node name="EndPos2" type="Sprite2D" parent="."]
+position = Vector2(1073, -4496)
 
 [node name="Exit" type="Area2D" parent="."]
 position = Vector2(49, -4286)
@@ -890,7 +1193,7 @@ disabled = true
 one_way_collision = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BarrierColDetection"]
-position = Vector2(577.5, 0)
+position = Vector2(578, -21)
 shape = SubResource("RectangleShape2D_w6h7a")
 
 [node name="BarrierColDetection2" type="Area2D" parent="."]
@@ -910,7 +1213,7 @@ position = Vector2(577.5, 0)
 shape = SubResource("RectangleShape2D_w6h7a")
 
 [node name="BarrierColDetection3" type="Area2D" parent="."]
-position = Vector2(-7, -1822)
+position = Vector2(-15, -1835)
 script = ExtResource("25_jbsh1")
 
 [node name="StageBarrier" type="StaticBody2D" parent="BarrierColDetection3"]
@@ -925,6 +1228,217 @@ one_way_collision = true
 position = Vector2(577.5, 0)
 shape = SubResource("RectangleShape2D_w6h7a")
 
+[node name="ButtonGlove" type="Sprite2D" parent="."]
+position = Vector2(312.99997, 243)
+scale = Vector2(0.4, 0.4)
+
+[node name="GloveIcon6" type="TextureRect" parent="ButtonGlove"]
+offset_left = 314.0
+offset_top = 245.0
+offset_right = 394.0
+offset_bottom = 319.0017
+texture = ExtResource("30_y2ssv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ButtonGlove/GloveIcon6"]
+libraries = {
+&"": SubResource("AnimationLibrary_eibiv")
+}
+autoplay = "gloveFloat"
+
+[node name="ButtonGlove2" type="Sprite2D" parent="."]
+position = Vector2(275, -52)
+scale = Vector2(0.4, 0.4)
+
+[node name="GloveIcon6" type="TextureRect" parent="ButtonGlove2"]
+offset_left = 314.0
+offset_top = 245.0
+offset_right = 394.0
+offset_bottom = 319.0017
+texture = ExtResource("31_23fag")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ButtonGlove2/GloveIcon6"]
+libraries = {
+&"": SubResource("AnimationLibrary_eibiv")
+}
+autoplay = "gloveFloat"
+
+[node name="ButtonGlove3" type="Sprite2D" parent="."]
+position = Vector2(254.00002, -1548.0001)
+scale = Vector2(0.4, 0.4)
+
+[node name="GloveIcon6" type="TextureRect" parent="ButtonGlove3"]
+offset_left = 314.0
+offset_top = 245.0
+offset_right = 394.0
+offset_bottom = 319.0017
+texture = ExtResource("31_23fag")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ButtonGlove3/GloveIcon6"]
+libraries = {
+&"": SubResource("AnimationLibrary_eibiv")
+}
+autoplay = "gloveFloat"
+
+[node name="ButtonGlove4" type="Sprite2D" parent="."]
+position = Vector2(816.99994, -1954)
+scale = Vector2(0.4, 0.4)
+
+[node name="GloveIcon6" type="TextureRect" parent="ButtonGlove4"]
+offset_left = 314.0
+offset_top = 245.0
+offset_right = 394.0
+offset_bottom = 319.0017
+texture = ExtResource("30_y2ssv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ButtonGlove4/GloveIcon6"]
+libraries = {
+&"": SubResource("AnimationLibrary_eibiv")
+}
+autoplay = "gloveFloat"
+
+[node name="ButtonGlove5" type="Sprite2D" parent="."]
+position = Vector2(432, -2759)
+scale = Vector2(0.4, 0.4)
+
+[node name="GloveIcon6" type="TextureRect" parent="ButtonGlove5"]
+offset_left = 314.0
+offset_top = 245.0
+offset_right = 394.0
+offset_bottom = 319.0017
+texture = ExtResource("30_y2ssv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ButtonGlove5/GloveIcon6"]
+libraries = {
+&"": SubResource("AnimationLibrary_eibiv")
+}
+autoplay = "gloveFloat"
+
+[node name="ButtonGlove6" type="Sprite2D" parent="."]
+position = Vector2(47, -3255)
+scale = Vector2(0.4, 0.4)
+
+[node name="GloveIcon6" type="TextureRect" parent="ButtonGlove6"]
+offset_left = 314.0
+offset_top = 245.0
+offset_right = 394.0
+offset_bottom = 319.0017
+texture = ExtResource("31_23fag")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ButtonGlove6/GloveIcon6"]
+libraries = {
+&"": SubResource("AnimationLibrary_eibiv")
+}
+autoplay = "gloveFloat"
+
+[node name="ButtonGlove7" type="Sprite2D" parent="."]
+position = Vector2(183.99998, -4106)
+scale = Vector2(0.4, 0.4)
+
+[node name="GloveIcon6" type="TextureRect" parent="ButtonGlove7"]
+offset_left = 314.0
+offset_top = 245.0
+offset_right = 394.0
+offset_bottom = 319.0017
+texture = ExtResource("31_23fag")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ButtonGlove7/GloveIcon6"]
+libraries = {
+&"": SubResource("AnimationLibrary_eibiv")
+}
+autoplay = "gloveFloat"
+
+[node name="ButtonGlove8" type="Sprite2D" parent="."]
+position = Vector2(186, -4335)
+scale = Vector2(0.4, 0.4)
+
+[node name="GloveIcon6" type="TextureRect" parent="ButtonGlove8"]
+offset_left = 314.0
+offset_top = 245.0
+offset_right = 394.0
+offset_bottom = 319.0017
+texture = ExtResource("30_y2ssv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ButtonGlove8/GloveIcon6"]
+libraries = {
+&"": SubResource("AnimationLibrary_eibiv")
+}
+autoplay = "gloveFloat"
+
+[node name="BeltLeft" type="Area2D" parent="."]
+position = Vector2(34, -1769.9999)
+scale = Vector2(0.601, 0.601)
+script = ExtResource("32_eibiv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeltLeft"]
+position = Vector2(59.891907, 43.253296)
+shape = SubResource("RectangleShape2D_m4hqf")
+
+[node name="TextureRect" type="TextureRect" parent="BeltLeft"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("33_6a7d4")
+
+[node name="Belt" type="Sprite2D" parent="."]
+position = Vector2(588, -5014)
+scale = Vector2(0.601, 0.601)
+
+[node name="BlueSideBelt" type="Sprite2D" parent="Belt"]
+position = Vector2(1034.9417, 3.3274767)
+texture = ExtResource("34_hc2ao")
+
+[node name="RedSideBelt" type="Sprite2D" parent="Belt"]
+position = Vector2(-1051.5807, 4.991375)
+texture = ExtResource("33_6a7d4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Belt"]
+libraries = {
+&"": SubResource("AnimationLibrary_w6h7a")
+}
+
+[node name="FullBelt" type="Sprite2D" parent="."]
+position = Vector2(588, -5083)
+scale = Vector2(0.601, 0.601)
+texture = ExtResource("34_p2v6c")
+
+[node name="Glowing" type="Sprite2D" parent="FullBelt"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1.6638794, 1.6640625)
+texture = ExtResource("36_m4hqf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FullBelt"]
+libraries = {
+&"": SubResource("AnimationLibrary_m4hqf")
+}
+
+[node name="Referee" type="Sprite2D" parent="."]
+position = Vector2(567.00006, -4501.0005)
+scale = Vector2(0.536, 0.536)
+texture = ExtResource("35_hc2ao")
+
+[node name="AudioController" type="Node2D" parent="."]
+script = ExtResource("37_l70lb")
+
+[node name="Punch" type="AudioStreamPlayer" parent="AudioController"]
+stream = ExtResource("38_m4hqf")
+volume_db = -17.719
+
+[node name="Jump" type="AudioStreamPlayer" parent="AudioController"]
+stream = ExtResource("39_n67ls")
+
+[node name="BlackFade" type="ColorRect" parent="."]
+z_index = 2
+offset_left = -85.0
+offset_top = -5041.0
+offset_right = 1163.0
+offset_bottom = -4332.0
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BlackFade"]
+libraries = {
+&"": SubResource("AnimationLibrary_knwns")
+}
+
 [connection signal="area_entered" from="Ladde" to="Ladde" method="_on_area_entered"]
 [connection signal="area_exited" from="Ladde" to="Ladde" method="_on_area_exited"]
 [connection signal="area_entered" from="Ladde2" to="Ladde2" method="_on_area_entered"]
@@ -933,6 +1447,7 @@ shape = SubResource("RectangleShape2D_w6h7a")
 [connection signal="area_entered" from="BarrierColDetection" to="BarrierColDetection" method="_on_area_entered"]
 [connection signal="area_entered" from="BarrierColDetection2" to="BarrierColDetection2" method="_on_area_entered"]
 [connection signal="area_entered" from="BarrierColDetection3" to="BarrierColDetection3" method="_on_area_entered"]
+[connection signal="area_entered" from="BeltLeft" to="BeltLeft" method="_on_area_entered"]
 
 [editable path="Player 1"]
 [editable path="Player 2"]

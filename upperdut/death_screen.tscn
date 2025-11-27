@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://chbjj3wabem5p"]
+
+[ext_resource type="Texture2D" uid="uid://bg58vsv4udy44" path="res://Assets/Sprite Sheets/game_over1.png" id="1_hhlqb"]
+[ext_resource type="Texture2D" uid="uid://bvx0e0fdhd8l0" path="res://Assets/Sprite Sheets/restart.png" id="2_f562y"]
+[ext_resource type="Texture2D" uid="uid://dpahkcbtu6ceu" path="res://Assets/Sprite Sheets/restart_onhover.png" id="3_s44ck"]
+[ext_resource type="Script" uid="uid://cxeb0g1p7qnrw" path="res://death_screen.gd" id="4_f562y"]
+[ext_resource type="Texture2D" uid="uid://cgnji53616ksp" path="res://Assets/Sprite Sheets/quit.png" id="4_nus4h"]
+[ext_resource type="Texture2D" uid="uid://dde2kyotd7vkd" path="res://Assets/Sprite Sheets/quit_onhover.png" id="5_b1ui3"]
+[ext_resource type="Texture2D" uid="uid://b4ypmg6xneb84" path="res://Assets/Sprite Sheets/referee.png" id="7_s44ck"]
+[ext_resource type="AudioStream" uid="uid://bb4hqp4v2m7sq" path="res://Assets/catch-my-cartoon-old-version-218545.mp3" id="8_nus4h"]
+
+[node name="Death_Screen" type="Node2D"]
+
+[node name="GameOver1" type="Sprite2D" parent="."]
+position = Vector2(574, 324)
+scale = Vector2(0.601, 0.601)
+texture = ExtResource("1_hhlqb")
+
+[node name="Restart" type="TextureButton" parent="."]
+offset_left = 469.0
+offset_top = 407.0
+offset_right = 816.0
+offset_bottom = 503.0
+scale = Vector2(0.601, 0.601)
+texture_normal = ExtResource("2_f562y")
+texture_pressed = ExtResource("3_s44ck")
+texture_hover = ExtResource("3_s44ck")
+script = ExtResource("4_f562y")
+
+[node name="Quit" type="TextureButton" parent="."]
+offset_left = 469.0
+offset_top = 482.0
+offset_right = 816.0
+offset_bottom = 578.0
+scale = Vector2(0.601, 0.601)
+texture_normal = ExtResource("4_nus4h")
+texture_pressed = ExtResource("5_b1ui3")
+texture_hover = ExtResource("5_b1ui3")
+
+[node name="Referee" type="Sprite2D" parent="."]
+position = Vector2(141.00002, 171)
+scale = Vector2(1.2800019, 1.2800019)
+texture = ExtResource("7_s44ck")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_nus4h")
+autoplay = true
