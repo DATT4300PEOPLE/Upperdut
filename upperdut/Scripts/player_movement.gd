@@ -2,8 +2,7 @@ extends CharacterBody2D
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
 @onready var player_hitbox: player_hitbox = $PlayerSprite/BoxingGlove/player_hitbox
 @onready var player_hurtbox: player_hurtbox = $player_hurtbox
-@onready var p2: CharacterBody2D = $"../Player 2"
-@onready var p1: CharacterBody2D = $"."
+
 @onready var punch: AudioStreamPlayer = $"../AudioController/Punch"
 @onready var jump: AudioStreamPlayer = $"../AudioController/Jump"
 
@@ -12,7 +11,8 @@ extends CharacterBody2D
 @onready var boxing_glove: AnimatedSprite2D = $PlayerSprite/BoxingGlove
 @onready var charge_anim: GPUParticles2D = $ParticleCharge/GPUParticles2D
 @onready var charge_indicator: GPUParticles2D = $ParticleChargeReady/GPUParticles2D
-
+@export var p1: CharacterBody2D
+@export var p2: CharacterBody2D
 @export var defaultSpeed = 670
 @export var jump_power: float # HAS TO BE NEGATIVE (FORGOT) ALSO ADJUSTABLE BY GLOBAL
 @export var player_damage = 4

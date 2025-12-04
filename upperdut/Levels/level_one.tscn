@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://cm8nsbc1ub008"]
+[gd_scene load_steps=88 format=3 uid="uid://cm8nsbc1ub008"]
 
 [ext_resource type="PackedScene" uid="uid://pbpojmiw1dxs" path="res://Sprites/player_sprite.tscn" id="1_2b52f"]
 [ext_resource type="Texture2D" uid="uid://cgfm8fugdugg5" path="res://Assets/Level Assets/Stages/lvl1.png" id="1_nph2v"]
@@ -136,7 +136,10 @@ size = Vector2(59.5, 103)
 size = Vector2(1175, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6h7a"]
-size = Vector2(1175, 20)
+size = Vector2(1175, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n67ls"]
+size = Vector2(320, 32)
 
 [sub_resource type="Animation" id="Animation_xymjv"]
 length = 0.001
@@ -794,6 +797,7 @@ debug_color = Color(0.84424186, 0.0010430897, 0.9147864, 0.41960785)
 position = Vector2(336, 326)
 script = ExtResource("8_l4fe4")
 platform = NodePath("../TOGGLEPLATFORM")
+max_duration = 10.0
 playerSwitch = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch"]
@@ -804,6 +808,14 @@ shape = SubResource("RectangleShape2D_kmyb2")
 position = Vector2(-6, -8)
 scale = Vector2(0.601, 0.601)
 texture = ExtResource("14_2py18")
+
+[node name="TimerText" type="RichTextLabel" parent="Switch"]
+offset_left = 36.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 49.0
+text = "5"
+metadata/_edit_use_anchors_ = true
 
 [node name="Switch2" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(295, 31)
@@ -818,6 +830,14 @@ shape = SubResource("RectangleShape2D_kmyb2")
 position = Vector2(-5, -9)
 scale = Vector2(0.601, 0.601)
 texture = ExtResource("14_2py18")
+
+[node name="TimerText" type="RichTextLabel" parent="Switch2"]
+offset_left = 36.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 49.0
+text = "5"
+metadata/_edit_use_anchors_ = true
 
 [node name="Switch10" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(726, -252)
@@ -835,6 +855,14 @@ position = Vector2(0, -15.625)
 scale = Vector2(0.93906254, 0.93906254)
 texture = ExtResource("9_jd0dm")
 
+[node name="TimerText" type="RichTextLabel" parent="Switch10"]
+offset_left = 36.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 49.0
+text = "5"
+metadata/_edit_use_anchors_ = true
+
 [node name="Switch11" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(942, -1105)
 scale = Vector2(0.64, 0.64)
@@ -850,6 +878,14 @@ shape = SubResource("RectangleShape2D_kmyb2")
 position = Vector2(0, -15.625)
 scale = Vector2(0.93906254, 0.93906254)
 texture = ExtResource("9_jd0dm")
+
+[node name="TimerText" type="RichTextLabel" parent="Switch11"]
+offset_left = 36.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 49.0
+text = "5"
+metadata/_edit_use_anchors_ = true
 
 [node name="Switch12" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(186, -1985)
@@ -867,6 +903,14 @@ position = Vector2(0, -15.625)
 scale = Vector2(0.93906254, 0.93906254)
 texture = ExtResource("9_jd0dm")
 
+[node name="TimerText" type="RichTextLabel" parent="Switch12"]
+offset_left = 36.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 49.0
+text = "5"
+metadata/_edit_use_anchors_ = true
+
 [node name="Switch15" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(809, -2467)
 scale = Vector2(0.64, 0.64)
@@ -882,6 +926,14 @@ shape = SubResource("RectangleShape2D_kmyb2")
 position = Vector2(0, -15.625)
 scale = Vector2(0.93906254, 0.93906254)
 texture = ExtResource("9_jd0dm")
+
+[node name="TimerText" type="RichTextLabel" parent="Switch15"]
+offset_left = 36.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 49.0
+text = "5"
+metadata/_edit_use_anchors_ = true
 
 [node name="Switch13" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(626, -3287)
@@ -899,6 +951,14 @@ position = Vector2(0, -12.5)
 scale = Vector2(0.93906254, 0.93906254)
 texture = ExtResource("9_jd0dm")
 
+[node name="TimerText" type="RichTextLabel" parent="Switch13"]
+offset_left = 36.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 49.0
+text = "5"
+metadata/_edit_use_anchors_ = true
+
 [node name="Switch14" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(843, -3851)
 scale = Vector2(0.64, 0.64)
@@ -915,6 +975,14 @@ position = Vector2(0, -15.625)
 scale = Vector2(0.93906254, 0.93906254)
 texture = ExtResource("9_jd0dm")
 
+[node name="TimerText" type="RichTextLabel" parent="Switch14"]
+offset_left = 36.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 49.0
+text = "5"
+metadata/_edit_use_anchors_ = true
+
 [node name="Switch3" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(276, -1472)
 script = ExtResource("8_l4fe4")
@@ -928,6 +996,14 @@ shape = SubResource("RectangleShape2D_kmyb2")
 position = Vector2(-6, -2)
 scale = Vector2(0.601, 0.601)
 texture = ExtResource("14_2py18")
+
+[node name="TimerText" type="RichTextLabel" parent="Switch3"]
+offset_left = 36.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 49.0
+text = "5"
+metadata/_edit_use_anchors_ = true
 
 [node name="Switch4" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(844, -1870)
@@ -943,6 +1019,14 @@ shape = SubResource("RectangleShape2D_kmyb2")
 position = Vector2(-12, -10)
 scale = Vector2(0.601, 0.601)
 texture = ExtResource("14_2py18")
+
+[node name="TimerText" type="RichTextLabel" parent="Switch4"]
+offset_left = 36.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 49.0
+text = "5"
+metadata/_edit_use_anchors_ = true
 
 [node name="Switch5" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(453, -2667)
@@ -960,6 +1044,14 @@ position = Vector2(-4, -16)
 scale = Vector2(0.601, 0.601)
 texture = ExtResource("14_2py18")
 
+[node name="TimerText" type="RichTextLabel" parent="Switch5"]
+offset_left = 36.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 49.0
+text = "5"
+metadata/_edit_use_anchors_ = true
+
 [node name="Switch6" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(46, -3159)
 script = ExtResource("8_l4fe4")
@@ -975,6 +1067,14 @@ position = Vector2(16, -20.999756)
 scale = Vector2(0.601, 0.601)
 texture = ExtResource("14_2py18")
 
+[node name="TimerText" type="RichTextLabel" parent="Switch6"]
+offset_left = 36.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 49.0
+text = "5"
+metadata/_edit_use_anchors_ = true
+
 [node name="Switch7" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(226, -4029)
 script = ExtResource("8_l4fe4")
@@ -988,6 +1088,14 @@ shape = SubResource("RectangleShape2D_kmyb2")
 position = Vector2(-27, 1.0002441)
 scale = Vector2(0.601, 0.601)
 texture = ExtResource("14_2py18")
+
+[node name="TimerText" type="RichTextLabel" parent="Switch7"]
+offset_left = 36.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 49.0
+text = "5"
+metadata/_edit_use_anchors_ = true
 
 [node name="Switch8" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(219, -4254)
@@ -1003,6 +1111,14 @@ shape = SubResource("RectangleShape2D_kmyb2")
 position = Vector2(-19, 3)
 scale = Vector2(0.601, 0.601)
 texture = ExtResource("14_2py18")
+
+[node name="TimerText" type="RichTextLabel" parent="Switch8"]
+offset_left = 36.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 49.0
+text = "5"
+metadata/_edit_use_anchors_ = true
 
 [node name="PunchingBag321" type="Sprite2D" parent="."]
 position = Vector2(123, 605)
@@ -1136,9 +1252,11 @@ scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_p2v6c")
 disabled = true
 
-[node name="Player 1" parent="." instance=ExtResource("1_2b52f")]
-position = Vector2(649, 555)
+[node name="Player 1" parent="." node_paths=PackedStringArray("p1", "p2") instance=ExtResource("1_2b52f")]
+position = Vector2(645, 582)
 collision_layer = 2
+p1 = NodePath(".")
+p2 = NodePath("../Player 2")
 defaultSpeed = 500
 jump_power = -650.0
 player_damage = 15
@@ -1152,9 +1270,11 @@ parry_knockback = Vector2(1000, -250)
 [node name="CollisionShape2D" parent="Player 1" index="0"]
 scale = Vector2(0.7130171, 0.7130171)
 
-[node name="Player 2" parent="." instance=ExtResource("1_2b52f")]
-position = Vector2(434, 564)
+[node name="Player 2" parent="." node_paths=PackedStringArray("p1", "p2") instance=ExtResource("1_2b52f")]
+position = Vector2(430, 591)
 collision_layer = 2
+p1 = NodePath("../Player 1")
+p2 = NodePath(".")
 defaultSpeed = 500
 jump_power = -650.0
 player_damage = 15
@@ -1188,9 +1308,9 @@ shape = SubResource("RectangleShape2D_hc2ao")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(581, 318)
-offset = Vector2(0, -157.92)
+offset = Vector2(0, -124.2)
 script = ExtResource("12_lhaxc")
-min_zoom = Vector2(0.65, 0.65)
+min_zoom = Vector2(0.55, 0.55)
 max_zoom = Vector2(1, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
@@ -1201,7 +1321,7 @@ visibility_layer = 3
 [node name="Pause Menu" parent="Camera2D/CanvasLayer" instance=ExtResource("23_afeaf")]
 
 [node name="BarrierColDetection" type="Area2D" parent="."]
-position = Vector2(9, -530)
+position = Vector2(9, -519)
 script = ExtResource("25_jbsh1")
 
 [node name="StageBarrier" type="StaticBody2D" parent="BarrierColDetection"]
@@ -1212,12 +1332,43 @@ shape = SubResource("RectangleShape2D_l70lb")
 disabled = true
 one_way_collision = true
 
+[node name="InvisibleBarrier" type="ColorRect" parent="BarrierColDetection/StageBarrier"]
+visible = false
+offset_top = -30.0
+offset_right = 1167.0
+offset_bottom = 17.0
+color = Color(1, 1, 1, 0.34117648)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BarrierColDetection"]
 position = Vector2(578, -21)
 shape = SubResource("RectangleShape2D_w6h7a")
 
+[node name="BarrierColDetection4" type="Area2D" parent="."]
+position = Vector2(9, -1435)
+script = ExtResource("25_jbsh1")
+
+[node name="StageBarrier" type="StaticBody2D" parent="BarrierColDetection4"]
+
+[node name="barrier_collider" type="CollisionShape2D" parent="BarrierColDetection4/StageBarrier"]
+position = Vector2(577.5, 0)
+shape = SubResource("RectangleShape2D_l70lb")
+disabled = true
+one_way_collision = true
+
+[node name="InvisibleBarrier" type="ColorRect" parent="BarrierColDetection4/StageBarrier"]
+visible = false
+offset_top = -30.0
+offset_right = 1167.0
+offset_bottom = 17.0
+color = Color(1, 1, 1, 0.34117648)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarrierColDetection4"]
+position = Vector2(387, -17)
+shape = SubResource("RectangleShape2D_n67ls")
+
 [node name="BarrierColDetection3" type="Area2D" parent="."]
-position = Vector2(-15, -1835)
+position = Vector2(-15, -1804)
 script = ExtResource("25_jbsh1")
 
 [node name="StageBarrier" type="StaticBody2D" parent="BarrierColDetection3"]
@@ -1228,8 +1379,15 @@ shape = SubResource("RectangleShape2D_l70lb")
 disabled = true
 one_way_collision = true
 
+[node name="InvisibleBarrier" type="ColorRect" parent="BarrierColDetection3/StageBarrier"]
+visible = false
+offset_top = -30.0
+offset_right = 1167.0
+offset_bottom = 17.0
+color = Color(1, 1, 1, 0.34117648)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BarrierColDetection3"]
-position = Vector2(577.5, 0)
+position = Vector2(577.5, -8)
 shape = SubResource("RectangleShape2D_w6h7a")
 
 [node name="ButtonGlove" type="Sprite2D" parent="."]
@@ -1506,6 +1664,7 @@ libraries = {
 [connection signal="area_exited" from="Ladde2" to="Ladde2" method="_on_area_exited"]
 [connection signal="area_entered" from="Exit" to="Exit" method="_on_area_entered"]
 [connection signal="area_entered" from="BarrierColDetection" to="BarrierColDetection" method="_on_area_entered"]
+[connection signal="area_entered" from="BarrierColDetection4" to="BarrierColDetection4" method="_on_area_entered"]
 [connection signal="area_entered" from="BarrierColDetection3" to="BarrierColDetection3" method="_on_area_entered"]
 [connection signal="area_entered" from="BeltLeft" to="BeltLeft" method="_on_area_entered"]
 [connection signal="area_entered" from="BeltRight" to="BeltRight" method="_on_area_entered"]
