@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cgnji53616ksp" path="res://Assets/Sprite Sheets/quit.png" id="4_nus4h"]
 [ext_resource type="Texture2D" uid="uid://dde2kyotd7vkd" path="res://Assets/Sprite Sheets/quit_onhover.png" id="5_b1ui3"]
 [ext_resource type="Texture2D" uid="uid://b4ypmg6xneb84" path="res://Assets/Sprite Sheets/referee.png" id="7_s44ck"]
-[ext_resource type="AudioStream" uid="uid://bb4hqp4v2m7sq" path="res://Assets/catch-my-cartoon-old-version-218545.mp3" id="8_nus4h"]
+[ext_resource type="AudioStream" uid="uid://6iyf8koigv3e" path="res://Assets/Sound_Effects/euphoric-uplift-breakbeat-old-school-breakbeat-274977.mp3" id="8_nus4h"]
 
 [node name="Death_Screen" type="Node2D"]
 

@@ -6,6 +6,7 @@ extends Area2D
 @onready var belt_combine_anim: AnimationPlayer = $"../Belt/AnimationPlayer"
 @onready var belt_drop_anim: AnimationPlayer = $"../FullBelt/AnimationPlayer"
 @onready var black_fade_anim: AnimationPlayer = $"../BlackFade/AnimationPlayer"
+@onready var camera_2d: Camera2D = $"../Camera2D"
 
 
 func _on_area_entered(area: Area2D) -> void:
@@ -13,6 +14,7 @@ func _on_area_entered(area: Area2D) -> void:
 		player_1.position = end_pos_1.position
 		player_2.position = end_pos_2.position
 		PlayerData.Game_Over = true
+		camera_2d.position = Vector2(581, -4725.0)
 		belt_combine_anim.play("BeltTogether")
 		belt_drop_anim.play("BeltSlide")
 		black_fade_anim.play("FadeInBlack")

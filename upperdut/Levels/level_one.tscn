@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://cm8nsbc1ub008"]
+[gd_scene load_steps=87 format=3 uid="uid://cm8nsbc1ub008"]
 
 [ext_resource type="PackedScene" uid="uid://pbpojmiw1dxs" path="res://Sprites/player_sprite.tscn" id="1_2b52f"]
 [ext_resource type="Texture2D" uid="uid://cgfm8fugdugg5" path="res://Assets/Level Assets/Stages/lvl1.png" id="1_nph2v"]
@@ -40,6 +40,7 @@
 [ext_resource type="Script" uid="uid://c101fcvyx0lym" path="res://Levels/audio_controller.gd" id="37_l70lb"]
 [ext_resource type="AudioStream" uid="uid://ds3lc15frw2am" path="res://Assets/Sound_Effects/punch-416719.mp3" id="38_m4hqf"]
 [ext_resource type="AudioStream" uid="uid://dmi16c60u3nxy" path="res://Assets/Sound_Effects/swing-whoosh-110410.mp3" id="39_n67ls"]
+[ext_resource type="AudioStream" uid="uid://diwwgdx8ttfl3" path="res://Assets/Sound_Effects/switch.ogg" id="40_n67ls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18c4h"]
 size = Vector2(18.661518, 61.499985)
@@ -93,13 +94,13 @@ size = Vector2(47.659275, 150)
 size = Vector2(55.703026, 181.24951)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jd0dm"]
-size = Vector2(114.62267, 174.99951)
+size = Vector2(99.138885, 174.99951)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q1nax"]
 size = Vector2(26.343315, 181.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whtlt"]
-size = Vector2(112.5, 312)
+size = Vector2(112.5, 284)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmyb2"]
 size = Vector2(217, 134)
@@ -137,6 +138,21 @@ size = Vector2(1175, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6h7a"]
 size = Vector2(1175, 20)
 
+[sub_resource type="Animation" id="Animation_xymjv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(314, 245)]
+}
+
 [sub_resource type="Animation" id="Animation_23fag"]
 resource_name = "gloveFloat"
 length = 1.8
@@ -152,21 +168,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 2), Vector2(0, -2), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_xymjv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(314, 245)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eibiv"]
@@ -666,7 +667,7 @@ position = Vector2(-108, -610)
 scale = Vector2(0.08, 0.16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform12"]
-position = Vector2(3962.5, -3281.25)
+position = Vector2(3400, -3312.5)
 scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_jd0dm")
 
@@ -675,7 +676,7 @@ position = Vector2(-379, -1131)
 scale = Vector2(0.08, 0.16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform13"]
-position = Vector2(3962.5, -3281.25)
+position = Vector2(3400, -3312.5)
 scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_jd0dm")
 
@@ -684,7 +685,7 @@ position = Vector2(810, -813)
 scale = Vector2(0.08, 0.16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform14"]
-position = Vector2(4075, -3281.25)
+position = Vector2(4700, -3312.5)
 scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_jd0dm")
 
@@ -720,22 +721,22 @@ position = Vector2(522, -1897)
 scale = Vector2(0.08, 0.16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform18"]
-position = Vector2(3962.5, -3281.25)
+position = Vector2(4562.5, -3306.25)
 scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_jd0dm")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform18"]
-position = Vector2(-7425.001, -7637.5005)
+position = Vector2(-7875, -7650.0005)
 scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_jd0dm")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Platform18"]
-position = Vector2(-5362.5, -9475.001)
+position = Vector2(-5925, -9487.501)
 scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_jd0dm")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Platform18"]
-position = Vector2(8125.001, -13381.251)
+position = Vector2(8787.501, -13406.251)
 scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_jd0dm")
 
@@ -749,13 +750,13 @@ position = Vector2(113, -2599)
 scale = Vector2(0.16000122, 0.16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform19"]
-position = Vector2(3987.4697, -3281.25)
+position = Vector2(4587.4653, -3281.25)
 scale = Vector2(62.159992, 1)
 shape = SubResource("RectangleShape2D_jd0dm")
 
 [node name="Platform33" type="StaticBody2D" parent="."]
 position = Vector2(561, -4428)
-scale = Vector2(0.16000122, 0.16)
+scale = Vector2(0.24000183, 0.16127616)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform33"]
 position = Vector2(137.49902, 0)
@@ -785,7 +786,7 @@ position = Vector2(-1389, -2596)
 script = ExtResource("7_t50p6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ladde2"]
-position = Vector2(1634, -391)
+position = Vector2(1634, -377)
 shape = SubResource("RectangleShape2D_whtlt")
 debug_color = Color(0.84424186, 0.0010430897, 0.9147864, 0.41960785)
 
@@ -866,6 +867,22 @@ position = Vector2(0, -15.625)
 scale = Vector2(0.93906254, 0.93906254)
 texture = ExtResource("9_jd0dm")
 
+[node name="Switch15" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
+position = Vector2(809, -2467)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("8_l4fe4")
+platform = NodePath("../TOGGLEPLATFORM5")
+button = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Switch15"]
+position = Vector2(-3.5, -27)
+shape = SubResource("RectangleShape2D_kmyb2")
+
+[node name="ButtonOff" type="Sprite2D" parent="Switch15"]
+position = Vector2(0, -15.625)
+scale = Vector2(0.93906254, 0.93906254)
+texture = ExtResource("9_jd0dm")
+
 [node name="Switch13" type="Area2D" parent="." node_paths=PackedStringArray("platform")]
 position = Vector2(626, -3287)
 scale = Vector2(0.64, 0.64)
@@ -931,6 +948,7 @@ texture = ExtResource("14_2py18")
 position = Vector2(453, -2667)
 script = ExtResource("8_l4fe4")
 platform = NodePath("../TOGGLEPLATFORM6")
+switchOff = true
 playerSwitch = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch5"]
@@ -946,6 +964,7 @@ texture = ExtResource("14_2py18")
 position = Vector2(46, -3159)
 script = ExtResource("8_l4fe4")
 platform = NodePath("../TOGGLEPLATFORM6")
+switchOff = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Switch6"]
 position = Vector2(-3.5, -27)
@@ -1003,7 +1022,7 @@ autoplay = true
 
 [node name="TOGGLEPLATFORM" type="StaticBody2D" parent="."]
 visible = false
-position = Vector2(633.99994, 198.99998)
+position = Vector2(636, 190)
 scale = Vector2(0.601, 0.601)
 
 [node name="Lvl11" type="Sprite2D" parent="TOGGLEPLATFORM"]
@@ -1017,7 +1036,7 @@ disabled = true
 
 [node name="TOGGLEPLATFORM2" type="StaticBody2D" parent="."]
 visible = false
-position = Vector2(576, -118.000015)
+position = Vector2(577, -128)
 scale = Vector2(0.601, 0.601)
 
 [node name="Lvl11" type="Sprite2D" parent="TOGGLEPLATFORM2"]
@@ -1031,7 +1050,7 @@ disabled = true
 
 [node name="TOGGLEPLATFORM3" type="StaticBody2D" parent="."]
 visible = false
-position = Vector2(424, -742)
+position = Vector2(424, -753)
 scale = Vector2(0.601, 0.601)
 
 [node name="Lvl11" type="Sprite2D" parent="TOGGLEPLATFORM3"]
@@ -1046,7 +1065,7 @@ disabled = true
 
 [node name="TOGGLEPLATFORM4" type="StaticBody2D" parent="."]
 visible = false
-position = Vector2(589, -1631.9999)
+position = Vector2(589, -1643)
 scale = Vector2(0.601, 0.601)
 
 [node name="Lvl11" type="Sprite2D" parent="TOGGLEPLATFORM4"]
@@ -1061,7 +1080,7 @@ disabled = true
 
 [node name="TOGGLEPLATFORM5" type="StaticBody2D" parent="."]
 visible = false
-position = Vector2(465, -2223)
+position = Vector2(464, -2239)
 scale = Vector2(0.601, 0.601)
 
 [node name="Lvl11" type="Sprite2D" parent="TOGGLEPLATFORM5"]
@@ -1083,13 +1102,13 @@ position = Vector2(-3.3277874, 0)
 texture = ExtResource("22_jd0dm")
 
 [node name="Collision" type="CollisionShape2D" parent="TOGGLEPLATFORM6"]
-position = Vector2(-4.15979, 3.734375)
+position = Vector2(-4.15979, 7.0620117)
 scale = Vector2(62.159996, 1)
 shape = SubResource("RectangleShape2D_eibiv")
 
 [node name="TOGGLEPLATFORM7" type="StaticBody2D" parent="."]
 visible = false
-position = Vector2(465, -3594.9998)
+position = Vector2(466, -3600.9998)
 scale = Vector2(0.601, 0.601)
 
 [node name="Lvl11" type="Sprite2D" parent="TOGGLEPLATFORM7"]
@@ -1104,7 +1123,7 @@ disabled = true
 
 [node name="TOGGLEPLATFORM8" type="StaticBody2D" parent="."]
 visible = false
-position = Vector2(543, -4020)
+position = Vector2(546, -4025)
 scale = Vector2(0.601, 0.601)
 
 [node name="Lvl11" type="Sprite2D" parent="TOGGLEPLATFORM8"]
@@ -1118,7 +1137,7 @@ shape = SubResource("RectangleShape2D_p2v6c")
 disabled = true
 
 [node name="Player 1" parent="." instance=ExtResource("1_2b52f")]
-position = Vector2(391, 600)
+position = Vector2(649, 555)
 collision_layer = 2
 defaultSpeed = 500
 jump_power = -650.0
@@ -1134,7 +1153,7 @@ parry_knockback = Vector2(1000, -250)
 scale = Vector2(0.7130171, 0.7130171)
 
 [node name="Player 2" parent="." instance=ExtResource("1_2b52f")]
-position = Vector2(659, 597)
+position = Vector2(434, 564)
 collision_layer = 2
 defaultSpeed = 500
 jump_power = -650.0
@@ -1169,8 +1188,9 @@ shape = SubResource("RectangleShape2D_hc2ao")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(581, 318)
+offset = Vector2(0, -157.92)
 script = ExtResource("12_lhaxc")
-min_zoom = Vector2(0.45, 0.45)
+min_zoom = Vector2(0.65, 0.65)
 max_zoom = Vector2(1, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
@@ -1194,22 +1214,6 @@ one_way_collision = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BarrierColDetection"]
 position = Vector2(578, -21)
-shape = SubResource("RectangleShape2D_w6h7a")
-
-[node name="BarrierColDetection2" type="Area2D" parent="."]
-position = Vector2(-7, -1336)
-script = ExtResource("25_jbsh1")
-
-[node name="StageBarrier" type="StaticBody2D" parent="BarrierColDetection2"]
-
-[node name="barrier_collider" type="CollisionShape2D" parent="BarrierColDetection2/StageBarrier"]
-position = Vector2(577.5, 0)
-shape = SubResource("RectangleShape2D_l70lb")
-disabled = true
-one_way_collision = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BarrierColDetection2"]
-position = Vector2(577.5, 0)
 shape = SubResource("RectangleShape2D_w6h7a")
 
 [node name="BarrierColDetection3" type="Area2D" parent="."]
@@ -1365,7 +1369,7 @@ libraries = {
 autoplay = "gloveFloat"
 
 [node name="BeltLeft" type="Area2D" parent="."]
-position = Vector2(34, -1769.9999)
+position = Vector2(35, -1766)
 scale = Vector2(0.601, 0.601)
 script = ExtResource("32_eibiv")
 
@@ -1377,6 +1381,47 @@ shape = SubResource("RectangleShape2D_m4hqf")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("33_6a7d4")
+
+[node name="GloveIcon6" type="TextureRect" parent="BeltLeft"]
+offset_left = 314.0
+offset_top = 245.0
+offset_right = 394.0
+offset_bottom = 319.0017
+texture = ExtResource("31_23fag")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BeltLeft/GloveIcon6"]
+libraries = {
+&"": SubResource("AnimationLibrary_eibiv")
+}
+autoplay = "gloveFloat"
+
+[node name="BeltRight" type="Area2D" parent="."]
+position = Vector2(661, -4347)
+scale = Vector2(0.601, 0.601)
+script = ExtResource("32_eibiv")
+BELT = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeltRight"]
+position = Vector2(59.891907, 43.253296)
+shape = SubResource("RectangleShape2D_m4hqf")
+
+[node name="TextureRect" type="TextureRect" parent="BeltRight"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("33_6a7d4")
+
+[node name="GloveIcon6" type="TextureRect" parent="BeltRight"]
+offset_left = 314.0
+offset_top = 245.0
+offset_right = 394.0
+offset_bottom = 319.0017
+texture = ExtResource("30_y2ssv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BeltRight/GloveIcon6"]
+libraries = {
+&"": SubResource("AnimationLibrary_eibiv")
+}
+autoplay = "gloveFloat"
 
 [node name="Belt" type="Sprite2D" parent="."]
 position = Vector2(588, -5014)
@@ -1423,15 +1468,31 @@ script = ExtResource("37_l70lb")
 stream = ExtResource("38_m4hqf")
 volume_db = -17.719
 
+[node name="Switch" type="AudioStreamPlayer" parent="AudioController"]
+stream = ExtResource("40_n67ls")
+volume_db = -14.637
+
 [node name="Jump" type="AudioStreamPlayer" parent="AudioController"]
 stream = ExtResource("39_n67ls")
 
+[node name="BlueIcon" type="Sprite2D" parent="."]
+position = Vector2(824.60004, 466)
+rotation = -1.5707964
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("30_y2ssv")
+
+[node name="RedIcon" type="Sprite2D" parent="."]
+position = Vector2(492.59998, 466)
+rotation = 1.5707964
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("31_23fag")
+
 [node name="BlackFade" type="ColorRect" parent="."]
 z_index = 2
-offset_left = -85.0
-offset_top = -5041.0
-offset_right = 1163.0
-offset_bottom = -4332.0
+offset_left = -33.0
+offset_top = -5100.0
+offset_right = 1215.0
+offset_bottom = -4391.0
 color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BlackFade"]
@@ -1445,9 +1506,9 @@ libraries = {
 [connection signal="area_exited" from="Ladde2" to="Ladde2" method="_on_area_exited"]
 [connection signal="area_entered" from="Exit" to="Exit" method="_on_area_entered"]
 [connection signal="area_entered" from="BarrierColDetection" to="BarrierColDetection" method="_on_area_entered"]
-[connection signal="area_entered" from="BarrierColDetection2" to="BarrierColDetection2" method="_on_area_entered"]
 [connection signal="area_entered" from="BarrierColDetection3" to="BarrierColDetection3" method="_on_area_entered"]
 [connection signal="area_entered" from="BeltLeft" to="BeltLeft" method="_on_area_entered"]
+[connection signal="area_entered" from="BeltRight" to="BeltRight" method="_on_area_entered"]
 
 [editable path="Player 1"]
 [editable path="Player 2"]

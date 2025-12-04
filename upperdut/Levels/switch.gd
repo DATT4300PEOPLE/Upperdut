@@ -1,9 +1,11 @@
 extends Area2D
+@onready var switch: AudioStreamPlayer = $"../AudioController/Switch"
 
 @export var platform: StaticBody2D
 @export var switch_id: int
 @export var max_duration: float
 @export var button: bool
+@export var switchOff: bool
 @export var playerSwitch: int
 var player1_on_switch = false
 var player2_on_switch = false
@@ -24,7 +26,8 @@ func _process(delta: float) -> void:
 		turn_switch_on()
 	if (player1_on_switch or player2_on_switch) and button:
 		toggle_button()
-	elif (!player1_on_switch or !player2_on_switch) and button:
+	elif ( not player1_on_switch and not player2_on_switch) and button and switchOn:
+		switchOn = false
 		button_image.texture = load("res://Assets/button-off.png")
 		platform.visible = false
 		platform.get_child(1).disabled = true
@@ -32,18 +35,29 @@ func _process(delta: float) -> void:
 		onTimer += 1 * delta
 	if onTimer >= max_duration and not button:
 		switchOn = false
-		platform.visible = !platform.visible
+		if switchOff:
+			platform.visible = true
+			platform.get_child(1).disabled = false
+		else:
+			platform.visible = false
+			platform.get_child(1).disabled = true
 		if !button:
 			button_image.texture = load("res://Sprites/switch-off.png")
 			await get_tree().create_timer(0.4).timeout
 			button_image.texture = load("res://Sprites/switch-none.png")
 		onTimer = 0
-		platform.get_child(1).disabled = !platform.get_child(1).disabled
+			
+		
 func turn_switch_on() -> void:
 	switchOn = true
+	switch.play()
 	button_image.texture = load("res://Sprites/switch-on.png")
-	platform.visible = !platform.visible
-	platform.get_child(1).disabled = !platform.get_child(1).disabled
+	if switchOff:
+		platform.visible = false
+		platform.get_child(1).disabled = true
+	else:
+		platform.visible = true
+		platform.get_child(1).disabled = false
 
 func toggle_button() -> void:
 	switchOn = true
