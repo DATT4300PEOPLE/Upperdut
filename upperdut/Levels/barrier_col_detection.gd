@@ -1,6 +1,5 @@
 extends Area2D
 @onready var barrier_collider: CollisionShape2D = $StageBarrier/barrier_collider
-@onready var invisible_barrier: ColorRect = $StageBarrier/InvisibleBarrier
 
 var player_list = []
 var barrier_on = false
@@ -8,7 +7,6 @@ var barrier_on = false
 func _physics_process(delta: float) -> void:
 	if player_list.size() >= 2:
 		barrier_on = true
-		invisible_barrier.visible = true
 		barrier_collider.disabled = false
 		
 func _on_area_entered(area: Area2D) -> void:

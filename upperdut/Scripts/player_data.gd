@@ -37,6 +37,8 @@ func apply_damage(damage: int, player: int):
 		P2_Damage = 0
 		P2_Stock -= 1
 		print(P2_Stock)
+	if P2_Damage <= 0:
+		P2_Damage = 0
 	if P2_Stock <= 0 or P1_Stock <= 0:
 		get_tree().change_scene_to_file("res://death_screen.tscn")
 		P1_Damage = 0

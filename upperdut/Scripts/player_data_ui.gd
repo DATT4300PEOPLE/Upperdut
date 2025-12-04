@@ -19,8 +19,14 @@ func _process(delta: float) -> void:
 	meterP1.value = lerp(meterP1.value, PlayerData.P1_Damage, 0.1)
 	meterP2.value = lerp(meterP2.value, PlayerData.P2_Damage, 0.1)
 	
-	p1Percent.text = str(int(round(PlayerData.P1_Damage))) + '%'
-	p2Percent.text = str(int(round(PlayerData.P2_Damage))) + '%'
+	if PlayerData.P1_Damage <= 0:
+		p1Percent.text = "0%"
+	else:
+		p1Percent.text = str(int(round(PlayerData.P1_Damage))) + '%'
+	if PlayerData.P2_Damage <= 0:
+		p2Percent.text = "0%"
+	else:
+		p2Percent.text = str(int(round(PlayerData.P2_Damage))) + '%'
 	
 	## PLAYER 1 STOCK STUFF
 	if (p1Stocks.get_child_count() < PlayerData.P1_Stock):

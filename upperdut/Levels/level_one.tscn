@@ -423,7 +423,7 @@ scale = Vector2(0.601, 0.601)
 texture = ExtResource("2_cp88c")
 
 [node name="Lvl3" type="Sprite2D" parent="."]
-position = Vector2(584, -2459)
+position = Vector2(584, -2456)
 scale = Vector2(0.601, 0.601)
 texture = ExtResource("3_wepyk")
 
@@ -1131,11 +1131,6 @@ position = Vector2(577, 0)
 [node name="BottomScreen" type="Sprite2D" parent="."]
 position = Vector2(552, 682)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_hc2ao")
-volume_db = -9.674
-autoplay = true
-
 [node name="TOGGLEPLATFORM" type="StaticBody2D" parent="."]
 visible = false
 position = Vector2(636, 190)
@@ -1196,7 +1191,7 @@ disabled = true
 
 [node name="TOGGLEPLATFORM5" type="StaticBody2D" parent="."]
 visible = false
-position = Vector2(464, -2239)
+position = Vector2(464, -2236)
 scale = Vector2(0.601, 0.601)
 
 [node name="Lvl11" type="Sprite2D" parent="TOGGLEPLATFORM5"]
@@ -1367,29 +1362,6 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(387, -17)
 shape = SubResource("RectangleShape2D_n67ls")
 
-[node name="BarrierColDetection3" type="Area2D" parent="."]
-position = Vector2(-15, -1804)
-script = ExtResource("25_jbsh1")
-
-[node name="StageBarrier" type="StaticBody2D" parent="BarrierColDetection3"]
-
-[node name="barrier_collider" type="CollisionShape2D" parent="BarrierColDetection3/StageBarrier"]
-position = Vector2(577.5, 0)
-shape = SubResource("RectangleShape2D_l70lb")
-disabled = true
-one_way_collision = true
-
-[node name="InvisibleBarrier" type="ColorRect" parent="BarrierColDetection3/StageBarrier"]
-visible = false
-offset_top = -30.0
-offset_right = 1167.0
-offset_bottom = 17.0
-color = Color(1, 1, 1, 0.34117648)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BarrierColDetection3"]
-position = Vector2(577.5, -8)
-shape = SubResource("RectangleShape2D_w6h7a")
-
 [node name="ButtonGlove" type="Sprite2D" parent="."]
 position = Vector2(312.99997, 243)
 scale = Vector2(0.4, 0.4)
@@ -1527,17 +1499,19 @@ libraries = {
 autoplay = "gloveFloat"
 
 [node name="BeltLeft" type="Area2D" parent="."]
-position = Vector2(35, -1766)
+position = Vector2(62, -1777)
 scale = Vector2(0.601, 0.601)
 script = ExtResource("32_eibiv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BeltLeft"]
-position = Vector2(59.891907, 43.253296)
+position = Vector2(29.941824, 89.842316)
 shape = SubResource("RectangleShape2D_m4hqf")
 
 [node name="TextureRect" type="TextureRect" parent="BeltLeft"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -29.950083
+offset_top = 46.589016
+offset_right = 86.04992
+offset_bottom = 139.58902
 texture = ExtResource("33_6a7d4")
 
 [node name="GloveIcon6" type="TextureRect" parent="BeltLeft"]
@@ -1545,6 +1519,7 @@ offset_left = 314.0
 offset_top = 245.0
 offset_right = 394.0
 offset_bottom = 319.0017
+scale = Vector2(0.601, 0.601)
 texture = ExtResource("31_23fag")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BeltLeft/GloveIcon6"]
@@ -1554,18 +1529,20 @@ libraries = {
 autoplay = "gloveFloat"
 
 [node name="BeltRight" type="Area2D" parent="."]
-position = Vector2(661, -4347)
+position = Vector2(680, -4364)
 scale = Vector2(0.601, 0.601)
 script = ExtResource("32_eibiv")
 BELT = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BeltRight"]
-position = Vector2(59.891907, 43.253296)
+position = Vector2(26.614037, 81.52284)
 shape = SubResource("RectangleShape2D_m4hqf")
 
 [node name="TextureRect" type="TextureRect" parent="BeltRight"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -33.27787
+offset_top = 38.26955
+offset_right = 82.72213
+offset_bottom = 131.26955
 texture = ExtResource("33_6a7d4")
 
 [node name="GloveIcon6" type="TextureRect" parent="BeltRight"]
@@ -1573,6 +1550,7 @@ offset_left = 314.0
 offset_top = 245.0
 offset_right = 394.0
 offset_bottom = 319.0017
+scale = Vector2(0.601, 0.601)
 texture = ExtResource("30_y2ssv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BeltRight/GloveIcon6"]
@@ -1658,6 +1636,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_knwns")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_hc2ao")
+volume_db = -12.325
+autoplay = true
+
 [connection signal="area_entered" from="Ladde" to="Ladde" method="_on_area_entered"]
 [connection signal="area_exited" from="Ladde" to="Ladde" method="_on_area_exited"]
 [connection signal="area_entered" from="Ladde2" to="Ladde2" method="_on_area_entered"]
@@ -1665,7 +1648,6 @@ libraries = {
 [connection signal="area_entered" from="Exit" to="Exit" method="_on_area_entered"]
 [connection signal="area_entered" from="BarrierColDetection" to="BarrierColDetection" method="_on_area_entered"]
 [connection signal="area_entered" from="BarrierColDetection4" to="BarrierColDetection4" method="_on_area_entered"]
-[connection signal="area_entered" from="BarrierColDetection3" to="BarrierColDetection3" method="_on_area_entered"]
 [connection signal="area_entered" from="BeltLeft" to="BeltLeft" method="_on_area_entered"]
 [connection signal="area_entered" from="BeltRight" to="BeltRight" method="_on_area_entered"]
 
