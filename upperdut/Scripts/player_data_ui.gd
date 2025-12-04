@@ -5,7 +5,10 @@ extends Node2D
 @onready var p2Stocks: GridContainer = $P2Stocks
 @onready var p1Glove: TextureRect = $P1Stocks/BoxingGlove
 @onready var p2Glove: TextureRect = $P2Stocks/BoxingGlove
+
 @onready var stock_loss: AudioStreamPlayer = $"../../../AudioController/StockLoss"
+@onready var p1Percent: RichTextLabel = $PercentageP1
+@onready var p2Percent: RichTextLabel = $PercentageP2
 
 var p1GloveTexture: Texture2D
 var p2GloveTexture: Texture2D
@@ -17,6 +20,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	meterP1.value = lerp(meterP1.value, PlayerData.P1_Damage, 0.1)
 	meterP2.value = lerp(meterP2.value, PlayerData.P2_Damage, 0.1)
+	
+	if PlayerData.P1_Damage <= 0:
+		p1Percent.text = "0%"
+	else:
+		p1Percent.text = str(int(round(PlayerData.P1_Damage))) + '%'
+	if PlayerData.P2_Damage <= 0:
+		p2Percent.text = "0%"
+	else:
+		p2Percent.text = str(int(round(PlayerData.P2_Damage))) + '%'
 	
 	## PLAYER 1 STOCK STUFF
 	if (p1Stocks.get_child_count() < PlayerData.P1_Stock):

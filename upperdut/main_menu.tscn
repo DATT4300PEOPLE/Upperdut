@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk6rccahfpqgx"]
+[gd_scene load_steps=14 format=3 uid="uid://dk6rccahfpqgx"]
 
 [ext_resource type="Texture2D" uid="uid://duglwccba6cqx" path="res://Assets/Sprite Sheets/titlescreen-upperdut.png" id="1_nlkkf"]
 [ext_resource type="Texture2D" uid="uid://dfus80rdhvi30" path="res://Assets/PLAY.png" id="2_qe12f"]
@@ -7,18 +7,165 @@
 [ext_resource type="Texture2D" uid="uid://mfpwudlv5fil" path="res://Assets/EXIT.png" id="5_0o4t1"]
 [ext_resource type="Texture2D" uid="uid://cbeoqkipln01y" path="res://Assets/EXITHOVER.png" id="6_0k4wn"]
 [ext_resource type="AudioStream" uid="uid://1qitphwctvir" path="res://Assets/Sound_Effects/jungle-waves-drumampbass-electronic-inspiring-promo-345013.mp3" id="7_qe12f"]
+[ext_resource type="Texture2D" uid="uid://k4ty54p0860r" path="res://Assets/Sprite Sheets/BLOC_glove.png" id="8_dy7ct"]
+[ext_resource type="Texture2D" uid="uid://ulj5hln3vtdk" path="res://Assets/Sprite Sheets/ORB_glove.png" id="9_0o4t1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0k4wn"]
+font_size = 36
+shadow_size = 10
+shadow_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_j5v2v"]
+resource_name = "Intro"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackFade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3.6333334, 4.9333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitlescreenUpperdut:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 3.6333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Play:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.8333335, 5.203334, 5.4233336, 5.876667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-225.00003, 455), Vector2(520, 455), Vector2(502.99997, 455), Vector2(505.99997, 455)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Exit:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4.8433337, 5.2133336, 5.433334, 5.876667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1279, 544), Vector2(531, 544), Vector2(565, 546), Vector2(554, 544)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("IntroLogo:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.49, 2.24, 2.8666666, 3.63),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iotk1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackFade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitlescreenUpperdut:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Play:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(505.99997, 455)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Exit:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(554, 544)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("IntroLogo:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w44g7"]
+_data = {
+&"Intro": SubResource("Animation_j5v2v"),
+&"RESET": SubResource("Animation_iotk1")
+}
 
 [node name="Main Menu" type="Node2D"]
 
 [node name="TitlescreenUpperdut" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(587, 279)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("1_nlkkf")
 
+[node name="BlackFade" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1153.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 1)
+
 [node name="Play" type="TextureButton" parent="."]
 offset_left = 505.99997
 offset_top = 455.0
-offset_right = 850.0
+offset_right = 850.0001
 offset_bottom = 567.0
 scale = Vector2(0.601, 0.601)
 texture_normal = ExtResource("2_qe12f")
@@ -38,3 +185,33 @@ texture_hover = ExtResource("6_0k4wn")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_qe12f")
 autoplay = true
+
+[node name="IntroLogo" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+
+[node name="BlocGlove" type="Sprite2D" parent="IntroLogo"]
+position = Vector2(651, 329.00003)
+rotation = 0.55069333
+scale = Vector2(1.7027028, 1.7027028)
+texture = ExtResource("8_dy7ct")
+
+[node name="OrbGlove" type="Sprite2D" parent="IntroLogo"]
+position = Vector2(528.00006, 331.00003)
+rotation = -0.508216
+scale = Vector2(1.703, 1.703)
+texture = ExtResource("9_0o4t1")
+
+[node name="Label" type="Label" parent="IntroLogo"]
+offset_left = 449.0
+offset_top = 382.0
+offset_right = 731.0
+offset_bottom = 432.0
+text = "Dut Productions"
+label_settings = SubResource("LabelSettings_0k4wn")
+horizontal_alignment = 1
+
+[node name="IntroAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_w44g7")
+}
+autoplay = "Intro"

@@ -1,5 +1,6 @@
 extends Area2D
 @onready var switch: AudioStreamPlayer = $"../AudioController/Switch"
+@onready var timerText: RichTextLabel = $TimerText
 
 @export var platform: StaticBody2D
 @export var switch_id: int
@@ -13,7 +14,7 @@ var button_image: Sprite2D
 var switchOn = false
 var onTimer = 0
 func _ready() -> void:
-	max_duration = 1.4
+	max_duration = 2
 	area_entered.connect(Callable(self,"_on_area_entered"))
 	area_exited.connect(Callable(self,"_on_area_exited"))
 	button_image = self.get_child(1)
@@ -31,7 +32,7 @@ func _process(delta: float) -> void:
 		button_image.texture = load("res://Assets/button-off.png")
 		platform.visible = false
 		platform.get_child(1).disabled = true
-	if switchOn and onTimer < max_duration:
+	if switchOn and onTimer < max_duration and not button:
 		onTimer += 1 * delta
 	if onTimer >= max_duration and not button:
 		switchOn = false
@@ -46,7 +47,11 @@ func _process(delta: float) -> void:
 			await get_tree().create_timer(0.4).timeout
 			button_image.texture = load("res://Sprites/switch-none.png")
 		onTimer = 0
-			
+	if onTimer > 0:
+		timerText.visible = true
+		timerText.text = str(snapped(max_duration - onTimer,0.01))
+	if onTimer <= 0 and timerText:
+		timerText.visible = false
 		
 func turn_switch_on() -> void:
 	switchOn = true

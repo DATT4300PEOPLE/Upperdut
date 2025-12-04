@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dyrix2rb5qe55"]
+[gd_scene load_steps=18 format=3 uid="uid://dyrix2rb5qe55"]
 
 [ext_resource type="Script" uid="uid://bxqm8rvrp7fid" path="res://pause_menu.gd" id="1_d3xb4"]
 [ext_resource type="Texture2D" uid="uid://by2pouv71qf5c" path="res://Sprites/pausePLACEHOLDER.png" id="1_hdmo1"]
@@ -13,8 +13,14 @@
 [ext_resource type="Texture2D" uid="uid://cv7e40w6j2y4h" path="res://Assets/pausebtn.png" id="10_g7dbl"]
 [ext_resource type="Texture2D" uid="uid://eteg2kuvxakk" path="res://Assets/tutorial.png" id="10_ub45p"]
 [ext_resource type="Texture2D" uid="uid://cka6r5otao8iq" path="res://Assets/settings-tutorial 1 hover.png" id="11_0q2ao"]
-[ext_resource type="Texture2D" uid="uid://trmydyyynbb5" path="res://icon.svg" id="11_42xcf"]
 [ext_resource type="Texture2D" uid="uid://c2u6cialp1vww" path="res://Assets/pausebtn_onhover.png" id="11_lv42l"]
+[ext_resource type="Texture2D" uid="uid://k4ty54p0860r" path="res://Assets/Sprite Sheets/BLOC_glove.png" id="15_0q2ao"]
+[ext_resource type="Texture2D" uid="uid://ulj5hln3vtdk" path="res://Assets/Sprite Sheets/ORB_glove.png" id="16_oasv2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_udgxo"]
+font_size = 36
+shadow_size = 10
+shadow_color = Color(1, 0, 0, 1)
 
 [node name="Pause Menu" type="Node2D"]
 script = ExtResource("1_d3xb4")
@@ -25,42 +31,79 @@ position = Vector2(574.96, 326.99997)
 scale = Vector2(0.601, 0.601)
 texture = ExtResource("1_hdmo1")
 
+[node name="BlackOverlay" type="ColorRect" parent="PausePlaceholder"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -544.09314
+offset_right = -960.0
+offset_bottom = -544.09314
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="PauseOverlay" type="Sprite2D" parent="PausePlaceholder"]
 position = Vector2(-3.2612915, -1.6640015)
 texture = ExtResource("3_q2yj1")
 
 [node name="Play" type="TextureButton" parent="PausePlaceholder"]
-offset_left = -128.11981
-offset_top = -59.900146
-offset_right = -0.11981201
-offset_bottom = 68.09985
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1024.0
+offset_top = -604.0
+offset_right = -896.0
+offset_bottom = -476.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("2_05uyy")
 texture_pressed = ExtResource("3_p81d2")
 texture_hover = ExtResource("3_p81d2")
 
 [node name="Settings" type="TextureButton" parent="PausePlaceholder"]
-offset_left = -925.12476
-offset_top = 372.71216
-offset_right = -797.12476
-offset_bottom = 500.71216
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -950.0
+offset_top = -735.0
+offset_right = -822.0
+offset_bottom = -607.0
+grow_vertical = 0
 texture_normal = ExtResource("5_e8sti")
 texture_pressed = ExtResource("6_q2yj1")
 texture_hover = ExtResource("6_q2yj1")
 
 [node name="Quit" type="TextureButton" parent="PausePlaceholder"]
-offset_left = -126.45587
-offset_top = 364.3927
-offset_right = 27.544159
-offset_bottom = 513.3927
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1037.0
+offset_top = -735.0
+offset_right = -883.0
+offset_bottom = -586.0
+grow_horizontal = 2
+grow_vertical = 0
 texture_normal = ExtResource("4_2nc7s")
 texture_pressed = ExtResource("5_d3xb4")
 texture_hover = ExtResource("5_d3xb4")
 
 [node name="Tutorial" type="TextureButton" parent="PausePlaceholder"]
-offset_left = 790.4159
-offset_top = 386.02332
-offset_right = 918.4159
-offset_bottom = 525.85693
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1098.0
+offset_top = -735.0
+offset_right = -970.0
+offset_bottom = -595.1664
+grow_horizontal = 0
+grow_vertical = 0
 texture_normal = ExtResource("10_1meuf")
 texture_hover = ExtResource("11_0q2ao")
 
@@ -76,12 +119,39 @@ offset_left = -480.79868
 offset_top = -530.782
 offset_right = -352.79868
 offset_bottom = -402.78198
-texture_normal = ExtResource("11_42xcf")
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("4_2nc7s")
+texture_pressed = ExtResource("5_d3xb4")
+texture_hover = ExtResource("5_d3xb4")
+
+[node name="IntroLogo" type="Node2D" parent="PausePlaceholder"]
+position = Vector2(-21.564087, -460.89847)
+
+[node name="BlocGlove" type="Sprite2D" parent="PausePlaceholder/IntroLogo"]
+position = Vector2(63.87256, -7.180176)
+rotation = 0.55069333
+scale = Vector2(1.7027028, 1.7027028)
+texture = ExtResource("15_0q2ao")
+
+[node name="OrbGlove" type="Sprite2D" parent="PausePlaceholder/IntroLogo"]
+position = Vector2(-59.12738, -5.1801147)
+rotation = -0.508216
+scale = Vector2(1.703, 1.703)
+texture = ExtResource("16_oasv2")
+
+[node name="Label" type="Label" parent="PausePlaceholder/IntroLogo"]
+offset_left = -139.5401
+offset_top = 46.51535
+offset_right = 142.4599
+offset_bottom = 149.51535
+text = "UpperDut"
+label_settings = SubResource("LabelSettings_udgxo")
+horizontal_alignment = 1
 
 [node name="Pause" type="TextureButton" parent="."]
-offset_left = 550.0
+offset_left = 19.0
 offset_top = 23.0
-offset_right = 634.0
+offset_right = 103.0
 offset_bottom = 115.0
 scale = Vector2(0.48099756, 0.48099756)
 texture_normal = ExtResource("10_g7dbl")
