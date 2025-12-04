@@ -5,6 +5,7 @@ extends Node2D
 @onready var p2Stocks: GridContainer = $P2Stocks
 @onready var p1Glove: TextureRect = $P1Stocks/BoxingGlove
 @onready var p2Glove: TextureRect = $P2Stocks/BoxingGlove
+@onready var stock_loss: AudioStreamPlayer = $"../../../AudioController/StockLoss"
 
 var p1GloveTexture: Texture2D
 var p2GloveTexture: Texture2D
@@ -24,6 +25,7 @@ func _process(delta: float) -> void:
 		p1Stocks.add_child(p1StockGlove)		
 	if (p1Stocks.get_child_count() > PlayerData.P1_Stock):
 		p1Stocks.remove_child(p1Stocks.get_child(p1Stocks.get_child_count() - 1))
+		stock_loss.play()
 
 	## PLAYER 2 STOCK STUFF
 	if (p2Stocks.get_child_count() < PlayerData.P2_Stock):
@@ -34,3 +36,4 @@ func _process(delta: float) -> void:
 		var anim_player: AnimationPlayer = p2Stocks.get_child(p2Stocks.get_child_count() - 1).get_child(0)
 		anim_player.play("stock_anim")
 		p2Stocks.remove_child(p2Stocks.get_child(p2Stocks.get_child_count() - 1))
+		stock_loss.play()

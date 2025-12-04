@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://cm8nsbc1ub008"]
+[gd_scene load_steps=88 format=3 uid="uid://cm8nsbc1ub008"]
 
 [ext_resource type="PackedScene" uid="uid://pbpojmiw1dxs" path="res://Sprites/player_sprite.tscn" id="1_2b52f"]
 [ext_resource type="Texture2D" uid="uid://cgfm8fugdugg5" path="res://Assets/Level Assets/Stages/lvl1.png" id="1_nph2v"]
@@ -41,6 +41,7 @@
 [ext_resource type="AudioStream" uid="uid://ds3lc15frw2am" path="res://Assets/Sound_Effects/punch-416719.mp3" id="38_m4hqf"]
 [ext_resource type="AudioStream" uid="uid://dmi16c60u3nxy" path="res://Assets/Sound_Effects/swing-whoosh-110410.mp3" id="39_n67ls"]
 [ext_resource type="AudioStream" uid="uid://diwwgdx8ttfl3" path="res://Assets/Sound_Effects/switch.ogg" id="40_n67ls"]
+[ext_resource type="AudioStream" uid="uid://tcbwg03vh1wt" path="res://Assets/Sound_Effects/loss.ogg" id="42_knwns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18c4h"]
 size = Vector2(18.661518, 61.499985)
@@ -1474,6 +1475,10 @@ volume_db = -14.637
 
 [node name="Jump" type="AudioStreamPlayer" parent="AudioController"]
 stream = ExtResource("39_n67ls")
+
+[node name="StockLoss" type="AudioStreamPlayer" parent="AudioController"]
+stream = ExtResource("42_knwns")
+volume_db = -8.404
 
 [node name="BlueIcon" type="Sprite2D" parent="."]
 position = Vector2(824.60004, 466)
